@@ -2,8 +2,8 @@
 * @Author: baosheng
 * @Date:   2018-04-03 22:07:35
 * @Last Modified by:   baosheng
-* @Last Modified time: 2018-04-03 22:07:43
+* @Last Modified time: 2018-04-04 14:44:33
 */
-import createHistory from 'history/createBrowserHistory'
+import createBrowserHistory from 'history/createBrowserHistory'
 
-export default createHistory()
+export default createBrowserHistory()

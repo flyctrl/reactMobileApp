@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   baosheng
-* @Last Modified time: 2018-04-04 00:02:30
+* @Last Modified time: 2018-04-04 15:46:05
 */
 import React, { Component } from 'react'
 import { TabBar } from 'antd-mobile'
@@ -23,8 +23,8 @@ class AppMenu extends Component {
 
   render() {
     const pathname = history.location.pathname
-    console.log(pathname)
-    console.log(this.props.children)
+    // console.log(pathname)
+    // console.log(this.props.children)
     return (
       <div style={{ width: '100%', position: 'absolute', top: '45px', bottom: 0, left: 0, right: 0 }}>
         <TabBar
@@ -43,7 +43,8 @@ class AppMenu extends Component {
                 selectedTab: 'blueTab',
               })
               history.push('/Home')
-              console.log('pathname', history.location.pathname)
+              console.log(history.location.pathname)
+              console.log(this.props.children)
             }}
             data-seed='logId'
           >
@@ -60,7 +61,8 @@ class AppMenu extends Component {
                 selectedTab: 'redTab',
               })
               history.push('/Sort1')
-              console.log('pathname', history.location.pathname)
+              console.log(history.location.pathname)
+              console.log(this.props.children[1])
             }}
             data-seed='logId1'
           >
@@ -77,9 +79,11 @@ class AppMenu extends Component {
                 selectedTab: 'greenTab',
               })
               history.push('/Sort2')
+              console.log(history.location.pathname)
+              console.log(this.props.children[2])
             }}
           >
-            { pathname === '/Sort2' ? this.props.children : null }
+            { history.location.pathname === '/Sort2' ? this.props.children : null }
           </TabBar.Item>
           <TabBar.Item
             icon={<svg className='icon-menu' aria-hidden='true'><use xlinkHref='#icon-tongxunlu'></use></svg>}
