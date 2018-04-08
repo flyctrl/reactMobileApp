@@ -1,62 +1,71 @@
 /*
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
-* @Last Modified by:   baosheng
-* @Last Modified time: 2018-04-04 15:28:19
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-04-08 23:40:02
 */
 import React, { Component } from 'react'
-import {
-  Route,
-  BrowserRouter
-} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { NavBar, Icon } from 'antd-mobile'
 import AppMenu from 'Components/Menus'
-// import * as urls from '../contants/urls'
-// import Home from 'Models/Home'
-// import Sort1 from 'Models/Sort/Sort1'
-// import Sort2 from 'Models/Sort/Sort2'
-// import Sort3 from 'Models/Sort3'
+import history from 'Util/history'
 
 class MainLayout extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      title: '',
+      path: ''
+    }
+    this.goBack = this.goBack.bind(this)
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      title: nextProps.location.state.title,
+      path: nextProps.location.pathname
+    })
+  }
+  touchMenu(event) {
+    this.setState({
+      title: event
+    })
+  }
+  goBack() {
+    history.goBack()
   }
   render() {
     const { routes } = this.props
-    // const { routes } = this.props
-    console.log(this.props)
     return (
       <div style={{ width: '100%', height: '100%' }}>
         <NavBar
           mode='dark'
-          icon={<Icon type='left' />}
-          onLeftClick={() => console.log('onLeftClick')}
-          rightContent={[
-            <Icon key='0' type='search' style={{ marginRight: '16px' }} />,
-            <Icon key='1' type='ellipsis' />,
-          ]}
-        >金诚</NavBar>
-        <BrowserRouter>
-          <AppMenu>
-            {
-              routes.map((route, index) => {
-                return (
-                  <Route
-                    key={index}
-                    path={route.path}
-                    exact={route.exact}
-                    render={(match) => {
+          icon={
+            history.location.pathname === '/Home' ? null : <Icon type='left' />
+          }
+          onLeftClick={() => {
+            history.location.pathname === '/Home' ? null : this.goBack()
+          }}
+        >{ this.state.title || history.location.state.title }</NavBar>
+        <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>
+          {
+            routes.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  render={(match) => {
+                    return (
                       <div>
                         <route.component match={match}/>
                       </div>
-                    }}
-                  />
-                )
-              })
-            }
-          </AppMenu>
-        </BrowserRouter>
+                    )
+                  }}
+                />
+              )
+            })
+          }
+        </AppMenu>
       </div>
     )
   }
