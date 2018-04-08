@@ -1,4 +1,4 @@
-### 技术栈
+## 技术栈
 - [precss](https://github.com/jonathantneal/precss) 封装成sass语法的postcss集合插件
 [eslint规则](http://git.jc/app-h5/docs/blob/master/frontend/.eslintrc.js)
 [stylelint规则](http://git.jc/app-h5/docs/blob/master/frontend/.stylelintrc)
@@ -12,11 +12,11 @@
 
 - 路由的顺序即是tabBar的顺序
 
-### 引用常用资源
+## 引用常用资源
 
 现在在webpack配置了alias方便引用资源，举个例子当你在某个视图组件中需要引用公共组件；不管你与那个组件的相对路径是怎样的，可以直接`import AddButton from 'Components/AddButton'`
 
-** 目前可以这样引用的有： **
+* 目前可以这样引用的有：  *
 
 - Src: 对应src目录
 - Util: 对应'src/utils/'
