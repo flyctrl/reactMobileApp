@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-08 23:40:02
+* @Last Modified time: 2018-04-09 12:57:15
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -25,6 +25,14 @@ class MainLayout extends Component {
       path: nextProps.location.pathname
     })
   }
+  componentWillMount() {
+    if (history.location.pathname === '/') {
+      this.setState({
+        title: '首页',
+        path: '/Home'
+      })
+    }
+  }
   touchMenu(event) {
     this.setState({
       title: event
@@ -35,17 +43,18 @@ class MainLayout extends Component {
   }
   render() {
     const { routes } = this.props
+    const pathname = history.location.pathname
     return (
       <div style={{ width: '100%', height: '100%' }}>
         <NavBar
           mode='dark'
           icon={
-            history.location.pathname === '/Home' ? null : <Icon type='left' />
+            (pathname === '/Home' || pathname === '/') ? null : <Icon type='left' />
           }
           onLeftClick={() => {
-            history.location.pathname === '/Home' ? null : this.goBack()
+            (pathname === '/Home' || pathname === '/') ? null : this.goBack()
           }}
-        >{ this.state.title || history.location.state.title }</NavBar>
+        >{ (history.location.state ? history.location.state.title : false) || this.state.title }</NavBar>
         <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>
           {
             routes.map((route, index) => {
