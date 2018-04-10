@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:27:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-10 14:50:59
+* @Last Modified time: 2018-04-10 14:59:52
 */
 import React, { Component } from 'react'
 import { List, InputItem, Button, WhiteSpace, WingBlank, Flex, Toast } from 'antd-mobile'
@@ -36,8 +36,6 @@ class Register extends Component {
   getCode() {
     const phoneErr = this.props.form.getFieldError('phone')
     const phone = this.props.form.getFieldValue('phone')
-    console.log(phone)
-    console.log(phoneErr)
     if (phone === undefined || phone === '') {
       Toast.fail('请输入手机号码', 1)
     } else if (phoneErr !== undefined) {
@@ -97,7 +95,7 @@ class Register extends Component {
           </Flex>
         </List>
         <WingBlank>
-          <Button type='primary' style={{ marginTop: '30px', height: '42px', lineHeight: '42px' }} onClick={this.onSubmit}>新用户注册</Button><WhiteSpace />
+          <Button type='primary' className='submitBtn' onClick={this.onSubmit}>新用户注册</Button><WhiteSpace />
         </WingBlank>
       </form>
     )
