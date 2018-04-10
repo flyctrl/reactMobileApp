@@ -2,9 +2,10 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-09 13:40:21
+* @Last Modified time: 2018-04-11 00:05:19
 */
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 require('Src/assets/iconfont.js')
@@ -52,10 +53,34 @@ class AppMenu extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      selectedTab: (nextProps.path).slice(1)
+      selectedTab: nextProps.path !== '' ? (nextProps.path).slice(1) : (history.location.pathname).split('/')[1]
     })
   }
-
+  showComponent() {
+    const { routes } = this.props
+    return (
+      <div>
+        {
+          routes.map((route, index) => {
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                render={(match) => {
+                  return (
+                    <div>
+                      <route.component match={match}/>
+                    </div>
+                  )
+                }}
+              />
+            )
+          })
+        }
+      </div>
+    )
+  }
   render() {
     return (
       <div style={{ width: '100%', position: 'absolute', top: '45px', bottom: 0, left: 0, right: 0 }}>
@@ -81,7 +106,7 @@ class AppMenu extends Component {
                     history.push(item['path'], { title: item['title'] })
                   }}
                 >
-                  { history.location.pathname === item['path'] ? this.props.children : null }
+                  { history.location.pathname === item['path'] ? this.props.children : this.showComponent() }
                 </TabBar.Item>
               )
             })

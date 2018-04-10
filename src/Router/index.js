@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-09 15:45:31
+* @Last Modified time: 2018-04-10 23:32:31
 */
 import React from 'react'
 import {
@@ -20,56 +20,54 @@ import Mine from '../models/Mine'
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
 import ForgetPwd from '../models/Login/forgetPwd'
+import TaskList from '../models/Workplat/taskList'
 
 const routes = [
   {
-    path: '/Home',
-    redirect: urls.HOME,
+    path: urls.MAIN,
     exact: true,
     component: Home,
     title: '首页'
   }, {
-    path: '/Message',
-    redirect: urls.MESSAGE,
+    path: urls.MESSAGE,
     exact: true,
     component: Message,
     title: '消息'
   }, {
-    path: '/Workplat',
-    redirect: urls.WORKPLAT,
+    path: urls.WORKPLAT,
     exact: true,
     component: Workplat,
     title: '工作台'
   }, {
-    path: '/Contact',
-    redirect: urls.CONTACT,
+    path: urls.CONTACT,
     exact: true,
     component: Contact,
     title: '通讯录'
   }, {
-    path: '/Mine',
-    redirect: urls.MINE,
+    path: urls.MINE,
     exact: true,
     component: Mine,
     title: '我的'
   }, {
-    path: '/Login/login',
-    redirect: urls.LOGIN,
+    path: urls.LOGIN,
     exact: true,
     component: Login,
     title: '登录'
   }, {
-    path: '/Login/register',
-    redirect: urls.REGISTER,
+    path: urls.REGISTER,
     exact: true,
     component: Register,
     title: '注册'
   }, {
-    path: '/Login/forgetPwd',
-    redirect: urls.FORGETPWD,
+    path: urls.FORGETPWD,
     exact: true,
     component: ForgetPwd,
     title: '忘记密码'
+  }, {
+    path: urls.TASKLIST,
+    exact: true,
+    component: TaskList,
+    title: '任务列表'
   }
 ]
 

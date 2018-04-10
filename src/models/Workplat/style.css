@@ -1,0 +1,11 @@
+/*
+* @Author: chengbs
+* @Date:   2018-04-10 15:19:22
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-04-10 15:30:35
+*/
+:global(.sub-title) {
+  color: #666;
+  font-size: 14px;
+  padding: 15px 0 10px 10px;
+}
