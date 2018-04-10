@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 00:05:45
+* @Last Modified time: 2018-04-11 00:07:59
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -28,7 +28,6 @@ class MainLayout extends Component {
     this.showMenu = this.showMenu.bind(this)
   }
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps)
     if (nextProps.location.state) {
       this.setState({
         title: nextProps.location.state.title,
@@ -77,7 +76,6 @@ class MainLayout extends Component {
                   path={route.path}
                   exact={route.exact}
                   render={(match) => {
-                    console.log('route render')
                     return (
                       <div>
                         <route.component match={match}/>
