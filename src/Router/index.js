@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-08 18:18:14
+* @Last Modified time: 2018-04-09 15:45:31
 */
 import React from 'react'
 import {
@@ -17,53 +17,59 @@ import Message from '../models/Message'
 import Workplat from '../models/Workplat'
 import Contact from '../models/Contact'
 import Mine from '../models/Mine'
+import Login from '../models/Login/login'
+import Register from '../models/Login/register'
+import ForgetPwd from '../models/Login/forgetPwd'
 
 const routes = [
   {
     path: '/Home',
-    key: 'Home',
     redirect: urls.HOME,
     exact: true,
     component: Home,
-    icon: '#icon-home',
-    onIcon: '#icon-home-on',
     title: '首页'
   }, {
     path: '/Message',
-    key: 'Message',
     redirect: urls.MESSAGE,
     exact: true,
     component: Message,
-    icon: '#icon-xiaoxi',
-    onIcon: '#icon-xiaoxi-on',
     title: '消息'
   }, {
     path: '/Workplat',
-    key: 'Workplat',
     redirect: urls.WORKPLAT,
     exact: true,
     component: Workplat,
-    icon: '#icon-gongzuo',
-    onIcon: '#icon-gongzuo-on',
     title: '工作台'
   }, {
     path: '/Contact',
-    key: 'Contact',
     redirect: urls.CONTACT,
     exact: true,
     component: Contact,
-    icon: '#icon-tongxunlu',
-    onIcon: '#icon-tongxunlu-on',
     title: '通讯录'
   }, {
     path: '/Mine',
-    key: 'Mine',
     redirect: urls.MINE,
     exact: true,
     component: Mine,
-    icon: '#icon-wode',
-    onIcon: '#icon-wode-on',
     title: '我的'
+  }, {
+    path: '/Login/login',
+    redirect: urls.LOGIN,
+    exact: true,
+    component: Login,
+    title: '登录'
+  }, {
+    path: '/Login/register',
+    redirect: urls.REGISTER,
+    exact: true,
+    component: Register,
+    title: '注册'
+  }, {
+    path: '/Login/forgetPwd',
+    redirect: urls.FORGETPWD,
+    exact: true,
+    component: ForgetPwd,
+    title: '忘记密码'
   }
 ]
 

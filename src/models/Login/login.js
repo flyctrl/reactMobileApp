@@ -1,12 +1,12 @@
 /*
 * @Author: chengbs
-* @Date:   2018-04-08 13:57:21
+* @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-09 13:33:41
+* @Last Modified time: 2018-04-09 13:34:43
 */
 import React, { Component } from 'react'
 
-class Home extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,9 +15,8 @@ class Home extends Component {
   }
 
   render() {
-    return <div>我是首页</div>
+    return <div>登录</div>
   }
 }
 
-export default Home
-
+export default Login

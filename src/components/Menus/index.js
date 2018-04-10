@@ -2,13 +2,46 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-08 23:18:48
+* @Last Modified time: 2018-04-09 13:40:21
 */
 import React, { Component } from 'react'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 require('Src/assets/iconfont.js')
 
+const data = [
+  {
+    path: '/Home',
+    key: 'Home',
+    icon: '#icon-home',
+    onIcon: '#icon-home-on',
+    title: '首页'
+  }, {
+    path: '/Message',
+    key: 'Message',
+    icon: '#icon-xiaoxi',
+    onIcon: '#icon-xiaoxi-on',
+    title: '消息'
+  }, {
+    path: '/Workplat',
+    key: 'Workplat',
+    icon: '#icon-gongzuo',
+    onIcon: '#icon-gongzuo-on',
+    title: '工作台'
+  }, {
+    path: '/Contact',
+    key: 'Contact',
+    icon: '#icon-tongxunlu',
+    onIcon: '#icon-tongxunlu-on',
+    title: '通讯录'
+  }, {
+    path: '/Mine',
+    key: 'Mine',
+    icon: '#icon-wode',
+    onIcon: '#icon-wode-on',
+    title: '我的'
+  }
+]
 class AppMenu extends Component {
   constructor(props) {
     super(props)
@@ -24,7 +57,6 @@ class AppMenu extends Component {
   }
 
   render() {
-    const { routes } = this.props
     return (
       <div style={{ width: '100%', position: 'absolute', top: '45px', bottom: 0, left: 0, right: 0 }}>
         <TabBar
@@ -33,7 +65,7 @@ class AppMenu extends Component {
           barTintColor='white'
         >
           {
-            routes.map((item, index) => {
+            data.map((item, index) => {
               return (
                 <TabBar.Item
                   title={item['title']}

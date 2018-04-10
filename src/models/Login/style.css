@@ -1,0 +1,8 @@
+/* stylelint-disable */
+:global(.codebtn) {
+  width: 120px;
+  margin-right: 5px;
+  padding: 0 5px;
+  height: 34px;
+  line-height: 34px;
+}
