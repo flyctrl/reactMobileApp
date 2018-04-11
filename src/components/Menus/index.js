@@ -2,41 +2,42 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 00:05:19
+* @Last Modified time: 2018-04-11 13:38:17
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
+import * as urls from 'Contants/urls'
 require('Src/assets/iconfont.js')
 
 const data = [
   {
-    path: '/Home',
+    path: urls.HOME,
     key: 'Home',
     icon: '#icon-home',
     onIcon: '#icon-home-on',
     title: '首页'
   }, {
-    path: '/Message',
+    path: urls.MESSAGE,
     key: 'Message',
     icon: '#icon-xiaoxi',
     onIcon: '#icon-xiaoxi-on',
     title: '消息'
   }, {
-    path: '/Workplat',
+    path: urls.WORKPLAT,
     key: 'Workplat',
     icon: '#icon-gongzuo',
     onIcon: '#icon-gongzuo-on',
     title: '工作台'
   }, {
-    path: '/Contact',
+    path: urls.CONTACT,
     key: 'Contact',
     icon: '#icon-tongxunlu',
     onIcon: '#icon-tongxunlu-on',
     title: '通讯录'
   }, {
-    path: '/Mine',
+    path: urls.MINE,
     key: 'Mine',
     icon: '#icon-wode',
     onIcon: '#icon-wode-on',
@@ -50,10 +51,14 @@ class AppMenu extends Component {
       selectedTab: (history.location.pathname).slice(1) || 'Home'
     }
   }
-
+  componentWillMount() {
+    this.setState({
+      selectedTab: (history.location.pathname).split('/')[1]
+    })
+  }
   componentWillReceiveProps(nextProps) {
     this.setState({
-      selectedTab: nextProps.path !== '' ? (nextProps.path).slice(1) : (history.location.pathname).split('/')[1]
+      selectedTab: nextProps.path !== '' ? (nextProps.path).split('/')[1] : 'Home'
     })
   }
   showComponent() {

@@ -2,19 +2,14 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 00:07:59
+* @Last Modified time: 2018-04-11 13:33:59
 */
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { NavBar, Icon } from 'antd-mobile'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
-
-const titleAry = {
-  'login': '登录',
-  'register': '注册',
-  'forgetPwd': '忘记密码'
-}
+import * as urls from 'Contants/urls'
 
 class MainLayout extends Component {
   constructor(props) {
@@ -28,39 +23,18 @@ class MainLayout extends Component {
     this.showMenu = this.showMenu.bind(this)
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.location.state) {
-      this.setState({
-        title: nextProps.location.state.title,
-        path: nextProps.location.pathname
-      })
-    }
+    const propObj = this.getRouteByPath(nextProps.location.pathname)
+    this.setState({
+      title: propObj['title'],
+      isMenuPage: propObj['showMenu'],
+      path: nextProps.location.pathname
+    })
   }
   componentWillMount() {
-    const pathname = history.location.pathname
-    const pathStr1 = pathname.split('/')[1]
-    const pathStr2 = pathname.split('/')[2]
-    if (pathname === '/') {
-      this.setState({
-        title: '首页',
-        path: '/Home'
-      })
-    } else if (pathStr1 === 'Login') {
-      this.setState({
-        isMenuPage: false,
-        title: titleAry[pathStr2]
-      })
-    }
-  }
-  componentDidMount() {
-    const pathname = history.location.pathname
-    const { routes } = this.props
-    routes.map((route, index) => {
-      if (route['path'] === pathname) {
-        this.setState({
-          title: route['title']
-        })
-        return
-      }
+    const rtObj = this.getRouteByPath()
+    this.setState({
+      isMenuPage: rtObj['showMenu'],
+      title: rtObj['title']
     })
   }
   showMenu() {
@@ -76,7 +50,7 @@ class MainLayout extends Component {
                   path={route.path}
                   exact={route.exact}
                   render={(match) => {
-                    return (
+                    return route.path === '/' ? <Redirect to={urls.HOME}/> : (
                       <div>
                         <route.component match={match}/>
                       </div>
@@ -121,19 +95,27 @@ class MainLayout extends Component {
   goBack() {
     history.goBack()
   }
+  getRouteByPath(pathname = history.location.pathname) {
+    const { routes } = this.props
+    let routeObj = null
+    routes.map((route, index) => {
+      if (route['path'] === pathname) {
+        routeObj = route
+      }
+    })
+    return routeObj
+  }
   render() {
-    const pathname = history.location.pathname
-
-    const pathBool = (pathname === '/Home' || pathname === '/' || pathname.split('/')[2] === 'login')
+    const pathBool = this.getRouteByPath()['showBack']
     return (
       <div style={{ width: '100%', height: '100%' }}>
         <NavBar
           mode='dark'
           icon={
-            pathBool ? null : <Icon type='left' />
+            pathBool ? <Icon type='left' /> : null
           }
           onLeftClick={() => {
-            pathBool ? null : this.goBack()
+            pathBool ? this.goBack() : null
           }}
         >{ this.state.title }</NavBar>
         {this.showMenu()}

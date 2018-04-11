@@ -8,10 +8,103 @@
 ## 路由
 
 ### 路由书写简单规范
+- 主要是以JSON数组格式进行配置，添加模块后只需要添加想要的路由配置即可
+- 路由配置文件入口：Contants/Router/index.js
 
-- 需要包含path(路由地址)、key(用于tabBar的唯一key)、component(路由对应的模块)、icon(tabBar的icon，icon来自阿里巴巴的svg生成)、onIcon(tabBar被选中时候的icon)、title(App的标题和路由的对应的标题)
+Example：
+```
+const routes = [
+  {
+    path: '/',
+    exact: true,
+    component: Home,
+    showBack: false,
+    showMenu: true,
+    title: '首页'
+  },
+  {
+    path: urls.HOME,
+    exact: true,
+    component: Home,
+    showBack: false,
+    showMenu: true,
+    title: '首页'
+  }, {
+    path: urls.LOGIN,
+    exact: true,
+    component: Login,
+    showBack: false,
+    showMenu: false,
+    title: '登录'
+  }, {
+    path: urls.TASKLIST,
+    exact: true,
+    component: TaskList,
+    showBack: true,
+    showMenu: true,
+    title: '任务列表'
+  }
+  ...
+]
+```
+**字段说明**
+ ```
+path: 路由路径
+exact: 路由是否精确匹配
+component: 路由对应的组件
+showBack: 是否显示header的返回按钮
+showMenu: 是否显示footer的菜单
+title: 标题，APP头部标题
+```
+### 底部菜单配置
+- 基于antdMobile的tabBar，配置APP的footer部分菜单（路由、样式、名称）
+- 以JSON数组格式进行配置，菜单顺序就是配置文件的顺序
+- 菜单配置文件入口：Components/Menus/index.js
 
-- 路由的顺序即是tabBar的顺序
+Example：
+```
+const data = [
+  {
+    path: urls.HOME,
+    key: 'Home',
+    icon: '#icon-home',
+    onIcon: '#icon-home-on',
+    title: '首页'
+  }, {
+    path: urls.MESSAGE,
+    key: 'Message',
+    icon: '#icon-xiaoxi',
+    onIcon: '#icon-xiaoxi-on',
+    title: '消息'
+  }, {
+    path: urls.WORKPLAT,
+    key: 'Workplat',
+    icon: '#icon-gongzuo',
+    onIcon: '#icon-gongzuo-on',
+    title: '工作台'
+  }, {
+    path: urls.CONTACT,
+    key: 'Contact',
+    icon: '#icon-tongxunlu',
+    onIcon: '#icon-tongxunlu-on',
+    title: '通讯录'
+  }, {
+    path: urls.MINE,
+    key: 'Mine',
+    icon: '#icon-wode',
+    onIcon: '#icon-wode-on',
+    title: '我的'
+  }
+]
+```
+**字段说明**
+```
+path: 路由地址,
+key: 每项菜单必须配的key
+icon: 默认时候的icon
+onIcon: 被选中状态时候的icon
+title: 菜单名称
+```
 
 ## 引用常用资源
 
@@ -37,3 +130,17 @@
 - Util/history.js: createBrowserHistory方法
 - Util/storage.js: 对本地存储的操作方法
 
+## 脚本
+### 运行
+```
+git clone https://github.com/flyctrl/youmingApp.git
+cd youmingApp
+yarn（或者npm install）
+npm start
+```
+### 发布
+```
+npm run build:test
+npm run build:pre
+npm run build
+```
