@@ -1,11 +1,25 @@
 /*
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:11
-* @Last Modified by:   baosheng
-* @Last Modified time: 2018-04-03 14:31:13
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-04-25 17:45:44
 */
 .menuBtn {
   width: 22px;
   height: 22px;
   background: 'url(../../assets/home.png) center center /  21px 21px no-repeat';
+}
+.tabBody {
+  width: 100%;
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.icon-menu {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  overflow: hidden;
 }

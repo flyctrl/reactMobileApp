@@ -12,7 +12,7 @@
 - 路由配置文件入口：Contants/Router/index.js
 
 Example：
-```
+```javascript
 const routes = [
   {
     path: '/',
@@ -48,7 +48,7 @@ const routes = [
 ]
 ```
 **字段说明**
- ```
+ ```javascript
 path: 路由路径
 exact: 路由是否精确匹配
 component: 路由对应的组件
@@ -62,7 +62,7 @@ title: 标题，APP头部标题
 - 菜单配置文件入口：Components/Menus/index.js
 
 Example：
-```
+```javascript
 const data = [
   {
     path: urls.HOME,
@@ -98,7 +98,7 @@ const data = [
 ]
 ```
 **字段说明**
-```
+```javascript
 path: 路由地址,
 key: 每项菜单必须配的key
 icon: 默认时候的icon
@@ -132,14 +132,14 @@ title: 菜单名称
 
 ## 脚本
 ### 运行
-```
+```javascript
 git clone https://github.com/flyctrl/youmingApp.git
 cd youmingApp
 yarn（或者npm install）
 npm start
 ```
 ### 发布
-```
+```javascript
 npm run build:test
 npm run build:pre
 npm run build

@@ -2,10 +2,75 @@
 * @Author: chengbs
 * @Date:   2018-04-10 15:19:22
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-10 15:30:35
+* @Last Modified time: 2018-04-25 18:02:04
 */
+.padd10 {
+  /*padding: 10px;*/
+  width: 620px;
+}
+.padd5 {
+  padding: 5px;
+}
+.paddR10 {
+  padding-right: 10px;
+}
+
+dl, dt, dd {
+  padding: 0;
+  margin: 0;
+}
 :global(.sub-title) {
   color: #666;
   font-size: 14px;
   padding: 15px 0 10px 10px;
+}
+:global(.grid) {
+  height: 170px;
+  background: #fff;
+}
+dl {
+  width: 100%;
+  background: #fff;
+}
+dl dd {
+  overflow: hidden;
+}
+dl dt {
+  height: 40px;
+  line-height: 40px;
+  text-indent: 1%;
+}
+dl dd {
+  height: 30px;
+  line-height: 30px;
+  text-indent: 1%;
+}
+em {
+  font-family: normal;
+}
+.prolist {
+  float: left;
+  width: 70%;
+}
+.auto {
+  width: auto;
+  margin-right: 10px;
+  float: left;
+}
+.during {
+  width: 30%;
+  text-align: center;
+  float: right;
+}
+dl dd a {
+  margin-right: 10px;
+}
+.dataItemImg {
+  width: 30px;
+  height: 30px;
+}
+.dataItemText {
+  color: #888;
+  font-size: 12px;
+  margin-top: 5px;
 }

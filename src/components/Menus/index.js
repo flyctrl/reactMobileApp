@@ -2,13 +2,14 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 13:38:17
+* @Last Modified time: 2018-04-25 17:37:18
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
+import './style.css'
 require('Src/assets/iconfont.js')
 
 const data = [
@@ -88,7 +89,7 @@ class AppMenu extends Component {
   }
   render() {
     return (
-      <div style={{ width: '100%', position: 'absolute', top: '45px', bottom: 0, left: 0, right: 0 }}>
+      <div className='tabBody'>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'

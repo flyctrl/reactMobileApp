@@ -13,6 +13,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.config.common.js');
+const pxtorem = require('postcss-pxtorem');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -86,7 +87,6 @@ module.exports = Merge(CommonConfig,{
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -117,12 +117,19 @@ module.exports = Merge(CommonConfig,{
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
             },
             loader: require.resolve('eslint-loader'),
           },
         ],
         include: paths.appSrc,
+      },
+      {
+        test: /\.(svg)$/i,
+        loader: require.resolve('svg-sprite-loader'),
+        include: [
+          require.resolve('antd-mobile').replace(/warn\.js$/, ''),
+          path.resolve(__dirname, '../src/'),
+        ]
       },
       {
         // "oneOf" will traverse all following loaders until one will
@@ -143,15 +150,18 @@ module.exports = Merge(CommonConfig,{
           // Process JS with Babel.
           {
             test: /\.(js|jsx|mjs)$/,
+            // exclude: /(node_modules)/,
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
               cacheDirectory: true,
-            },
+              plugins: [
+                ['import', { libraryName: 'antd-mobile', style: 'css' }],
+              ]
+            }
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -185,6 +195,8 @@ module.exports = Merge(CommonConfig,{
                       ],
                       flexbox: 'no-2009',
                     }),
+                    // pxtorem({ rootValue: 50, propWhiteList: [] })
+                    pxtorem({ basePx: 100 })
                   ],
                 },
               },
@@ -261,4 +273,4 @@ module.exports = Merge(CommonConfig,{
   performance: {
     hints: false,
   },
-});
+})
