@@ -196,7 +196,10 @@ module.exports = Merge(CommonConfig,{
                       flexbox: 'no-2009',
                     }),
                     // pxtorem({ rootValue: 50, propWhiteList: [] })
-                    pxtorem({ basePx: 100 })
+                    pxtorem({
+                      rootValue: 100,
+                      propWhiteList: []
+                    })
                   ],
                 },
               },
