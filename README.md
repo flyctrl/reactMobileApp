@@ -1,3 +1,4 @@
+![亚雀](https://github.com/flyctrl/yaqueapp/raw/develop/remark/yaque.jpg)
 ## 技术栈
 - [router4.0](https://reacttraining.com/react-router/) 使用的react-router 4.0
 - [precss](https://github.com/jonathantneal/precss) 封装成sass语法的postcss集合插件
