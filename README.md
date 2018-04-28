@@ -118,6 +118,36 @@ onIcon: 被选中状态时候的icon
 title: 菜单名称
 ```
 
+## 数据请求
+### 说明
+1、已经对axios进行了二次封装在Util/fetch.js，在此文件内可以添加相关的请求头部、请求拦截器、请求的跳转等操作
+
+2、目前只封装了POST请求，如需要封装更多请求方式可根据需求进行进一步封装
+
+3、所有的请求接口都是在Util/api.js内完成，请求完的数据响应在组件内体现和操作，与此同时api.js也封装了2个常用的操作：Fetch（用于请求数据的拉取，主要用于查询）、FetchSave(用于请求数据的保存类的操作，主要用于新增、修改、删除等)
+
+### 实际应用
+例如请求菜单数据
+
+1、配置api.js
+```javascript
+export default {
+  getMenu(param = {}) {
+    return Fetch('/Sso/findMenuList', param)
+  }
+}
+```
+2、组件内使用请求到的数据，需要注意的是，async需要和await配合起来使用才可以
+```javascript
+async componentWillMount() {
+  const data = await api.getMenu({ timestamp: (new Date()).getTime() }) || []
+  if (data) {
+    this.setState({
+      data
+    })
+  }
+}
+```
 ## 引用常用资源
 
 ### 引用说明
