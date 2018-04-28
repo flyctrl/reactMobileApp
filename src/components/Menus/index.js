@@ -2,13 +2,15 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-25 17:37:18
+* @Last Modified time: 2018-04-29 01:10:51
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import style from './Container.css'
 import './style.css'
 require('Src/assets/iconfont.js')
 
@@ -87,13 +89,25 @@ class AppMenu extends Component {
       </div>
     )
   }
+  getComponentByUrl(url) {
+    const childAry = this.props.children
+    let newAry = []
+    childAry.map((value, index, ary) => {
+      if (value.props.path === url) {
+        newAry = value
+      }
+    })
+    return newAry
+  }
   render() {
+    console.log(this.props)
     return (
       <div className='tabBody'>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'
           barTintColor='white'
+          noRenderContent={false}
         >
           {
             data.map((item, index) => {
@@ -103,7 +117,7 @@ class AppMenu extends Component {
                   key={item['key']}
                   icon={<svg className='icon-menu' aria-hidden='true'><use xlinkHref={item['icon']}></use></svg>}
                   selectedIcon={<svg className='icon-menu' aria-hidden='true'><use xlinkHref={item['onIcon']}></use></svg>}
-                  selected={this.state.selectedTab === item['key']}
+                  selected={this.state.selectedTab === (item['key'] || '/')}
                   onPress={() => {
                     this.setState({
                       selectedTab: item['key'],
@@ -112,7 +126,15 @@ class AppMenu extends Component {
                     history.push(item['path'], { title: item['title'] })
                   }}
                 >
-                  { history.location.pathname === item['path'] ? this.props.children : this.showComponent() }
+                  <ReactCSSTransitionGroup
+                    transitionName='transitionWrapper'
+                    className={style['transitionWrapper']}
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}>
+                    <div key={history.location.pathname} style={{ position: 'absolute', width: '100%' }}>
+                      { history.location.pathname === item['path'] ? this.getComponentByUrl(history.location.pathname) : this.showComponent() }
+                    </div>
+                  </ReactCSSTransitionGroup>
                 </TabBar.Item>
               )
             })

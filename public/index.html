@@ -8,7 +8,34 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <script type="text/javascript" src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+      addEventListener('resize', setRemUnit);
+      addEventListener('pageshow', function (e) {
+        e.persisted && setRemUnit();
+      });
+      setRemUnit();
+
+      function setRemUnit() {
+        var docEle = document.documentElement;
+        var rootValue = docEle.clientWidth / 3.75;
+        docEle.style.fontSize = rootValue + 'px';
+      }
+      window.onload = function() {
+        if ('addEventListener' in document) {
+          document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body)
+          }, false)
+        }
+        if (!window.Promise) {
+          document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>')
+        }
+        document.body.style.margin = '0px'
+        // 这是防止页面被拖拽
+        document.body.addEventListener('touchmove', (ev) => {
+          ev.preventDefault()
+        })
+      }
+    </script>
     <title>亚雀</title>
   </head>
   <body style="width: 100%; height: 100%;">
