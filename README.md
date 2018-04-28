@@ -4,7 +4,15 @@
 - [precss](https://github.com/jonathantneal/precss) 封装成sass语法的postcss集合插件
 [eslint规则](http://git.jc/app-h5/docs/blob/master/frontend/.eslintrc.js)
 [stylelint规则](http://git.jc/app-h5/docs/blob/master/frontend/.stylelintrc)
+- [postcss-pxtorem](https://www.npmjs.com/package/postcss-pxtorem) pxtorem 自定义样式（不包括内联样式）和组件样式的px转化成rem
+- [react-addons-css-transition-group](https://www.npmjs.com/package/react-addons-css-transition-group) 主要是实现APP内的动画效果，动画css需自定义开发
 - [Ant Design Mobile of React](https://mobile.ant.design/) Ant Design Mobile 的 React 实现WebApp开发
+
+## 布局
+1、设计稿标准尺寸：750*1334
+2、基于pxtorem，需要适配组件内部的样式，开发页面时候需要对设计稿进行等比例缩放1/2，也就是以尺寸375*667直接进行开发，这样缩放后的设计稿尺寸是多少px，布局时候就直接写多少px就OK了
+3、所有的样式不建议写内联样式，尤其是涉及到px的样式属性
+4、border的1px可以写成1Px，这样就不会被转化成rem了
 
 ## 路由
 
