@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-29 00:22:17
+* @Last Modified time: 2018-04-29 14:53:47
 */
 import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom'
@@ -40,7 +40,6 @@ class MainLayout extends Component {
   showMenu() {
     const { routes } = this.props
     if (this.state.isMenuPage) {
-      console.log('menupage')
       return (
         <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>
           {
@@ -50,6 +49,7 @@ class MainLayout extends Component {
                   key={index}
                   path={route.path}
                   exact={route.exact}
+                  parent={route.parent}
                   render={(match) => {
                     return route.path === '/' ? <Redirect to={urls.HOME}/> : (
                       <div>

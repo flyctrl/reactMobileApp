@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 13:02:43
+* @Last Modified time: 2018-04-29 14:54:25
 */
 import React from 'react'
 import {
@@ -27,6 +27,7 @@ const routes = [
     path: '/',
     exact: true,
     component: Home,
+    parent: null,
     showBack: false,
     showMenu: true,
     title: '首页'
@@ -35,6 +36,7 @@ const routes = [
     path: urls.HOME,
     exact: true,
     component: Home,
+    parent: null,
     showBack: false,
     showMenu: true,
     title: '首页'
@@ -42,6 +44,7 @@ const routes = [
     path: urls.MESSAGE,
     exact: true,
     component: Message,
+    parent: null,
     showMenu: true,
     showBack: true,
     title: '消息'
@@ -49,6 +52,7 @@ const routes = [
     path: urls.WORKPLAT,
     exact: true,
     component: Workplat,
+    parent: null,
     showBack: true,
     showMenu: true,
     title: '工作台'
@@ -56,6 +60,7 @@ const routes = [
     path: urls.CONTACT,
     exact: true,
     component: Contact,
+    parent: null,
     showBack: true,
     showMenu: true,
     title: '通讯录'
@@ -63,6 +68,7 @@ const routes = [
     path: urls.MINE,
     exact: true,
     component: Mine,
+    parent: null,
     showBack: true,
     showMenu: true,
     title: '我的'
@@ -70,6 +76,7 @@ const routes = [
     path: urls.LOGIN,
     exact: true,
     component: Login,
+    parent: null,
     showBack: false,
     showMenu: false,
     title: '登录'
@@ -77,6 +84,7 @@ const routes = [
     path: urls.REGISTER,
     exact: true,
     component: Register,
+    parent: null,
     showBack: true,
     showMenu: false,
     title: '注册'
@@ -84,6 +92,7 @@ const routes = [
     path: urls.FORGETPWD,
     exact: true,
     component: ForgetPwd,
+    parent: null,
     showBack: true,
     showMenu: false,
     title: '忘记密码'
@@ -91,6 +100,7 @@ const routes = [
     path: urls.TASKLIST,
     exact: true,
     component: TaskList,
+    parent: 'Workplat',
     showBack: true,
     showMenu: true,
     title: '任务列表'

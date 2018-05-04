@@ -16,7 +16,7 @@
 
 :global(.transitionWrapper-leave) {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(-100%);
 }
 
 :global(.transitionWrapper-leave.transitionWrapper-leave-active) {

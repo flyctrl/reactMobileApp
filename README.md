@@ -1,4 +1,4 @@
-![亚雀](https://github.com/flyctrl/yaqueapp/raw/develop/remark/yaque.jpg)
+
 ## 技术栈
 - [router4.0](https://reacttraining.com/react-router/) 使用的react-router 4.0
 - [precss](https://github.com/jonathantneal/precss) 封装成sass语法的postcss集合插件
@@ -21,6 +21,7 @@
 
 ### 路由书写简单规范
 - 主要是以JSON数组格式进行配置，添加模块后只需要添加想要的路由配置即可
+- 基于父组件的路由需要配置父组件的名称（parent）且为字符串类型，没有则设parent为null
 - 路由配置文件入口：Contants/Router/index.js
 
 Example：
@@ -30,6 +31,7 @@ const routes = [
     path: '/',
     exact: true,
     component: Home,
+    parent: null,
     showBack: false,
     showMenu: true,
     title: '首页'
@@ -38,6 +40,7 @@ const routes = [
     path: urls.HOME,
     exact: true,
     component: Home,
+    parent: null,
     showBack: false,
     showMenu: true,
     title: '首页'
@@ -45,6 +48,7 @@ const routes = [
     path: urls.LOGIN,
     exact: true,
     component: Login,
+    parent: null,
     showBack: false,
     showMenu: false,
     title: '登录'
@@ -52,6 +56,7 @@ const routes = [
     path: urls.TASKLIST,
     exact: true,
     component: TaskList,
+    parent: 'Workplat',
     showBack: true,
     showMenu: true,
     title: '任务列表'
@@ -71,6 +76,7 @@ title: 标题，APP头部标题
 ### 底部菜单配置
 - 基于antdMobile的tabBar，配置APP的footer部分菜单（路由、样式、名称）
 - 以JSON数组格式进行配置，菜单顺序就是配置文件的顺序
+- 菜单的key需要与对应路由的模块同名，且为字符串
 - 菜单配置文件入口：Components/Menus/index.js
 
 Example：
