@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-30 18:22:30
+* @Last Modified time: 2018-05-07 17:49:13
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -138,9 +138,9 @@ class AppMenu extends Component {
                     transitionName='transitionWrapper'
                     className={style['transitionWrapper']}
                     transitionAppear={true}
-                    transitionAppearTimeout={500}
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={500}>
+                    transitionAppearTimeout={400}
+                    transitionEnterTimeout={400}
+                    transitionLeaveTimeout={400}>
                     <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
                       {
                       // history.location.pathname === item['path'] ? this.getComponentByUrl(history.location.pathname) : this.showComponent()
