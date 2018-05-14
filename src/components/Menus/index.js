@@ -2,15 +2,15 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-07 17:49:13
+* @Last Modified time: 2018-05-11 19:03:08
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import style from './Container.css'
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+// import style from './Container.css'
 import './style.css'
 require('Src/assets/iconfont.js')
 
@@ -133,23 +133,14 @@ class AppMenu extends Component {
                     history.push(item['path'], { title: item['title'] })
                   }}
                 >
-                  <ReactCSSTransitionGroup
-                    component='div'
-                    transitionName='transitionWrapper'
-                    className={style['transitionWrapper']}
-                    transitionAppear={true}
-                    transitionAppearTimeout={400}
-                    transitionEnterTimeout={400}
-                    transitionLeaveTimeout={400}>
-                    <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
-                      {
-                      // history.location.pathname === item['path'] ? this.getComponentByUrl(history.location.pathname) : this.showComponent()
-                      }
-                      {
-                        this.getComponentByUrl(item['path'])
-                      }
-                    </div>
-                  </ReactCSSTransitionGroup>
+                  <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
+                    {
+                    // history.location.pathname === item['path'] ? this.getComponentByUrl(history.location.pathname) : this.showComponent()
+                    }
+                    {
+                      this.getComponentByUrl(item['path'])
+                    }
+                  </div>
                 </TabBar.Item>
               )
             })
