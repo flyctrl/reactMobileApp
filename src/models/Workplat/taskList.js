@@ -28,6 +28,7 @@ class TaskList extends Component {
   }
   render() {
     const date = new Date()
+
     return (<div className='bitch' style={{ position: 'relative' }}>
       <Calendar
         onSelectDate={this.selectDate}
