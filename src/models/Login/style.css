@@ -11,3 +11,11 @@
   height: 42px;
   line-height: 42px
 }
+:global(.regBtn) {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+:global(.inputList) {
+  margin-top: 40px;
+}

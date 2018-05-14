@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:27:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-10 14:59:52
+* @Last Modified time: 2018-05-14 18:01:17
 */
 import React, { Component } from 'react'
 import { List, InputItem, Button, WhiteSpace, WingBlank, Flex, Toast } from 'antd-mobile'
@@ -53,7 +53,7 @@ class Register extends Component {
     return (
       <form>
         <List
-          style={{ marginTop: '40px' }}
+          className='inputList'
           renderFooter={() => getFieldError('phone') || getFieldError('code')}
         >
           <InputItem
