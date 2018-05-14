@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-11 19:07:05
+* @Last Modified time: 2018-05-14 16:28:28
 */
 import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router-dom'
@@ -10,8 +10,6 @@ import { NavBar, Icon } from 'antd-mobile'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import style from 'Components/Menus/Container.css'
 
 class MainLayout extends Component {
   constructor(props) {
@@ -71,29 +69,18 @@ class MainLayout extends Component {
           {
             routes.map((route, index) => {
               return (
-                <ReactCSSTransitionGroup
-                  component='div'
-                  transitionName='transitionWrapper'
-                  className={style['transitionWrapper']}
-                  transitionAppear={true}
-                  transitionAppearTimeout={400}
-                  transitionEnterTimeout={400}
-                  transitionLeaveTimeout={400}>
-                  <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
-                    <Route
-                      key={index}
-                      path={route.path}
-                      exact={route.exact}
-                      render={(match) => {
-                        return (
-                          <div>
-                            <route.component match={match} />
-                          </div>
-                        )
-                      }}
-                    />
-                  </div>
-                </ReactCSSTransitionGroup>
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  render={(match) => {
+                    return (
+                      <div>
+                        <route.component match={match} />
+                      </div>
+                    )
+                  }}
+                />
               )
             })
           }

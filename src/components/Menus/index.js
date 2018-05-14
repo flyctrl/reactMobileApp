@@ -2,16 +2,18 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-11 19:03:08
+* @Last Modified time: 2018-05-14 17:08:16
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-// import style from './Container.css'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import style from './Container.css'
+// import './Container.css'
 import './style.css'
+
 require('Src/assets/iconfont.js')
 
 const data = [
@@ -48,6 +50,7 @@ const data = [
   }
 ]
 let menuAry = []
+
 class AppMenu extends Component {
   constructor(props) {
     super(props)
@@ -55,6 +58,7 @@ class AppMenu extends Component {
       selectedTab: (history.location.pathname).slice(1) || 'Home'
     }
   }
+
   componentWillMount() {
     data.map((value, index, ary) => {
       menuAry.push(value['key'])
@@ -63,11 +67,13 @@ class AppMenu extends Component {
       selectedTab: (history.location.pathname).split('/')[1] || 'Home'
     })
   }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       selectedTab: nextProps.path !== '' ? (nextProps.path).split('/')[1] : 'Home'
     })
   }
+
   // showComponent() {
   //   const { routes } = this.props
   //   return (
@@ -103,9 +109,9 @@ class AppMenu extends Component {
         newAry.push(value)
       }
     })
-    console.log(newAry)
     return newAry
   }
+
   render() {
     return (
       <div className='tabBody'>
@@ -117,13 +123,18 @@ class AppMenu extends Component {
         >
           {
             data.map((item, index) => {
-              console.log(item)
+              let componentAry = []
+              componentAry = this.getComponentByUrl(item['path'])
               return (
                 <TabBar.Item
                   title={item['title']}
                   key={item['key']}
-                  icon={<svg className='icon-menu' aria-hidden='true'><use xlinkHref={item['icon']}></use></svg>}
-                  selectedIcon={<svg className='icon-menu' aria-hidden='true'><use xlinkHref={item['onIcon']}></use></svg>}
+                  icon={<svg className='icon-menu' aria-hidden='true'>
+                    <use xlinkHref={item['icon']}></use>
+                  </svg>}
+                  selectedIcon={<svg className='icon-menu' aria-hidden='true'>
+                    <use xlinkHref={item['onIcon']}></use>
+                  </svg>}
                   selected={this.state.selectedTab === (item['key'] || '/')}
                   onPress={() => {
                     this.setState({
@@ -133,14 +144,32 @@ class AppMenu extends Component {
                     history.push(item['path'], { title: item['title'] })
                   }}
                 >
-                  <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
-                    {
-                    // history.location.pathname === item['path'] ? this.getComponentByUrl(history.location.pathname) : this.showComponent()
-                    }
-                    {
-                      this.getComponentByUrl(item['path'])
-                    }
-                  </div>
+                  {
+                    componentAry.map((comp, i) => {
+                      if (comp.props.parent !== null) {
+                        return (
+                          <div key={i}>
+                            <ReactCSSTransitionGroup
+                              component='div'
+                              transitionName='transitionWrapper'
+                              className={style['transitionWrapper']}
+                              transitionEnterTimeout={300}
+                              transitionLeaveTimeout={300}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
+                                {
+                                  comp
+                                }
+                              </div>
+                            </ReactCSSTransitionGroup>
+                          </div>
+                        )
+                      } else {
+                        return (
+                          <div key={ i }>{ comp }</div>
+                        )
+                      }
+                    })
+                  }
                 </TabBar.Item>
               )
             })

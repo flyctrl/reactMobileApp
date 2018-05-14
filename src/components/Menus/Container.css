@@ -1,8 +1,18 @@
+/*:global(.am-tabs-pane-wrap-active), :global(.bitch) {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 400ms ease-out;
+}
+:global(.am-tabs-pane-wrap-inactive) {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 400ms ease-out;
+}*/
+
 
 :global(.transitionWrapper-enter) {
   position: absolute;
   top: 0;
-  background: #fff;
   z-index: 10000;
   opacity: 1;
   transform: translateX(100%);
@@ -11,7 +21,7 @@
 :global(.transitionWrapper-enter.transitionWrapper-enter-active) {
   opacity: 1;
   transform: translateX(0);
-  transition: all 400ms ease-out;
+  transition: all 300ms ease-out;
 }
 
 :global(.transitionWrapper-leave) {
@@ -22,7 +32,7 @@
 :global(.transitionWrapper-leave.transitionWrapper-leave-active) {
   opacity: 1;
   transform: translateX(-100%);
-  transition: all 400ms ease-out;
+  transition: all 300ms ease-out;
 }
 
 .transitionWrapper {

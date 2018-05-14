@@ -28,7 +28,8 @@ class TaskList extends Component {
   }
   render() {
     const date = new Date()
-    return (
+
+    return (<div className='bitch' style={{ position: 'relative' }}>
       <Calendar
         onSelectDate={this.selectDate}
         onPreviousMonth={this.previousMonth}
@@ -36,7 +37,7 @@ class TaskList extends Component {
         year={date.getFullYear()}
         month={date.getMonth() + 1}
         day={date.getDate()}
-        tags={this.state.tags} />
+        tags={this.state.tags} /></div>
     )
   }
 }
