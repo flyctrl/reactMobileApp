@@ -13,6 +13,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import style from './Container.css'
 // import './Container.css'
 import './style.css'
+import { isIphoneX } from 'Util/ua'
 
 require('Src/assets/iconfont.js')
 
@@ -91,7 +92,7 @@ class AppMenu extends Component {
 
   render() {
     return (
-      <div className='tabBody'>
+      <div className={ isIphoneX ? 'tabBody-fix-iphoneX' : 'tabBody' }>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'
@@ -152,6 +153,7 @@ class AppMenu extends Component {
             })
           }
         </TabBar>
+        { isIphoneX ? <div className='fix-iphoneX-bottom'/> : null }
       </div>
     )
   }

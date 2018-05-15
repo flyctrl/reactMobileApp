@@ -9,7 +9,9 @@ import { Route } from 'react-router-dom'
 import { NavBar, Icon } from 'antd-mobile'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
-
+import style from './style.css'
+import { isIphoneX } from 'Util/ua'
+console.log(style)
 class MainLayout extends Component {
   constructor(props) {
     super(props)
@@ -106,6 +108,7 @@ class MainLayout extends Component {
     const pathBool = this.getRouteByPath()['showBack']
     return (
       <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+        { isIphoneX ? <div className='fix-iphoneX-top'/> : null }
         <NavBar
           mode='dark'
           icon={
