@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 17:07:09
+* @Last Modified time: 2018-05-15 17:33:38
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -13,6 +13,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import style from './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
+import { isIphoneX } from 'Util/ua'
 
 require('Src/assets/iconfont.js')
 
@@ -92,7 +93,7 @@ class AppMenu extends Component {
   render() {
     console.log(menuStyle)
     return (
-      <div className={menuStyle['tabBody']}>
+      <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'
@@ -154,6 +155,7 @@ class AppMenu extends Component {
             })
           }
         </TabBar>
+        { isIphoneX ? <div className='fix-iphoneX-bottom'/> : null }
       </div>
     )
   }
