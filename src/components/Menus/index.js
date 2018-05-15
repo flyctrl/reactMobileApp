@@ -91,7 +91,6 @@ class AppMenu extends Component {
   }
 
   render() {
-    console.log(menuStyle)
     return (
       <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
         <TabBar
@@ -155,7 +154,6 @@ class AppMenu extends Component {
             })
           }
         </TabBar>
-        { isIphoneX ? <div className='fix-iphoneX-bottom'/> : null }
       </div>
     )
   }
