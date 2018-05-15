@@ -2,13 +2,13 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:27:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-14 18:01:17
+* @Last Modified time: 2018-05-15 17:07:40
 */
 import React, { Component } from 'react'
 import { List, InputItem, Button, WhiteSpace, WingBlank, Flex, Toast } from 'antd-mobile'
 import { createForm } from 'rc-form'
 import Timer from './timer'
-import './style.css'
+import style from './style.css'
 
 class Register extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class Register extends Component {
     return (
       <form>
         <List
-          className='inputList'
+          className={ style['inputList'] }
           renderFooter={() => getFieldError('phone') || getFieldError('code')}
         >
           <InputItem
@@ -87,7 +87,7 @@ class Register extends Component {
             >
               验证码
             </InputItem>
-            <Button className='codebtn' disabled={this.state.codeDisabled} type='ghost' size='small' onClick={this.getCode.bind(this)}>
+            <Button className={ style['codebtn'] } disabled={this.state.codeDisabled} type='ghost' size='small' onClick={this.getCode.bind(this)}>
               {
                 this.state.codeDisabled ? <Timer onOver={this.handleOver.bind(this)} /> : this.state.codeText
               }
@@ -95,7 +95,7 @@ class Register extends Component {
           </Flex>
         </List>
         <WingBlank>
-          <Button type='primary' className='submitBtn' onClick={this.onSubmit}>新用户注册</Button><WhiteSpace />
+          <Button type='primary' className={ style['submitBtn'] } onClick={this.onSubmit}>新用户注册</Button><WhiteSpace />
         </WingBlank>
       </form>
     )

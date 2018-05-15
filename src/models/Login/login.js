@@ -2,13 +2,13 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-14 18:27:46
+* @Last Modified time: 2018-05-15 17:07:31
 */
 import React, { Component } from 'react'
 import { List, InputItem, Button, WhiteSpace, WingBlank, Flex, Toast } from 'antd-mobile'
 import { createForm } from 'rc-form'
 import Timer from './timer'
-import './style.css'
+import style from './style.css'
 
 class Login extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class Login extends Component {
     return (
       <form>
         <List
-          className='inputList'
+          className={style['inputList']}
           renderFooter={() => getFieldError('phone') || getFieldError('code')}
         >
           <InputItem
@@ -87,7 +87,7 @@ class Login extends Component {
             >
               验证码
             </InputItem>
-            <Button className='codebtn' disabled={this.state.codeDisabled} type='ghost' size='small' onClick={this.getCode.bind(this)}>
+            <Button className={style['codebtn']} disabled={this.state.codeDisabled} type='ghost' size='small' onClick={this.getCode.bind(this)}>
               {
                 this.state.codeDisabled ? <Timer onOver={this.handleOver.bind(this)} /> : this.state.codeText
               }

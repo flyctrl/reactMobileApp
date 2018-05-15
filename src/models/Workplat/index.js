@@ -2,13 +2,13 @@
 * @Author: chengbs
 * @Date:   2018-04-08 16:18:37
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-25 17:52:01
+* @Last Modified time: 2018-05-15 17:24:06
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as urls from 'Contants/urls'
 import { Grid, Flex } from 'antd-mobile'
-import './style.css'
+import style from './style.css'
 
 const data = [
   {
@@ -56,23 +56,23 @@ class Workplat extends Component {
   render() {
     return (
       <div>
-        <div className='sub-title'>功能操作</div>
-        <Grid data={data} className='grid' columnNum={5} hasLine={false} activeStyle={false} renderItem={dataItem => (
-          <div className='padd5'>
-            <img src={dataItem.icon} className='dataItemImg' alt={dataItem.text} />
-            <div className='dataItemText'>
+        <div className={style['subTitle']}>功能操作</div>
+        <Grid data={data} className={style['grid']} columnNum={5} hasLine={false} activeStyle={false} renderItem={dataItem => (
+          <div className={style['padd5']}>
+            <img src={dataItem.icon} className={style['dataItemImg']} alt={dataItem.text} />
+            <div className={style['dataItemText']}>
               <span>{dataItem.text}</span>
             </div>
           </div>
         )}
         />
-        <div className='paddR10'><Flex justify='between' className='sub-title'>任务日历<Link style={{ color: '#0000ff' }} to={urls.TASKLIST}>切换列表</Link></Flex></div>
-        <div className='padd10'>
+        <div className={style['paddR10']}><Flex justify='between' className={style['subTitle']}>任务日历<Link style={{ color: '#0000ff' }} to={urls.TASKLIST}>切换列表</Link></Flex></div>
+        <div className={style['padd10']}>
           <dl>
             <dt><span>北京好望山一期</span><em>开工</em></dt>
-            <dd><span className='prolist'>工期：3月20日-3月31日（共12 天）</span><span className='during'>开工中</span></dd>
-            <dd><span className='auto'>计价模式：日结</span><span>工资：<em>300</em>元/天</span></dd>
-            <dd><span className='auto'>联系人：李晓菲</span><a>聊天</a><a>电话</a></dd>
+            <dd><span className={style['prolist']}>工期：3月20日-3月31日（共12 天）</span><span className={style['during']}>开工中</span></dd>
+            <dd><span className={style['auto']}>计价模式：日结</span><span>工资：<em>300</em>元/天</span></dd>
+            <dd><span className={style['auto']}>联系人：李晓菲</span><a>聊天</a><a>电话</a></dd>
           </dl>
         </div>
       </div>

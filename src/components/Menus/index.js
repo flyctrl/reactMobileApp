@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-14 17:08:16
+* @Last Modified time: 2018-05-15 17:07:09
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -12,7 +12,7 @@ import * as urls from 'Contants/urls'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import style from './Container.css'
 // import './Container.css'
-import './style.css'
+import menuStyle from './style.css'
 
 require('Src/assets/iconfont.js')
 
@@ -90,8 +90,9 @@ class AppMenu extends Component {
   }
 
   render() {
+    console.log(menuStyle)
     return (
-      <div className='tabBody'>
+      <div className={menuStyle['tabBody']}>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'
@@ -105,11 +106,12 @@ class AppMenu extends Component {
               return (
                 <TabBar.Item
                   title={item['title']}
+                  className={menuStyle['touched']}
                   key={item['key']}
-                  icon={<svg className='icon-menu' aria-hidden='true'>
+                  icon={<svg className={menuStyle['icon-menu']} aria-hidden='true'>
                     <use xlinkHref={item['icon']}></use>
                   </svg>}
-                  selectedIcon={<svg className='icon-menu' aria-hidden='true'>
+                  selectedIcon={<svg className={menuStyle['icon-menu']} aria-hidden='true'>
                     <use xlinkHref={item['onIcon']}></use>
                   </svg>}
                   selected={this.state.selectedTab === (item['key'] || '/')}

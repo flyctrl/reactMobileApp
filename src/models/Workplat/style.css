@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-10 15:19:22
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-26 11:35:52
+* @Last Modified time: 2018-05-15 17:24:17
 */
 .padd10 {
   /*padding: 10px;*/
@@ -19,12 +19,12 @@ dl, dt, dd {
   padding: 0;
   margin: 0;
 }
-:global(.sub-title) {
+.subTitle {
   color: #666;
   font-size: 14px;
   padding: 15px 0 10px 10px;
 }
-:global(.grid) {
+.grid {
   height: 170px;
   background: #fff;
 }

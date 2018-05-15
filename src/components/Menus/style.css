@@ -2,13 +2,14 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:11
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-29 01:04:52
+* @Last Modified time: 2018-05-15 16:52:06
 */
 .menuBtn {
   width: 22px;
   height: 22px;
   background: 'url(../../assets/home.png) center center /  21px 21px no-repeat';
 }
+
 .tabBody {
   width: 100%;
   position: absolute;
@@ -17,12 +18,19 @@
   left: 0;
   right: 0;
 }
+
 .icon-menu {
   width: 22px;
   height: 22px;
   fill: currentColor;
   overflow: hidden;
 }
+
 .none {
   display: none;
+}
+
+.touched {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
 }
