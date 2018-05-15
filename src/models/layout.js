@@ -5,11 +5,10 @@
 * @Last Modified time: 2018-05-14 18:20:55
 */
 import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { NavBar, Icon } from 'antd-mobile'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
-import * as urls from 'Contants/urls'
 
 class MainLayout extends Component {
   constructor(props) {
@@ -39,6 +38,7 @@ class MainLayout extends Component {
   }
   showMenu() {
     const { routes } = this.props
+    console.log(this.state.isMenuPage, routes)
     if (this.state.isMenuPage) {
       return (
         <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>
@@ -51,11 +51,7 @@ class MainLayout extends Component {
                   exact={route.exact}
                   parent={route.parent}
                   render={(match) => {
-                    return route.path === '/' ? <Redirect to={urls.HOME}/> : (
-                      <div>
-                        <route.component match={match}/>
-                      </div>
-                    )
+                    return <route.component match={match}/>
                   }}
                 />
               )
