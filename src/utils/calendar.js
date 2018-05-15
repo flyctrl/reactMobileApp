@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-11 17:22:40
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 17:57:05
+* @Last Modified time: 2018-05-15 18:03:56
 */
 import React, { Component } from 'react'
 import style from './calendar.css'
@@ -203,14 +203,14 @@ class Calendar extends Component {
     for (let i = 0; i < monthDay; i++) {
       // 今天样式
       if (currentYear === selectYear && currentMonth === selectMonth && currentDay === (i + 1)) {
-        currentClassName = 'item-current'
+        currentClassName = style['item-current']
         currentText = '今天'
       } else {
         currentText = i + 1
 
         // 判断选择样式与历史样式是否相等，相等激活
         if (selectYear === historyYear && selectMonth === historyMonth && historyDay === (i + 1)) {
-          currentClassName = 'item-active'
+          currentClassName = style['item-active']
         } else {
           currentClassName = ''
         }
@@ -220,7 +220,7 @@ class Calendar extends Component {
       if (tags.length > 0) {
         for (let j = 0; j < tags.length; j++) {
           if ((i + 1) === tags[j]) {
-            currentClassName += 'item-tag'
+            currentClassName += style['item-tag']
             break
           }
         }
@@ -235,7 +235,7 @@ class Calendar extends Component {
     }
 
     for (let i = 0; i < nDay; i++) {
-      let nextLink = (<li className='item-gray' key={'next' + i}>
+      let nextLink = (<li className={style['item-gray']} key={'next' + i}>
         <a href='javascript:'>{i + 1}</a>
       </li>)
       nextDays.push(nextLink)
@@ -256,14 +256,14 @@ class Calendar extends Component {
       }
     }
     return (
-      <div className='calendar'>
-        <div className='calendar-header'>
-          <i className='icon-left' onClick={this.previousMonth.bind(this)}></i>
+      <div className={style['calendar']}>
+        <div className={style['calendar-header']}>
+          <i className={style['icon-left']} onClick={this.previousMonth.bind(this)}></i>
           <span>{selectYear} 年 {selectMonth + 1} 月</span>
-          <i className='icon-right' onClick={this.nextMonth.bind(this)}></i>
+          <i className={style['icon-right']} onClick={this.nextMonth.bind(this)}></i>
         </div>
-        <div className='calendar-body'>
-          <ul className='c-body-head'>
+        <div className={style['calendar-body']}>
+          <ul className={style['c-body-head']}>
             <li>日</li>
             <li>一</li>
             <li>二</li>
@@ -272,10 +272,10 @@ class Calendar extends Component {
             <li>五</li>
             <li>六</li>
           </ul>
-          <div className='c-body-content'>
+          <div className={style['c-body-content']}>
             {
               ulList.map((u, index) => {
-                return (<ul key={'ul' + index} className='content-row'>{u}</ul>)
+                return (<ul key={'ul' + index} className={style['content-row']}>{u}</ul>)
               })
             }
           </div>
