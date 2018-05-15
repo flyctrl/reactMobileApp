@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 10:50:06
+* @Last Modified time: 2018-05-14 17:08:16
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -73,11 +73,13 @@ class AppMenu extends Component {
       selectedTab: nextProps.path !== '' ? (nextProps.path).split('/')[1] : 'Home'
     })
   }
-
   getComponentByUrl(url) {
     const childAry = this.props.children
     let newAry = []
-    childAry.map((value, index, ary) => {
+    childAry.map((value) => {
+      if (value.props.path === '/' && url === '/Home') {
+        newAry.push(value)
+      }
       if (value.props.path === url) {
         newAry.push(value)
       } else if (value.props.parent === (url.substr(0, 1) === '/' ? url.substr(1) : null)) {
