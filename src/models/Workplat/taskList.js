@@ -2,11 +2,10 @@
 * @Author: chengbs
 * @Date:   2018-04-10 15:57:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 23:26:20
+* @Last Modified time: 2018-05-15 17:52:26
 */
 import React, { Component } from 'react'
 import Calendar from 'Util/calendar'
-require('./calendar.css')
 
 class TaskList extends Component {
   constructor(props) {

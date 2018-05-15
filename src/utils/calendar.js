@@ -2,9 +2,10 @@
 * @Author: chengbs
 * @Date:   2018-04-11 17:22:40
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 23:33:24
+* @Last Modified time: 2018-05-15 17:57:05
 */
 import React, { Component } from 'react'
+import style from './calendar.css'
 import H from './H'
 class Calendar extends Component {
   constructor(props) {
@@ -191,7 +192,7 @@ class Calendar extends Component {
 
     previousMonthDays = dateNumArray[previousMonth]
     for (let i = 0; i < firstDay; i++) {
-      let previousLink = (<li className='item-gray' key={'previous' + i}>
+      let previousLink = (<li className={style['item-gray']} key={'previous' + i}>
         <a href='javascript:'>{previousMonthDays - (firstDay - i) + 1}</a>
       </li>)
       previousDays.push(previousLink)
