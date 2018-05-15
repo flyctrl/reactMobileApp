@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-14 18:20:55
+* @Last Modified time: 2018-05-15 11:09:31
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -105,7 +105,7 @@ class MainLayout extends Component {
   render() {
     const pathBool = this.getRouteByPath()['showBack']
     return (
-      <div style={{ width: '100%', height: '100%' }}>
+      <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
         <NavBar
           mode='dark'
           icon={
