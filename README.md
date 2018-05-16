@@ -118,6 +118,9 @@ leftClick2: 左侧第二个标题的点击事件回调函数
 rightIcon: 右侧Icon（可与rightTitle并存）
 rightTitle: 右侧标题（可与rightIcon并存）
 rightClick: 右侧区域的点击事件回调函数
+noLine: 是否有下边线（默认true，有下边线）
+onSearch: 搜索回调
+searchTitle: 搜索框默认提示文字
 ```
 ## APP底部菜单配置
 - 基于antdMobile的tabBar，配置APP的footer部分菜单（路由、样式、名称）

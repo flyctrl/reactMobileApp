@@ -2,15 +2,27 @@
   height: 38px;
   background-color: #FFF;
 }
+.header {
+  background-color: rgba(249, 249, 249, 0.87);
+}
 .title {
   font-size: 16px;
   color: #313F48;
   font-family: PingFang-SC-Medium;
 }
+
 .other-title {
   font-size: 14px;
   color: #0467E0;
 }
+
 .icon {
   width: 14px;
+}
+
+.search {
+  width: 220px;
+  height: 28px;
+  border-radius: 5px;
+  background-color: #fff;
 }

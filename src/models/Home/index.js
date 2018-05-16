@@ -10,15 +10,18 @@ import Header from 'Components/Header'
 class Home extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      city: '杭州'
+    }
   }
 
   render() {
+    const { city } = this.state
     return <div><Header
-      title='首页'
-      leftIcon='icon-back'
-      rightIcon=''
-      rightTitle=''
+      searchTitle='搜索工种/公司名称'
+      leftIcon='icon-location'
+      leftTitle1={city}
+      rightTitle='筛选'
     />
     </div>
   }
