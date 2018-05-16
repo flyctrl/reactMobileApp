@@ -16,7 +16,7 @@ class Home extends Component {
   render() {
     return <div><Header
       title='首页'
-      leftIcon='#icon-back'
+      leftIcon='icon-back'
       rightIcon=''
       rightTitle=''
     />

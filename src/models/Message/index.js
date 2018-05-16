@@ -5,10 +5,13 @@
 * @Last Modified time: 2018-04-08 16:17:20
 */
 import React, { Component } from 'react'
+import Header from 'Components/Header'
 
 class Message extends Component {
   render() {
-    return <div>我是消息</div>
+    return <div>
+      <Header title='消息'/>
+    </div>
   }
 }
 
