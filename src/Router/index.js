@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 16:00:19
+* @Last Modified time: 2018-05-16 16:54:35
 */
 import React from 'react'
 import {
@@ -28,8 +28,6 @@ const routes = [
     exact: true,
     component: Home,
     parent: null,
-    isHeader: true,
-    showBack: false,
     showMenu: true,
     title: '找工作'
   },
@@ -38,8 +36,6 @@ const routes = [
     exact: true,
     component: Home,
     parent: null,
-    isHeader: true,
-    showBack: false,
     showMenu: true,
     title: '找工作'
   }, {
@@ -48,16 +44,12 @@ const routes = [
     component: TobeDone,
     parent: null,
     showMenu: true,
-    isHeader: true,
-    showBack: true,
     title: '待办'
   }, {
     path: urls.PUSHORDER,
     exact: true,
     component: PushOrder,
     parent: null,
-    isHeader: true,
-    showBack: true,
     showMenu: true,
     title: '发布工单'
   }, {
@@ -65,8 +57,6 @@ const routes = [
     exact: true,
     component: Message,
     parent: null,
-    isHeader: true,
-    showBack: true,
     showMenu: true,
     title: '消息'
   }, {
@@ -74,8 +64,6 @@ const routes = [
     exact: true,
     component: Mine,
     parent: null,
-    isHeader: true,
-    showBack: true,
     showMenu: true,
     title: '我的'
   }, {
@@ -83,8 +71,6 @@ const routes = [
     exact: true,
     component: Login,
     parent: null,
-    isHeader: true,
-    showBack: false,
     showMenu: false,
     title: '登录'
   }, {
@@ -92,8 +78,6 @@ const routes = [
     exact: true,
     component: Register,
     parent: null,
-    isHeader: true,
-    showBack: true,
     showMenu: false,
     title: '注册'
   }, {
@@ -101,8 +85,6 @@ const routes = [
     exact: true,
     component: ForgetPwd,
     parent: null,
-    isHeader: true,
-    showBack: true,
     showMenu: false,
     title: '忘记密码'
   }, {
@@ -110,8 +92,6 @@ const routes = [
     exact: true,
     component: TaskList,
     parent: 'PushOrder',
-    isHeader: true,
-    showBack: true,
     showMenu: true,
     title: '任务列表'
   }

@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 15:56:47
+* @Last Modified time: 2018-05-16 16:51:00
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -91,7 +91,7 @@ class AppMenu extends Component {
   render() {
     console.log(this.props)
     return (
-      <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : (this.props.isHeader ? menuStyle['tabBody'] : menuStyle['noheadBody']) }>
+      <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'

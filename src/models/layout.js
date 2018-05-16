@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 14:45:06
+* @Last Modified time: 2018-05-16 16:52:33
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -34,12 +34,12 @@ class MainLayout extends Component {
       title: rtObj['title']
     })
   }
-  showMenu(confObj = {}) {
+  showMenu() {
     const { routes } = this.props
     console.log(this.state.isMenuPage, routes)
     if (this.state.isMenuPage) {
       return (
-        <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} isHeader={confObj.isHeader} routes={routes}>
+        <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>
           {
             routes.map((route, index) => {
               return (
@@ -101,11 +101,9 @@ class MainLayout extends Component {
     return routeObj
   }
   render() {
-    console.log(this.getRouteByPath())
-    const { isHeader } = this.getRouteByPath()
     return (
       <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
-        {this.showMenu({ isHeader: isHeader })}
+        {this.showMenu()}
       </div>
     )
   }

@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:11
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 15:37:09
+* @Last Modified time: 2018-05-16 16:50:42
 */
 .menuBtn {
   width: 22px;
@@ -11,15 +11,6 @@
 }
 
 .tabBody {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.noheadBody {
   width: 100%;
   position: absolute;
   top: 0;
@@ -52,11 +43,11 @@
   overflow: hidden;
 }
 
-.tabBody :global(.am-tab-bar-tab), .noheadBody :global(.am-tab-bar-tab) {
+.tabBody :global(.am-tab-bar-tab) {
   height: 100%;
 }
 
-.tabBody :global(.am-tab-bar-bar .am-tab-bar-tab-title), .noheadBody :global(.am-tab-bar-bar .am-tab-bar-tab-title) {
+.tabBody :global(.am-tab-bar-bar .am-tab-bar-tab-title) {
   margin-top: 6px;
 }
 

@@ -74,7 +74,7 @@ showBack: 是否显示header的返回按钮
 showMenu: 是否显示footer的菜单
 title: 标题，APP头部标题
 ```
-### Icon使用说明
+## Icon使用说明
 Example：
 ```javascript
 import NewIcon from 'Components/NewIcon'
@@ -86,7 +86,7 @@ type: IconFont的类名
 onClick：点击事件回调函数
 className：自定义icon的样式类名
 ```
-### APP头部配置
+## APP头部配置
 Example:
 ```javascript
 import Header from 'Components/Header'
@@ -110,7 +110,7 @@ rightIcon: 右侧Icon（可与rightTitle并存）
 rightTitle: 右侧标题（可与rightIcon并存）
 rightClick: 右侧区域的点击事件回调函数
 ```
-### APP底部菜单配置
+## APP底部菜单配置
 - 基于antdMobile的tabBar，配置APP的footer部分菜单（路由、样式、名称）
 - 以JSON数组格式进行配置，菜单顺序就是配置文件的顺序
 - 菜单的key需要与对应路由的模块同名，且为字符串
