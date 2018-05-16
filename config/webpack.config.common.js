@@ -4,6 +4,7 @@ const path = require('path');
 const paths = require('./paths');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+
 module.exports = {
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.

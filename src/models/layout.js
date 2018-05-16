@@ -2,15 +2,12 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 13:33:59
+* @Last Modified time: 2018-05-16 16:52:33
 */
 import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { NavBar, Icon } from 'antd-mobile'
+import { Route } from 'react-router-dom'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
-import * as urls from 'Contants/urls'
-
 class MainLayout extends Component {
   constructor(props) {
     super(props)
@@ -39,6 +36,7 @@ class MainLayout extends Component {
   }
   showMenu() {
     const { routes } = this.props
+    console.log(this.state.isMenuPage, routes)
     if (this.state.isMenuPage) {
       return (
         <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>
@@ -49,12 +47,9 @@ class MainLayout extends Component {
                   key={index}
                   path={route.path}
                   exact={route.exact}
+                  parent={route.parent}
                   render={(match) => {
-                    return route.path === '/' ? <Redirect to={urls.HOME}/> : (
-                      <div>
-                        <route.component match={match}/>
-                      </div>
-                    )
+                    return <route.component match={match}/>
                   }}
                 />
               )
@@ -75,7 +70,7 @@ class MainLayout extends Component {
                   render={(match) => {
                     return (
                       <div>
-                        <route.component match={match}/>
+                        <route.component match={match} />
                       </div>
                     )
                   }}
@@ -106,18 +101,8 @@ class MainLayout extends Component {
     return routeObj
   }
   render() {
-    const pathBool = this.getRouteByPath()['showBack']
     return (
-      <div style={{ width: '100%', height: '100%' }}>
-        <NavBar
-          mode='dark'
-          icon={
-            pathBool ? <Icon type='left' /> : null
-          }
-          onLeftClick={() => {
-            pathBool ? this.goBack() : null
-          }}
-        >{ this.state.title }</NavBar>
+      <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
         {this.showMenu()}
       </div>
     )

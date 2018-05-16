@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 13:02:43
+* @Last Modified time: 2018-05-16 16:54:35
 */
 import React from 'react'
 import {
@@ -14,84 +14,84 @@ import history from 'Util/history'
 import XLayout from '../models/layout'
 import Home from '../models/Home'
 import Message from '../models/Message'
-import Workplat from '../models/Workplat'
-import Contact from '../models/Contact'
+import PushOrder from '../models/PushOrder'
+import TobeDone from '../models/TobeDone'
 import Mine from '../models/Mine'
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
 import ForgetPwd from '../models/Login/forgetPwd'
-import TaskList from '../models/Workplat/taskList'
+import TaskList from '../models/PushOrder/taskList'
 
 const routes = [
   {
     path: '/',
     exact: true,
     component: Home,
-    showBack: false,
+    parent: null,
     showMenu: true,
-    title: '首页'
+    title: '找工作'
   },
   {
     path: urls.HOME,
     exact: true,
     component: Home,
-    showBack: false,
+    parent: null,
     showMenu: true,
-    title: '首页'
+    title: '找工作'
+  }, {
+    path: urls.TOBEDONE,
+    exact: true,
+    component: TobeDone,
+    parent: null,
+    showMenu: true,
+    title: '待办'
+  }, {
+    path: urls.PUSHORDER,
+    exact: true,
+    component: PushOrder,
+    parent: null,
+    showMenu: true,
+    title: '发布工单'
   }, {
     path: urls.MESSAGE,
     exact: true,
     component: Message,
+    parent: null,
     showMenu: true,
-    showBack: true,
     title: '消息'
-  }, {
-    path: urls.WORKPLAT,
-    exact: true,
-    component: Workplat,
-    showBack: true,
-    showMenu: true,
-    title: '工作台'
-  }, {
-    path: urls.CONTACT,
-    exact: true,
-    component: Contact,
-    showBack: true,
-    showMenu: true,
-    title: '通讯录'
   }, {
     path: urls.MINE,
     exact: true,
     component: Mine,
-    showBack: true,
+    parent: null,
     showMenu: true,
     title: '我的'
   }, {
     path: urls.LOGIN,
     exact: true,
     component: Login,
-    showBack: false,
+    parent: null,
     showMenu: false,
     title: '登录'
   }, {
     path: urls.REGISTER,
     exact: true,
     component: Register,
-    showBack: true,
+    parent: null,
     showMenu: false,
     title: '注册'
   }, {
     path: urls.FORGETPWD,
     exact: true,
     component: ForgetPwd,
-    showBack: true,
+    parent: null,
     showMenu: false,
     title: '忘记密码'
   }, {
     path: urls.TASKLIST,
     exact: true,
     component: TaskList,
-    showBack: true,
+    parent: 'PushOrder',
     showMenu: true,
     title: '任务列表'
   }

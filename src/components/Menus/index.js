@@ -2,48 +2,54 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-11 13:38:17
+* @Last Modified time: 2018-05-16 16:51:00
 */
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+// import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
-require('Src/assets/iconfont.js')
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import './Container.css'
+// import './Container.css'
+import menuStyle from './style.css'
+import { isIphoneX } from 'Util/ua'
 
 const data = [
   {
     path: urls.HOME,
     key: 'Home',
-    icon: '#icon-home',
-    onIcon: '#icon-home-on',
-    title: '首页'
+    icon: '#icon-jobHunting',
+    onIcon: '#icon-jobHunting_pre',
+    title: '找工作'
+  }, {
+    path: urls.TOBEDONE,
+    key: 'TobeDone',
+    icon: '#icon-backLog',
+    onIcon: '#icon-backLog_pre',
+    title: '待办'
+  }, {
+    path: urls.PUSHORDER,
+    key: 'PushOrder',
+    icon: '#icon-add',
+    onIcon: '#icon-add',
+    title: null
   }, {
     path: urls.MESSAGE,
     key: 'Message',
-    icon: '#icon-xiaoxi',
-    onIcon: '#icon-xiaoxi-on',
+    icon: '#icon-message',
+    onIcon: '#icon-message_pre',
     title: '消息'
-  }, {
-    path: urls.WORKPLAT,
-    key: 'Workplat',
-    icon: '#icon-gongzuo',
-    onIcon: '#icon-gongzuo-on',
-    title: '工作台'
-  }, {
-    path: urls.CONTACT,
-    key: 'Contact',
-    icon: '#icon-tongxunlu',
-    onIcon: '#icon-tongxunlu-on',
-    title: '通讯录'
   }, {
     path: urls.MINE,
     key: 'Mine',
-    icon: '#icon-wode',
-    onIcon: '#icon-wode-on',
+    icon: '#icon-person',
+    onIcon: '#icon-person_pre',
     title: '我的'
   }
 ]
+let menuAry = []
+
 class AppMenu extends Component {
   constructor(props) {
     super(props)
@@ -51,58 +57,62 @@ class AppMenu extends Component {
       selectedTab: (history.location.pathname).slice(1) || 'Home'
     }
   }
+
   componentWillMount() {
+    data.map((value, index, ary) => {
+      menuAry.push(value['key'])
+    })
     this.setState({
-      selectedTab: (history.location.pathname).split('/')[1]
+      selectedTab: (history.location.pathname).split('/')[1] || 'Home'
     })
   }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       selectedTab: nextProps.path !== '' ? (nextProps.path).split('/')[1] : 'Home'
     })
   }
-  showComponent() {
-    const { routes } = this.props
-    return (
-      <div>
-        {
-          routes.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                render={(match) => {
-                  return (
-                    <div>
-                      <route.component match={match}/>
-                    </div>
-                  )
-                }}
-              />
-            )
-          })
-        }
-      </div>
-    )
+  getComponentByUrl(url) {
+    const childAry = this.props.children
+    let newAry = []
+    childAry.map((value) => {
+      if (value.props.path === '/' && url === '/Home') {
+        newAry.push(value)
+      }
+      if (value.props.path === url) {
+        newAry.push(value)
+      } else if (value.props.parent === (url.substr(0, 1) === '/' ? url.substr(1) : null)) {
+        newAry.push(value)
+      }
+    })
+    return newAry
   }
+
   render() {
+    console.log(this.props)
     return (
-      <div style={{ width: '100%', position: 'absolute', top: '45px', bottom: 0, left: 0, right: 0 }}>
+      <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'
           barTintColor='white'
+          noRenderContent={false}
         >
           {
             data.map((item, index) => {
+              let componentAry = []
+              componentAry = this.getComponentByUrl(item['path'])
               return (
                 <TabBar.Item
                   title={item['title']}
                   key={item['key']}
-                  icon={<svg className='icon-menu' aria-hidden='true'><use xlinkHref={item['icon']}></use></svg>}
-                  selectedIcon={<svg className='icon-menu' aria-hidden='true'><use xlinkHref={item['onIcon']}></use></svg>}
-                  selected={this.state.selectedTab === item['key']}
+                  icon={
+                    item['title'] !== null ? <svg className={menuStyle['icon-menu']} aria-hidden='true'><use xlinkHref={item['icon']}></use></svg> : <svg className={menuStyle['bigicon-menu']} aria-hidden='true'><use xlinkHref={item['icon']}></use></svg>
+                  }
+                  selectedIcon={
+                    item['title'] !== null ? <svg className={menuStyle['icon-menu']} aria-hidden='true'><use xlinkHref={item['onIcon']}></use></svg> : <svg className={menuStyle['bigicon-menu']} aria-hidden='true'><use xlinkHref={item['onIcon']}></use></svg>
+                  }
+                  selected={this.state.selectedTab === (item['key'] || '/')}
                   onPress={() => {
                     this.setState({
                       selectedTab: item['key'],
@@ -111,7 +121,53 @@ class AppMenu extends Component {
                     history.push(item['path'], { title: item['title'] })
                   }}
                 >
-                  { history.location.pathname === item['path'] ? this.props.children : this.showComponent() }
+                  {
+                    componentAry.map((comp, i) => {
+                      if (comp.props.parent !== null) {
+                        return (
+                          <div key={i}>
+                            <ReactCSSTransitionGroup
+                              component='div'
+                              transitionName='transitionWrapperX'
+                              className='transitionWrapperX'
+                              transitionEnterTimeout={300}
+                              transitionLeaveTimeout={300}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
+                                {
+                                  comp
+                                }
+                              </div>
+                            </ReactCSSTransitionGroup>
+                          </div>
+                        )
+                      } else if (comp.props.path === '/PushOrder') {
+                        return (
+                          <div key={ i }>
+                            <ReactCSSTransitionGroup
+                              component='div'
+                              transitionName='transitionWrapperY'
+                              className='transitionWrapperY'
+                              transitionEnterTimeout={300}
+                              transitionLeaveTimeout={300}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
+                                {
+                                  comp
+                                }
+                              </div>
+                            </ReactCSSTransitionGroup>
+                          </div>
+                        )
+                      } else {
+                        return (
+                          <div key={i}>
+                            {
+                              comp
+                            }
+                          </div>
+                        )
+                      }
+                    })
+                  }
                 </TabBar.Item>
               )
             })

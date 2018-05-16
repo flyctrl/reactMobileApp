@@ -1,21 +1,31 @@
 /*
-* @Author: chengbs
-* @Date:   2018-04-08 13:57:21
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-09 13:33:41
+* @Author= chengbs
+* @Date=   2018-04-08 13=57=21
+* @Last Modified by=   chengbs
+* @Last Modified time= 2018-05-16 14=40=01
 */
 import React, { Component } from 'react'
+import Header from 'Components/Header'
+import style from './style.css'
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      collapsed: false,
+      city: '杭州'
     }
   }
 
   render() {
-    return <div>我是首页</div>
+    const { city } = this.state
+    return <div className={style['usr-home-content']}>
+      <Header
+        searchTitle='搜索工种/公司名称'
+        leftIcon='icon-location'
+        leftTitle1={city}
+        rightTitle='筛选'
+      />
+    </div>
   }
 }
 
