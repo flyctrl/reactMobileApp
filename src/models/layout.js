@@ -6,12 +6,8 @@
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import { NavBar, Icon } from 'antd-mobile'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
-import style from './style.css'
-import { isIphoneX } from 'Util/ua'
-
 class MainLayout extends Component {
   constructor(props) {
     super(props)
@@ -106,21 +102,9 @@ class MainLayout extends Component {
   }
   render() {
     console.log(this.getRouteByPath())
-    const { showBack, isHeader } = this.getRouteByPath()
+    const { isHeader } = this.getRouteByPath()
     return (
       <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
-        { isIphoneX ? <div className={style['fix-iphoneX-top']}/> : null }
-        {
-          isHeader ? <NavBar
-            mode='dark'
-            icon={
-              showBack ? <Icon type='left' /> : null
-            }
-            onLeftClick={() => {
-              showBack ? this.goBack() : null
-            }}
-          >{ this.state.title }</NavBar> : null
-        }
         {this.showMenu({ isHeader: isHeader })}
       </div>
     )
