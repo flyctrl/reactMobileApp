@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 13:32:13
+* @Last Modified time: 2018-05-16 13:46:08
 */
 import React from 'react'
 import {
@@ -31,7 +31,7 @@ const routes = [
     isHeader: true,
     showBack: false,
     showMenu: true,
-    title: '首页'
+    title: '找工作'
   },
   {
     path: urls.HOME,
@@ -41,7 +41,7 @@ const routes = [
     isHeader: true,
     showBack: false,
     showMenu: true,
-    title: '首页'
+    title: '找工作'
   }, {
     path: urls.MESSAGE,
     exact: true,
@@ -50,7 +50,7 @@ const routes = [
     showMenu: true,
     isHeader: true,
     showBack: true,
-    title: '消息'
+    title: '待办'
   }, {
     path: urls.WORKPLAT,
     exact: true,

@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 11:54:55
+* @Last Modified time: 2018-05-16 13:55:46
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -14,22 +14,21 @@ import './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
-
-require('Src/assets/iconfont.js')
+import 'Src/assets/iconfont.js'
 
 const data = [
   {
     path: urls.HOME,
     key: 'Home',
-    icon: '#icon-home',
-    onIcon: '#icon-home-on',
-    title: '首页'
+    icon: '#icon-jobHunting',
+    onIcon: '#icon-jobHunting_pre',
+    title: '找工作'
   }, {
     path: urls.MESSAGE,
     key: 'Message',
     icon: '#icon-xiaoxi',
     onIcon: '#icon-xiaoxi-on',
-    title: '消息'
+    title: '待办'
   }, {
     path: urls.WORKPLAT,
     key: 'Workplat',
