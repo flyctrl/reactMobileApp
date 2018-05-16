@@ -7,6 +7,7 @@
 - [postcss-pxtorem](https://www.npmjs.com/package/postcss-pxtorem) pxtorem 自定义样式（不包括内联样式）和组件样式的px转化成rem
 - [react-addons-css-transition-group](https://www.npmjs.com/package/react-addons-css-transition-group) 主要是实现APP内的动画效果，动画css需自定义开发
 - [Ant Design Mobile of React](https://mobile.ant.design/) Ant Design Mobile 的 React 实现WebApp开发
+- [Icon 编辑工具](http://www.iconfont.cn/) 阿里的矢量图标管理，将图标上传到Iconfont平台，可以自定义下载多种格式的icon，平台也可将图标转换为字体，便于前端自由调整与调用，而本项目是使用的Symbol模式。
 
 ## 布局
 1、设计稿标准尺寸：750*1334
@@ -64,7 +65,7 @@ const routes = [
   ...
 ]
 ```
-**字段说明**
+**配置参数**
  ```javascript
 path: 路由路径
 exact: 路由是否精确匹配
@@ -73,7 +74,43 @@ showBack: 是否显示header的返回按钮
 showMenu: 是否显示footer的菜单
 title: 标题，APP头部标题
 ```
-### 底部菜单配置
+### Icon使用说明
+Example：
+```javascript
+import NewIcon from 'Components/NewIcon'
+<NewIcon type='home' onClick={this.onClick} className='homeBtn'  />
+```
+**配置参数**
+```
+type: IconFont的类名
+onClick：点击事件回调函数
+className：自定义icon的样式类名
+```
+### APP头部配置
+Example:
+```javascript
+import Header from 'Components/Header'
+<Header
+  title='首页'
+  leftIcon='icon-back'
+  rightIcon=''
+  rightTitle=''
+/>
+```
+**配置参数**
+```
+title: 标题
+titleClick: 标题点击事件回调函数
+leftIcon: 左侧的Icon
+leftTitle1: 左侧第一个标题
+leftClick1: 左侧Icon和第一个标题公用的点击事件回调函数
+leftTitle2: 左侧第二个标题
+leftClick2: 左侧第二个标题的点击事件回调函数
+rightIcon: 右侧Icon（可与rightTitle并存）
+rightTitle: 右侧标题（可与rightIcon并存）
+rightClick: 右侧区域的点击事件回调函数
+```
+### APP底部菜单配置
 - 基于antdMobile的tabBar，配置APP的footer部分菜单（路由、样式、名称）
 - 以JSON数组格式进行配置，菜单顺序就是配置文件的顺序
 - 菜单的key需要与对应路由的模块同名，且为字符串
@@ -115,7 +152,7 @@ const data = [
   }
 ]
 ```
-**字段说明**
+**配置参数**
 ```javascript
 path: 路由地址,
 key: 每项菜单必须配的key
