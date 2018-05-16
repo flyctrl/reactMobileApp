@@ -14,7 +14,6 @@ class Header extends Component {
 
   render() {
     console.log(isIphoneX)
-    console.log(style)
     const { title, titleClick, leftIcon, leftTitle1, leftClick1, leftClick2, leftTitle2, rightIcon, rightTitle, rightClick, searchTitle, onSearch, noLine } = this.props
     return <div>
       {isIphoneX ? <div className={style['fix-iphoneX-top']}/> : null}
