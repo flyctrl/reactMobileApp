@@ -29,38 +29,47 @@ Example：
 ```javascript
 const routes = [
   {
-    path: '/',
-    exact: true,
-    component: Home,
-    parent: null,
-    showBack: false,
-    showMenu: true,
-    title: '首页'
-  },
-  {
     path: urls.HOME,
     exact: true,
     component: Home,
     parent: null,
-    showBack: false,
     showMenu: true,
-    title: '首页'
+    title: '找工作'
+  }, {
+    path: urls.TOBEDONE,
+    exact: true,
+    component: TobeDone,
+    parent: null,
+    showMenu: true,
+    title: '待办'
+  }, {
+    path: urls.PUSHORDER,
+    exact: true,
+    component: PushOrder,
+    parent: null,
+    showMenu: true,
+    title: '发布工单'
+  }, {
+    path: urls.MESSAGE,
+    exact: true,
+    component: Message,
+    parent: null,
+    showMenu: true,
+    title: '消息'
+  }, {
+    path: urls.MINE,
+    exact: true,
+    component: Mine,
+    parent: null,
+    showMenu: true,
+    title: '我的'
   }, {
     path: urls.LOGIN,
     exact: true,
     component: Login,
     parent: null,
-    showBack: false,
     showMenu: false,
     title: '登录'
-  }, {
-    path: urls.TASKLIST,
-    exact: true,
-    component: TaskList,
-    parent: 'Workplat',
-    showBack: true,
-    showMenu: true,
-    title: '任务列表'
   }
   ...
 ]
@@ -70,9 +79,9 @@ const routes = [
 path: 路由路径
 exact: 路由是否精确匹配
 component: 路由对应的组件
-showBack: 是否显示header的返回按钮
+parent：父组件
 showMenu: 是否显示footer的菜单
-title: 标题，APP头部标题
+title: 标题
 ```
 ## Icon使用说明
 Example：
