@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 11:09:31
+* @Last Modified time: 2018-05-16 13:32:30
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -37,12 +37,12 @@ class MainLayout extends Component {
       title: rtObj['title']
     })
   }
-  showMenu() {
+  showMenu(confObj = {}) {
     const { routes } = this.props
     console.log(this.state.isMenuPage, routes)
     if (this.state.isMenuPage) {
       return (
-        <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>
+        <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} isHeader={confObj.isHeader} routes={routes}>
           {
             routes.map((route, index) => {
               return (
@@ -104,20 +104,23 @@ class MainLayout extends Component {
     return routeObj
   }
   render() {
-    const pathBool = this.getRouteByPath()['showBack']
+    console.log(this.getRouteByPath())
+    const { showBack, isHeader } = this.getRouteByPath()
     return (
       <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
         { isIphoneX ? <div className={style['fix-iphoneX-top']}/> : null }
-        <NavBar
-          mode='dark'
-          icon={
-            pathBool ? <Icon type='left' /> : null
-          }
-          onLeftClick={() => {
-            pathBool ? this.goBack() : null
-          }}
-        >{ this.state.title }</NavBar>
-        {this.showMenu()}
+        {
+          isHeader ? <NavBar
+            mode='dark'
+            icon={
+              showBack ? <Icon type='left' /> : null
+            }
+            onLeftClick={() => {
+              showBack ? this.goBack() : null
+            }}
+          >{ this.state.title }</NavBar> : null
+        }
+        {this.showMenu({ isHeader: isHeader })}
       </div>
     )
   }

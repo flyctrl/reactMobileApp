@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:11
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 17:31:58
+* @Last Modified time: 2018-05-16 11:54:41
 */
 .menuBtn {
   width: 22px;
@@ -14,6 +14,15 @@
   width: 100%;
   position: absolute;
   top: 45px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.noheadBody {
+  width: 100%;
+  position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;

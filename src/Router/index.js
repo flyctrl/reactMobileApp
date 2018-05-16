@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-29 14:54:25
+* @Last Modified time: 2018-05-16 13:32:13
 */
 import React from 'react'
 import {
@@ -28,6 +28,7 @@ const routes = [
     exact: true,
     component: Home,
     parent: null,
+    isHeader: true,
     showBack: false,
     showMenu: true,
     title: '首页'
@@ -37,6 +38,7 @@ const routes = [
     exact: true,
     component: Home,
     parent: null,
+    isHeader: true,
     showBack: false,
     showMenu: true,
     title: '首页'
@@ -46,6 +48,7 @@ const routes = [
     component: Message,
     parent: null,
     showMenu: true,
+    isHeader: true,
     showBack: true,
     title: '消息'
   }, {
@@ -53,6 +56,7 @@ const routes = [
     exact: true,
     component: Workplat,
     parent: null,
+    isHeader: true,
     showBack: true,
     showMenu: true,
     title: '工作台'
@@ -61,6 +65,7 @@ const routes = [
     exact: true,
     component: Contact,
     parent: null,
+    isHeader: true,
     showBack: true,
     showMenu: true,
     title: '通讯录'
@@ -69,6 +74,7 @@ const routes = [
     exact: true,
     component: Mine,
     parent: null,
+    isHeader: true,
     showBack: true,
     showMenu: true,
     title: '我的'
@@ -77,6 +83,7 @@ const routes = [
     exact: true,
     component: Login,
     parent: null,
+    isHeader: true,
     showBack: false,
     showMenu: false,
     title: '登录'
@@ -85,6 +92,7 @@ const routes = [
     exact: true,
     component: Register,
     parent: null,
+    isHeader: true,
     showBack: true,
     showMenu: false,
     title: '注册'
@@ -93,6 +101,7 @@ const routes = [
     exact: true,
     component: ForgetPwd,
     parent: null,
+    isHeader: true,
     showBack: true,
     showMenu: false,
     title: '忘记密码'
@@ -101,6 +110,7 @@ const routes = [
     exact: true,
     component: TaskList,
     parent: 'Workplat',
+    isHeader: true,
     showBack: true,
     showMenu: true,
     title: '任务列表'

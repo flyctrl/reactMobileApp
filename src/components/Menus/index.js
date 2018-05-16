@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 17:33:38
+* @Last Modified time: 2018-05-16 11:54:55
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -10,7 +10,7 @@ import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import style from './Container.css'
+import './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
@@ -91,8 +91,9 @@ class AppMenu extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
-      <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
+      <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : (this.props.isHeader ? menuStyle['tabBody'] : menuStyle['noheadBody']) }>
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'
@@ -131,7 +132,7 @@ class AppMenu extends Component {
                             <ReactCSSTransitionGroup
                               component='div'
                               transitionName='transitionWrapper'
-                              className={style['transitionWrapper']}
+                              className='transitionWrapper'
                               transitionEnterTimeout={300}
                               transitionLeaveTimeout={300}>
                               <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
@@ -144,7 +145,9 @@ class AppMenu extends Component {
                         )
                       } else {
                         return (
-                          <div key={ i }>{ comp }</div>
+                          <div key={ i }>
+                            { comp }
+                          </div>
                         )
                       }
                     })
