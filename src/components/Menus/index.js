@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 13:55:46
+* @Last Modified time: 2018-05-16 14:02:12
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -14,7 +14,6 @@ import './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
-import 'Src/assets/iconfont.js'
 
 const data = [
   {
