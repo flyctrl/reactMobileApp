@@ -6,6 +6,7 @@
 */
 import React, { Component } from 'react'
 import Header from 'Components/Header'
+import style from './style.css'
 
 class Home extends Component {
   constructor(props) {
@@ -17,12 +18,13 @@ class Home extends Component {
 
   render() {
     const { city } = this.state
-    return <div><Header
-      searchTitle='搜索工种/公司名称'
-      leftIcon='icon-location'
-      leftTitle1={city}
-      rightTitle='筛选'
-    />
+    return <div className={style['usr-home-content']}>
+      <Header
+        searchTitle='搜索工种/公司名称'
+        leftIcon='icon-location'
+        leftTitle1={city}
+        rightTitle='筛选'
+      />
     </div>
   }
 }

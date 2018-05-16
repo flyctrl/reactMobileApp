@@ -1,0 +1,9 @@
+/*
+* @Author: chengbs
+* @Date:   2018-05-16 17:57:28
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-05-16 18:34:31
+*/
+.usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
+  font-size: 12px;
+}
