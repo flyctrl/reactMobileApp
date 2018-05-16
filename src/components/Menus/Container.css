@@ -10,7 +10,7 @@
 }*/
 
 
-:global(.transitionWrapper-enter) {
+:global(.transitionWrapperX-enter) {
   position: absolute;
   top: 0;
   z-index: 10000;
@@ -18,24 +18,53 @@
   transform: translateX(100%);
 }
 
-:global(.transitionWrapper-enter.transitionWrapper-enter-active) {
+:global(.transitionWrapperX-enter.transitionWrapperX-enter-active) {
   opacity: 1;
   transform: translateX(0);
   transition: all 300ms ease-out;
 }
 
-:global(.transitionWrapper-leave) {
+:global(.transitionWrapperX-leave) {
   opacity: 1;
   transform: translateX(-100%);
 }
 
-:global(.transitionWrapper-leave.transitionWrapper-leave-active) {
+:global(.transitionWrapperX-leave.transitionWrapperX-leave-active) {
   opacity: 1;
   transform: translateX(-100%);
   transition: all 300ms ease-out;
 }
 
-:global(.transitionWrapper) {
+:global(.transitionWrapperX) {
+  position: relative;
+}
+
+:global(.transitionWrapperY-enter) {
+  position: absolute;
+  top: 0;
+  z-index: 10000;
+  opacity: 1;
+  transform: translateY(100%);
+}
+
+:global(.transitionWrapperY-enter.transitionWrapperY-enter-active) {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms ease-out;
+}
+
+:global(.transitionWrapperY-leave) {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+:global(.transitionWrapperY-leave.transitionWrapperY-leave-active) {
+  opacity: 1;
+  transform: translateY(-100%);
+  transition: all 300ms ease-out;
+}
+
+:global(.transitionWrapperY) {
   position: relative;
 }
 

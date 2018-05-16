@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 13:46:08
+* @Last Modified time: 2018-05-16 15:30:48
 */
 import React from 'react'
 import {
@@ -14,8 +14,8 @@ import history from 'Util/history'
 import XLayout from '../models/layout'
 import Home from '../models/Home'
 import Message from '../models/Message'
-import Workplat from '../models/Workplat'
-import Contact from '../models/Contact'
+import PushOrder from '../models/PushOrder'
+import TobeDone from '../models/TobeDone'
 import Mine from '../models/Mine'
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
@@ -43,32 +43,32 @@ const routes = [
     showMenu: true,
     title: '找工作'
   }, {
-    path: urls.MESSAGE,
+    path: urls.TOBEDONE,
     exact: true,
-    component: Message,
+    component: TobeDone,
     parent: null,
     showMenu: true,
     isHeader: true,
     showBack: true,
     title: '待办'
   }, {
-    path: urls.WORKPLAT,
+    path: urls.PUSHORDER,
     exact: true,
-    component: Workplat,
+    component: PushOrder,
     parent: null,
     isHeader: true,
     showBack: true,
     showMenu: true,
-    title: '工作台'
+    title: '发布工单'
   }, {
-    path: urls.CONTACT,
+    path: urls.MESSAGE,
     exact: true,
-    component: Contact,
+    component: Message,
     parent: null,
     isHeader: true,
     showBack: true,
     showMenu: true,
-    title: '通讯录'
+    title: '消息'
   }, {
     path: urls.MINE,
     exact: true,
@@ -109,7 +109,7 @@ const routes = [
     path: urls.TASKLIST,
     exact: true,
     component: TaskList,
-    parent: 'Workplat',
+    parent: 'PushOrder',
     isHeader: true,
     showBack: true,
     showMenu: true,

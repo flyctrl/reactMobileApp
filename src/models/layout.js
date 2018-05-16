@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 14:41:24
+* @Last Modified time: 2018-05-16 14:45:06
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -11,7 +11,6 @@ import AppMenu from 'Components/Menus'
 import history from 'Util/history'
 import style from './style.css'
 import { isIphoneX } from 'Util/ua'
-import 'Src/assets/iconfont.js'
 
 class MainLayout extends Component {
   constructor(props) {

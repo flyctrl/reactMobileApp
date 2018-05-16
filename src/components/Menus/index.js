@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 14:02:12
+* @Last Modified time: 2018-05-16 15:56:47
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -23,28 +23,28 @@ const data = [
     onIcon: '#icon-jobHunting_pre',
     title: '找工作'
   }, {
-    path: urls.MESSAGE,
-    key: 'Message',
-    icon: '#icon-xiaoxi',
-    onIcon: '#icon-xiaoxi-on',
+    path: urls.TOBEDONE,
+    key: 'TobeDone',
+    icon: '#icon-backLog',
+    onIcon: '#icon-backLog_pre',
     title: '待办'
   }, {
-    path: urls.WORKPLAT,
-    key: 'Workplat',
-    icon: '#icon-gongzuo',
-    onIcon: '#icon-gongzuo-on',
-    title: '工作台'
+    path: urls.PUSHORDER,
+    key: 'PushOrder',
+    icon: '#icon-add',
+    onIcon: '#icon-add',
+    title: null
   }, {
-    path: urls.CONTACT,
-    key: 'Contact',
-    icon: '#icon-tongxunlu',
-    onIcon: '#icon-tongxunlu-on',
-    title: '通讯录'
+    path: urls.MESSAGE,
+    key: 'Message',
+    icon: '#icon-message',
+    onIcon: '#icon-message_pre',
+    title: '消息'
   }, {
     path: urls.MINE,
     key: 'Mine',
-    icon: '#icon-wode',
-    onIcon: '#icon-wode-on',
+    icon: '#icon-person',
+    onIcon: '#icon-person_pre',
     title: '我的'
   }
 ]
@@ -105,14 +105,13 @@ class AppMenu extends Component {
               return (
                 <TabBar.Item
                   title={item['title']}
-                  className={menuStyle['touched']}
                   key={item['key']}
-                  icon={<svg className={menuStyle['icon-menu']} aria-hidden='true'>
-                    <use xlinkHref={item['icon']}></use>
-                  </svg>}
-                  selectedIcon={<svg className={menuStyle['icon-menu']} aria-hidden='true'>
-                    <use xlinkHref={item['onIcon']}></use>
-                  </svg>}
+                  icon={
+                    item['title'] !== null ? <svg className={menuStyle['icon-menu']} aria-hidden='true'><use xlinkHref={item['icon']}></use></svg> : <svg className={menuStyle['bigicon-menu']} aria-hidden='true'><use xlinkHref={item['icon']}></use></svg>
+                  }
+                  selectedIcon={
+                    item['title'] !== null ? <svg className={menuStyle['icon-menu']} aria-hidden='true'><use xlinkHref={item['onIcon']}></use></svg> : <svg className={menuStyle['bigicon-menu']} aria-hidden='true'><use xlinkHref={item['onIcon']}></use></svg>
+                  }
                   selected={this.state.selectedTab === (item['key'] || '/')}
                   onPress={() => {
                     this.setState({
@@ -129,8 +128,25 @@ class AppMenu extends Component {
                           <div key={i}>
                             <ReactCSSTransitionGroup
                               component='div'
-                              transitionName='transitionWrapper'
-                              className='transitionWrapper'
+                              transitionName='transitionWrapperX'
+                              className='transitionWrapperX'
+                              transitionEnterTimeout={300}
+                              transitionLeaveTimeout={300}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
+                                {
+                                  comp
+                                }
+                              </div>
+                            </ReactCSSTransitionGroup>
+                          </div>
+                        )
+                      } else if (comp.props.path === '/PushOrder') {
+                        return (
+                          <div key={ i }>
+                            <ReactCSSTransitionGroup
+                              component='div'
+                              transitionName='transitionWrapperY'
+                              className='transitionWrapperY'
                               transitionEnterTimeout={300}
                               transitionLeaveTimeout={300}>
                               <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
@@ -143,8 +159,10 @@ class AppMenu extends Component {
                         )
                       } else {
                         return (
-                          <div key={ i }>
-                            { comp }
+                          <div key={i}>
+                            {
+                              comp
+                            }
                           </div>
                         )
                       }

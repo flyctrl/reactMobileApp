@@ -2,11 +2,3 @@
   height: 38px;
   background-color: #0d8ee9;
 }
-@font-face {
-  font-family: 'iconfont';  /* project id 615099 */
-  src: url('//at.alicdn.com/t/font_615099_npqq0ahsxuhaor.eot');
-  src: url('//at.alicdn.com/t/font_615099_npqq0ahsxuhaor.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_615099_npqq0ahsxuhaor.woff') format('woff'),
-  url('//at.alicdn.com/t/font_615099_npqq0ahsxuhaor.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_615099_npqq0ahsxuhaor.svg#iconfont') format('svg');
-}
