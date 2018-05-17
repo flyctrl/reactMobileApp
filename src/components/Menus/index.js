@@ -83,7 +83,7 @@ class AppMenu extends Component {
       if (value.props.path === '/' && url === '/Home') {
         newAry.push(value)
       }
-      if (value.props.path === url) {
+      if (value.props.path.indexOf(url) !== -1) {
         newAry.push(value)
       } else if (value.props.parent === (url.substr(0, 1) === '/' ? url.substr(1) : null)) {
         newAry.push(value)

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import style from './style.css'
+import classnames from 'classnames'
 
 class NewIcon extends Component {
   render() {
     console.log(style['default'])
-    return <svg onClick={this.props.onClick} className={ this.props.className || style.default } aria-hidden='true'>
+    return <svg onClick={this.props.onClick} className={classnames(style.default, this.props.className)} aria-hidden='true'>
       <use xlinkHref={'#' + this.props.type}/>
     </svg>
   }

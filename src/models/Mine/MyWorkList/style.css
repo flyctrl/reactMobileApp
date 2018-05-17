@@ -1,0 +1,93 @@
+.my-work-list {
+  font-family: PingFang-SC-Medium;
+  & :global(.am-tabs-default-bar-tab) {
+    width: 24px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 12px;
+    text-align: center;
+    color: #666;
+    opacity: 0.5;
+  }
+  & :global(.am-tabs-default-bar-tab-active) {
+    color: #0467E0;
+    opacity: 1;
+  }
+  & .item {
+    background-color: rgba(250, 250, 250, 1);
+    & .title {
+      padding-left: 24px;
+      height: 36px;
+      line-height: 36px;
+      color: rgba(49, 63, 72, 1);
+      font-size: 12px;
+      background-color: #FFF;
+    }
+    & .desc {
+      padding: 7.5px 0 7.5px 24px;
+      height: 90px;
+      color: #313F48;
+      font-size: 12px;
+      border-left: 2px solid rgba(4, 103, 224, 1);
+      & .date {
+        height: 25px;
+        line-height: 25px;
+      }
+      & .day {
+        height: 25px;
+        line-height: 25px;
+        position: relative;
+        & .link {
+          color: #0467E0;
+          position: absolute;
+          top: 0;
+          right: 17px;
+        }
+      }
+      & .address {
+        height: 25px;
+        line-height: 25px;
+        & .link {
+          color: #0467E0;
+          padding-left: 19px;
+          padding-right: 9px;
+        }
+        & .icon {
+          width: 24px;
+          height: 24px;
+          vertical-align: top;
+        }
+      }
+    }
+    & .actives {
+      display: flex;
+      border-bottom: 10px solid rgba(250, 250, 250, 1);
+      & .active {
+        flex: 1;
+        position: relative;
+        padding: 10px 0;
+        text-align: center;
+        background-color: #fff;
+        & .title {
+          height: 17px;
+          line-height: 17px;
+          padding-left: 0;
+          color: rgba(4, 103, 224, 1);
+          font-size: 12px;
+          font-family: PingFang-SC-Medium;
+        }
+        & .icon {
+          margin-right: 15px;
+        }
+        & i {
+          position: absolute;
+          top: 7px;
+          right: 0;
+          width: 0.5px;
+          height: 24px;
+          border: 0.5px solid rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
