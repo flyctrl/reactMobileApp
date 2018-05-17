@@ -1,6 +1,6 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
+// const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -186,16 +186,17 @@ module.exports = Merge(CommonConfig,{
                   // https://github.com/facebookincubator/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
+                    require('postcss-cssnext'),
                     require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
+                    // autoprefixer({
+                    //   browsers: [
+                    //     '>1%',
+                    //     'last 4 versions',
+                    //     'Firefox ESR',
+                    //     'not ie < 9', // React doesn't support IE8 anyway
+                    //   ],
+                    //   flexbox: 'no-2009',
+                    // }),
                     // pxtorem({ rootValue: 50, propWhiteList: [] })
                     pxtorem({
                       rootValue: 100,
@@ -226,16 +227,17 @@ module.exports = Merge(CommonConfig,{
                   // https://github.com/facebookincubator/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
+                    require('postcss-cssnext'),
                     require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
+                    // autoprefixer({
+                    //   browsers: [
+                    //     '>1%',
+                    //     'last 4 versions',
+                    //     'Firefox ESR',
+                    //     'not ie < 9', // React doesn't support IE8 anyway
+                    //   ],
+                    //   flexbox: 'no-2009',
+                    // }),
                   ],
                 },
               },

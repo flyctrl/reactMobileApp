@@ -1,6 +1,6 @@
 'use strict';
 
-const autoprefixer = require('autoprefixer');
+// const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -22,8 +22,8 @@ const publicPath = paths.servedPath;
 // For these, "homepage" can be set to "." to enable relative asset paths.
 const shouldUseRelativeAssetPaths = publicPath === './';
 // Source maps are resource heavy and can cause out of memory issue for large source files.
-const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
-// `publicUrl` is just like `publicPath`, but we will provide it to our app
+const shouldUseSourceMap = false;
+// `publicUrl` is just like `publicPath`, but process.env.GENERATE_SOURCEMAP !== we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
 const publicUrl = publicPath.slice(0, -1);
@@ -92,7 +92,7 @@ module.exports = Merge(CommonConfig,{
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -123,7 +123,7 @@ module.exports = Merge(CommonConfig,{
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -151,7 +151,7 @@ module.exports = Merge(CommonConfig,{
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+
               compact: true,
             },
           },
@@ -185,16 +185,17 @@ module.exports = Merge(CommonConfig,{
                   // https://github.com/facebookincubator/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
+                    require('postcss-cssnext'),
                     require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
+                    // autoprefixer({
+                    //   browsers: [
+                    //     '>1%',
+                    //     'last 4 versions',
+                    //     'Firefox ESR',
+                    //     'not ie < 9', // React doesn't support IE8 anyway
+                    //   ],
+                    //   flexbox: 'no-2009',
+                    // }),
                     // pxtorem({ rootValue: 50, propWhiteList: [] })
                     pxtorem({
                       rootValue: 100,
@@ -225,16 +226,17 @@ module.exports = Merge(CommonConfig,{
                   // https://github.com/facebookincubator/create-react-app/issues/2677
                   ident: 'postcss',
                   plugins: () => [
+                    require('postcss-cssnext'),
                     require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9', // React doesn't support IE8 anyway
-                      ],
-                      flexbox: 'no-2009',
-                    }),
+                    // autoprefixer({
+                    //   browsers: [
+                    //     '>1%',
+                    //     'last 4 versions',
+                    //     'Firefox ESR',
+                    //     'not ie < 9', // React doesn't support IE8 anyway
+                    //   ],
+                    //   flexbox: 'no-2009',
+                    // }),
                   ],
                 },
               },

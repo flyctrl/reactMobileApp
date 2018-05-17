@@ -5,26 +5,19 @@
 * @Last Modified time: 2018-05-16 13:14:13
 */
 import React, { Component } from 'react'
-import { Grid } from 'antd-mobile'
+import {} from 'antd-mobile'
 import Header from 'Components/Header'
+import style from './style.css'
 
-const data = Array.from(new Array(9)).map((_val, i) => ({
-  icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
-  text: `name${i}`,
-}))
 class Mine extends Component {
-  test() {
-    console.log('test')
-  }
-  settings = () => {
-    console.log('设置')
-  }
   render() {
     return (
       <div>
         <Header title='我的' rightIcon='icon-settings' rightClick={this.settings}/>
-        <div style={{ color: '#888', fontSize: '14px', padding: '15px 0 9px 15px' }}>Always square grid item </div>
-        <Grid data={data} activeStyle={false} />
+        <div className={style.header}>
+          <div className={style.avatar}><img src={'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526533438825&di=b42ed5edc4abc41b39a33311e674f0d1&imgtype=0&src=http%3A%2F%2Fmp2.qiyipic.com%2Fimage%2F20180509%2Fb4%2Fc5%2Fppu_266729910102_pp_601_300_300.jpg'} alt='头像'/></div>
+          <div className={style.describe}></div>
+        </div>
       </div>
     )
   }
