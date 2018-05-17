@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:11
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 16:50:42
+* @Last Modified time: 2018-05-17 18:16:54
 */
 .menuBtn {
   width: 22px;
@@ -53,5 +53,21 @@
 
 .none {
   display: none;
+}
+
+.tabBody-fix-iphoneX :global(.tabBody .am-tab-bar-bar .am-tab-bar-tab), .tabBody :global(.tabBody .am-tab-bar-bar .am-tab-bar-tab) {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout: none;
+  touch-callout: none;
+}
+
+.tabBody-fix-iphoneX :global(.am-tab-bar-bar .am-tab-bar-tab.feedback),.tabBody :global(.am-tab-bar-bar .am-tab-bar-tab.feedback) {
+  -webkit-transform: scale(0.86);
+  transform: scale(0.86);
 }
 

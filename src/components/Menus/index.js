@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 16:51:00
+* @Last Modified time: 2018-05-17 18:19:16
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -14,6 +14,7 @@ import './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
+import TouchFeedback from './touchFeedback.js'
 
 const data = [
   {
@@ -72,6 +73,9 @@ class AppMenu extends Component {
       selectedTab: nextProps.path !== '' ? (nextProps.path).split('/')[1] : 'Home'
     })
   }
+  componentDidMount() {
+    new TouchFeedback('.am-tabs-tab-bar-wrap')
+  }
   getComponentByUrl(url) {
     const childAry = this.props.children
     let newAry = []
@@ -120,6 +124,7 @@ class AppMenu extends Component {
                     this.props.onTouch(item['title'])
                     history.push(item['path'], { title: item['title'] })
                   }}
+                  data-touchfeedback={true}
                 >
                   {
                     componentAry.map((comp, i) => {
