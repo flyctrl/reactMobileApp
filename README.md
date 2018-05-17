@@ -217,7 +217,7 @@ async componentWillMount() {
 - Asserts: 对应'src/asserts/',
 - Contants: 对应'src/contants/'
 
-### 文件资源说明
+### 资源文件说明
 - Components/Menus/index.js: 菜单配置文件
 - Contants/urls.js: 路由地址
 - Contants/Router/index.js: 路由入口文件
