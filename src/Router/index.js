@@ -16,7 +16,10 @@ import Home from '../models/Home'
 import Message from '../models/Message'
 import PushOrder from '../models/PushOrder'
 import TobeDone from '../models/TobeDone'
+// 我的
 import Mine from '../models/Mine'
+import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
+
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
 import ForgetPwd from '../models/Login/forgetPwd'
@@ -66,6 +69,13 @@ const routes = [
     parent: null,
     showMenu: true,
     title: '我的'
+  }, {
+    path: urls.MYWORKLIST,
+    exact: true,
+    component: MyWorkList,
+    parent: true,
+    showMenu: true,
+    title: '我的工单'
   }, {
     path: urls.LOGIN,
     exact: true,

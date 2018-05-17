@@ -1,7 +1,9 @@
 .header {
   display: flex;
+  padding: 16px 0 21px 0;
   & .avatar {
     flex: 1;
+    text-align: center;
     & >img {
       width: 92px;
       height: 92px;
@@ -10,5 +12,70 @@
   }
   & .describe {
     flex: 2;
+    & .name {
+      font-size: 16px;
+      margin-left: 15px;
+      color: #1A173B;
+      margin-bottom: 8px;
+    }
+    & .address {
+      vertical-align: top;
+      margin-left: 15px;
+      margin-bottom: 12px;
+      & .title {
+        font-size: 12px;
+        color: #999;
+        padding-left: 5px;
+      }
+    }
+    & .btn {
+      width: 132px;
+      height: 32px;
+      line-height: 32px;
+      margin-left: 15px;
+      border-radius: 22.07px;
+      font-size: 12px;
+      background-color: rgba(4, 103, 224, 1);
+    }
   }
+}
+.data {
+  display: flex;
+  padding-bottom: 25px;
+  & > div {
+    flex: 1;
+    & .num {
+      height: 33px;
+      line-height: 33px;
+      color: rgba(28, 40, 51, 1);
+      font-size: 24px;
+      text-align: center;
+      font-family: PingFangSC-Regular;
+    }
+    & .desc {
+      height: 16px;
+      line-height: 16px;
+      opacity: 0.7;
+      color: rgba(28, 40, 51, 1);
+      font-size: 12px;
+      text-align: center;
+      font-family: PingFangSC-Regular;
+    }
+  }
+}
+.link {
+    & .title {
+      height: 20px;
+      line-height: 20px;
+      padding-left: 15px;
+      color: rgba(28, 40, 51, 1);
+      font-size: 14px;
+      font-family: PingFangSC-Regular;
+    }
+    & .rightIcon {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      height: 16px;
+    }
 }
