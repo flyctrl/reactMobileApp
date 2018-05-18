@@ -36,7 +36,6 @@ class MainLayout extends Component {
   }
   showMenu() {
     const { routes } = this.props
-    console.log(this.state.isMenuPage, routes)
     if (this.state.isMenuPage) {
       return (
         <AppMenu onTouch={this.touchMenu.bind(this)} path={this.state.path} routes={routes}>

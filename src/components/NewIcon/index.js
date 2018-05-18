@@ -4,7 +4,6 @@ import classnames from 'classnames'
 
 class NewIcon extends Component {
   render() {
-    console.log(style['default'])
     return <svg onClick={this.props.onClick} className={classnames(style.default, this.props.className)} aria-hidden='true'>
       <use xlinkHref={'#' + this.props.type}/>
     </svg>

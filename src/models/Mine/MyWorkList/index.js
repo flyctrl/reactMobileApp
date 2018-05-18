@@ -21,20 +21,26 @@ class MyWorkList extends Component {
         { title: '电话', icon: 'icon-phone', callBack: this.handleCall },
         { title: '聊天', icon: 'icon-message_pre', callBack: this.handleWeChat }
       ],
-      data: []
+      data: [],
     }
   }
 
   componentDidMount() {
-    const data = Array.from(new Array(9)).map(() => ({
+    this.handleChange('', 0)
+  }
+  handleChange = (tab, index) => {
+    const { data } = this.state
+    data[index] = Array.from(new Array(9)).map(() => ({
       title: '杭州莫干山工程',
       date: '4月1日-4月6日',
       day: '杭州莫干山工程',
       address: '杭州莫干山工程',
+      status: index
     }))
-    this.setState({ data })
+    setTimeout(() => {
+      this.setState({ data })
+    }, 500)
   }
-
   handleDetail = () => {
     this.props.match.history.push('/Home')
   }
@@ -45,14 +51,14 @@ class MyWorkList extends Component {
     console.log('微信')
   }
 
-  _getLists() {
+  _getLists(key) {
     const { data, actives } = this.state
-    return data.map((item, index) => <div className={style.item} key={index}>
+    return data[key] && data[key].map((item, index) => <div className={style.item} key={index}>
       <div className={style.title}>{item.title}</div>
       <div className={style.desc}>
         <div className={style.date}>工期：{item.date}</div>
-        <div className={style.day}>天数：{item.day}<a className={style.link} onClick={() => {
-        }}>待确认</a></div>
+        <div className={style.day}>天数：{item.day}<span className={style.link} onClick={() => {
+        }}>{tabs[item.status].title}</span></div>
         <div className={style.address}>施工地址：{item.address}<a className={style.link}>去这里</a><NewIcon
           className={style.icon} type='icon-goHere'/></div>
       </div>
@@ -65,7 +71,6 @@ class MyWorkList extends Component {
   }
 
   render() {
-    console.log(this.props)
     return <div className={style['my-work-list']}>
       <Header
         title='我的工单'
@@ -75,21 +80,21 @@ class MyWorkList extends Component {
           this.props.match.history.goBack()
         }}
       />
-      <Tabs tabs={tabs} renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5} />}>
+      <Tabs tabs={tabs} onChange={this.handleChange} renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5}/>}>
         <div>
-          {this._getLists()}
+          {this._getLists(0)}
         </div>
         <div>
-          {this._getLists()}
+          {this._getLists(1)}
         </div>
         <div>
-          {this._getLists()}
+          {this._getLists(2)}
         </div>
         <div>
-          {this._getLists()}
+          {this._getLists(3)}
         </div>
         <div>
-          {this._getLists()}
+          {this._getLists(4)}
         </div>
       </Tabs>
     </div>
