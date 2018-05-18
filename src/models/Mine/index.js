@@ -78,8 +78,8 @@ class Mine extends Component {
                 <NewIcon type='icon-address'/>
                 <span className={style.title}>{userData.address}</span>
               </div>
-              <Button className={style.btn} type='primary' size='small' inline><span><NewIcon
-                type='icon-edit'/> 编辑资料</span></Button>
+              <Button className={style.btn} type='primary' size='small' inline><NewIcon
+                type='icon-edit'/> 编辑资料</Button>
             </div>
           </div>
           <div className={style.data}>
