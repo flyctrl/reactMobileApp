@@ -7,11 +7,10 @@ import NewIcon from 'Components/NewIcon'
 class Header extends Component {
   render() {
     const { title, titleClick, leftIcon, leftTitle1, leftClick1, leftClick2, leftTitle2, rightIcon, rightTitle, rightClick, searchTitle, onSearch, noLine } = this.props
-    return <div>
+    return <div className={style.header}>
       {isIphoneX ? <div className={style['fix-iphoneX-top']}/> : null}
       <NavBar
         mode='light'
-        className={style.header}
         leftContent={[
           leftIcon && <NewIcon key={1} type={leftIcon} onClick={leftClick1} className={style.leftIcon} />, leftTitle1 && <span key={2} className={style['usr-hdleft-title-first']} onClick={leftClick1} >{leftTitle1}</span>, leftTitle2 && <span key={3} onClick={leftClick2} className={style['usr-hdleft-title-second']}>{leftTitle2}</span>]}
         rightContent={[rightIcon && <NewIcon key={4} type={rightIcon} onClick={rightClick} className={style.rightIcon} />, rightTitle && <span key={5} onClick={rightClick} className={style['usr-hdright-title']}>{rightTitle}</span>]}

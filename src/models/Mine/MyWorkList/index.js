@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Tabs } from 'antd-mobile'
-import Header from 'Components/Header'
-import NewIcon from 'Components/NewIcon'
+import { Header, Content, NewIcon } from 'Components'
 import style from './style.css'
 
 const tabs = [
@@ -28,6 +27,7 @@ class MyWorkList extends Component {
   componentDidMount() {
     this.handleChange('', 0)
   }
+
   handleChange = (tab, index) => {
     const { data } = this.state
     data[index] = Array.from(new Array(9)).map(() => ({
@@ -80,23 +80,25 @@ class MyWorkList extends Component {
           this.props.match.history.goBack()
         }}
       />
-      <Tabs tabs={tabs} onChange={this.handleChange} renderTabBar={props => <Tabs.DefaultTabBar {...props} page={5}/>}>
-        <div>
-          {this._getLists(0)}
-        </div>
-        <div>
-          {this._getLists(1)}
-        </div>
-        <div>
-          {this._getLists(2)}
-        </div>
-        <div>
-          {this._getLists(3)}
-        </div>
-        <div>
-          {this._getLists(4)}
-        </div>
-      </Tabs>
+      <Content>
+        <Tabs tabs={tabs} onChange={this.handleChange}>
+          <div>
+            {this._getLists(0)}
+          </div>
+          <div>
+            {this._getLists(1)}
+          </div>
+          <div>
+            {this._getLists(2)}
+          </div>
+          <div>
+            {this._getLists(3)}
+          </div>
+          <div>
+            {this._getLists(4)}
+          </div>
+        </Tabs>
+      </Content>
     </div>
   }
 }

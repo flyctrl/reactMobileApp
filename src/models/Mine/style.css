@@ -13,12 +13,14 @@
   & .describe {
     flex: 2;
     & .name {
+      height: 18px;
       font-size: 16px;
       margin-left: 15px;
       color: #1A173B;
       margin-bottom: 8px;
     }
     & .address {
+      height: 16px;
       vertical-align: top;
       margin-left: 15px;
       margin-bottom: 12px;
@@ -78,4 +80,7 @@
       top: 15px;
       height: 16px;
     }
+}
+.content {
+
 }

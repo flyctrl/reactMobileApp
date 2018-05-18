@@ -4,6 +4,12 @@
 }
 .header {
   background-color: rgba(249, 249, 249, 0.87);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 45px;
 }
 .title {
   font-size: 16px;

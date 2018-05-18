@@ -13,6 +13,13 @@
     color: #0467E0;
     opacity: 1;
   }
+  & :global(.am-tabs-default-bar.am-tabs-default-bar-animated.am-tabs-default-bar-top) {
+    position: fixed;
+    height: 42px;
+  }
+  & :global(.am-tabs-pane-wrap.am-tabs-pane-wrap-active) {
+    padding-top: 42px;
+  }
   & .item {
     background-color: rgba(250, 250, 250, 1);
     & .title {
