@@ -12,8 +12,8 @@ class Header extends Component {
       <NavBar
         mode='light'
         leftContent={[
-          leftIcon && <span className={style.box} ><NewIcon key={1} type={leftIcon} onClick={leftClick1} className={style.leftIcon} /></span>, leftTitle1 && <span key={2} className={style['usr-hdleft-title-first']} onClick={leftClick1} >{leftTitle1}</span>, leftTitle2 && <span key={3} onClick={leftClick2} className={style['usr-hdleft-title-second']}>{leftTitle2}</span>]}
-        rightContent={[rightIcon && <span className={style.box} ><NewIcon key={4} type={rightIcon} onClick={rightClick} className={style.rightIcon} /></span>, rightTitle && <span key={5} onClick={rightClick} className={style['usr-hdright-title']}>{rightTitle}</span>]}
+          leftIcon && <span className={style.leftBox} ><NewIcon key={1} type={leftIcon} onClick={leftClick1} className={style.leftIcon} /></span>, leftTitle1 && <span key={2} className={style['usr-hdleft-title-first']} onClick={leftClick1} >{leftTitle1}</span>, leftTitle2 && <span key={3} onClick={leftClick2} className={style['usr-hdleft-title-second']}>{leftTitle2}</span>]}
+        rightContent={[rightIcon && <span className={style.rightBox} ><NewIcon key={4} type={rightIcon} onClick={rightClick} className={style.rightIcon} /></span>, rightTitle && <span key={5} onClick={rightClick} className={style['usr-hdright-title']}>{rightTitle}</span>]}
       >{searchTitle ? <SearchBar onSubmit={onSearch} className={style.search} placeholder={searchTitle} maxLength={8}/> : <span onClick={titleClick} className={style.title}>{title}
         </span>}</NavBar>
       { noLine ? null : <div style={{ backgroundColor: 'rgba(0,0,0,.09)', height: '1px' }}/> }

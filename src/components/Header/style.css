@@ -2,9 +2,6 @@
   height: 38px;
   background-color: #FFF;
 }
-.box {
-  padding: 10px;
-}
 .header {
   font-family: PingFang-SC-Medium;
   background-color: rgba(249, 249, 249, 0.87);
@@ -35,19 +32,17 @@
 
 .usr-hdleft-title-first, .usr-hdleft-title-second, .usr-hdright-title {
   font-size: 12px;
-  padding: 10px 0;
   color: #0467E0;
 }
-。usr-hdright-title {
-  margin-left: 5px;
-}
-.usr-hdleft-title-first, .usr-hdright-title {
+.rightBox, .usr-hdright-title {
   padding: 10px 10px 10px 0;
 }
 .leftIcon, .rightIcon {
   width: 16px;
 }
-
+.leftBox, .usr-hdleft-title-first, .usr-hdleft-title-second {
+  padding: 10px 0 10px 10px;
+}
 .search {
   width: 220px;
   height: 28px;

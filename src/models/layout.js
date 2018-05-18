@@ -101,7 +101,7 @@ class MainLayout extends Component {
   }
   render() {
     return (
-      <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
         {this.showMenu()}
       </div>
     )

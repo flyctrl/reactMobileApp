@@ -69,7 +69,7 @@ class Mine extends Component {
         <Header title='我的' rightIcon='icon-settings' rightClick={this.settings}/>
         <Content>
           <div className={style.header}>
-            <div className={style.avatar}><img src={userData.avatar} alt='头像'/></div>
+            <div className={style.avatar}><span className={style.loading}>{userData.avatar ? <img src={userData.avatar} alt='头像'/> : <Icon type='loading'/>}</span></div>
             <div className={style.describe}>
               <div className={style.name}>
                 {userData.name}

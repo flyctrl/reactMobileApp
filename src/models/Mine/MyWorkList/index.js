@@ -81,7 +81,7 @@ class MyWorkList extends Component {
         }}
       />
       <Content>
-        <Tabs tabs={tabs} onChange={this.handleChange}>
+        <Tabs tabs={tabs} onChange={this.handleChange} swipeable={false}>
           <div>
             {this._getLists(0)}
           </div>
