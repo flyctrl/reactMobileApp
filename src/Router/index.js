@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 16:54:35
+* @Last Modified time: 2018-05-21 19:03:24
 */
 import React from 'react'
 import {
@@ -74,7 +74,7 @@ const routes = [
     path: urls.MYWORKLIST,
     exact: true,
     component: MyWorkList,
-    parent: true,
+    parent: 'Mine',
     showMenu: false,
     title: '我的工单'
   }, {
@@ -82,7 +82,7 @@ const routes = [
     exact: true,
     component: Authenticate,
     parent: true,
-    showMenu: false,
+    showMenu: true,
     title: '资格认证'
   }, {
     path: urls.LOGIN,

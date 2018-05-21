@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-21 14:04:08
+* @Last Modified time: 2018-05-21 17:42:11
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -137,7 +137,7 @@ class AppMenu extends Component {
                               className='transitionWrapperX'
                               transitionEnterTimeout={300}
                               transitionLeaveTimeout={300}>
-                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
                                 {
                                   comp
                                 }
@@ -154,7 +154,7 @@ class AppMenu extends Component {
                               className='transitionWrapperY'
                               transitionEnterTimeout={300}
                               transitionLeaveTimeout={300}>
-                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
                                 {
                                   comp
                                 }

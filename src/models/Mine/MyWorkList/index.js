@@ -72,7 +72,7 @@ class MyWorkList extends Component {
   }
 
   render() {
-    return <div className={style['my-work-list']}>
+    return <div className={`${style['my-work-list']} animated bounceInRight`}>
       <Header
         title='我的工单'
         leftIcon='icon-back'

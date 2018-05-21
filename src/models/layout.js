@@ -2,12 +2,14 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 16:52:33
+* @Last Modified time: 2018-05-21 20:11:29
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
+import style from './style.css'
+
 class MainLayout extends Component {
   constructor(props) {
     super(props)
@@ -101,7 +103,7 @@ class MainLayout extends Component {
   }
   render() {
     return (
-      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
+      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }} className={this.state.isMenuPage ? null : `animated ${style['bounceInRight']}` }>
         {this.showMenu()}
       </div>
     )

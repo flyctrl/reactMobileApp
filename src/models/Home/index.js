@@ -5,7 +5,7 @@
 * @Last Modified time= 2018-05-16 14=40=01
 */
 import React, { Component } from 'react'
-import Header from 'Components/Header'
+import { Header, Content } from 'Components'
 import style from './style.css'
 
 class Home extends Component {
@@ -25,6 +25,9 @@ class Home extends Component {
         leftTitle1={city}
         rightTitle='筛选'
       />
+      <Content>
+        找工作
+      </Content>
     </div>
   }
 }
