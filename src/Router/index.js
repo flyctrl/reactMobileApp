@@ -86,7 +86,7 @@ const routes = [
     exact: true,
     component: Authenticate,
     parent: true,
-    showMenu: false,
+    showMenu: true,
     title: '资格认证'
   }, {
     path: urls.ACCOUNT,
