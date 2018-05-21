@@ -2,7 +2,7 @@
   & .item {
     font-family: PingFang-SC-Medium;
     padding: 28px 24px 24px;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1Px solid rgba(0, 0, 0, 0.1);
     & .header {
       & .title {
         height: 20px;
@@ -33,7 +33,7 @@
           width: 79px;
           height: 79px;
           border-radius: 3px;
-          border: 0.5px dashed rgba(138, 150, 160, 0.5);
+          border: 1Px dashed rgba(138, 150, 160, 0.5);
           & :global(.am-image-picker-list) {
             padding: 0;
             margin: 0;
