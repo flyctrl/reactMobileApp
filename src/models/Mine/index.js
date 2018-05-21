@@ -31,7 +31,7 @@ class Mine extends Component {
         {
           icon: 'icon-myAccount',
           title: '我的帐户',
-          link: '/Home'
+          link: urls.ACCOUNT
         },
         {
           icon: 'icon-applicationForInvoi',
