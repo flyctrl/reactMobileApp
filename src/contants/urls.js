@@ -15,6 +15,10 @@ export const TOBEDONE = `${BASE_URL}/TobeDone`
 export const MINE = `${BASE_URL}/Mine`
 export const MYWORKLIST = `${BASE_URL}/Mine/MyWorkList` // 我的工单
 export const AUTHENTICATE = `${BASE_URL}/Mine/Authenticate` // 资格认证
+export const ACCOUNT = `${BASE_URL}/Mine/Account` // 我的账户
+export const ACCOUNTRECHARGE = `${BASE_URL}/Mine/Account/recharge` // 充值
+export const ACCOUNTWITHDRAWCASH = `${BASE_URL}/Mine/Account/withdrawCash` // 提现
+export const ACCOUNTDETAIL = `${BASE_URL}/Mine/Account/detail` // 账户详细
 
 export const LOGIN = `${BASE_URL}/Login/login`
 export const REGISTER = `${BASE_URL}/Login/register`
