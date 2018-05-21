@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-21 17:42:11
+* @Last Modified time: 2018-05-21 23:21:08
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -14,7 +14,7 @@ import './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
-// import TouchFeedback from './touchFeedback.js'
+import TouchFeedback from './touchFeedback.js'
 
 const data = [
   {
@@ -74,7 +74,7 @@ class AppMenu extends Component {
     })
   }
   componentDidMount() {
-    // new TouchFeedback('.am-tabs-tab-bar-wrap')
+    new TouchFeedback('.am-tabs-tab-bar-wrap')
   }
   getComponentByUrl(url) {
     const childAry = this.props.children
@@ -93,7 +93,6 @@ class AppMenu extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
         <TabBar
@@ -128,24 +127,8 @@ class AppMenu extends Component {
                 >
                   {
                     componentAry.map((comp, i) => {
-                      if (comp.props.parent !== null) {
-                        return (
-                          <div key={i}>
-                            <ReactCSSTransitionGroup
-                              component='div'
-                              transitionName='transitionWrapperX'
-                              className='transitionWrapperX'
-                              transitionEnterTimeout={300}
-                              transitionLeaveTimeout={300}>
-                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
-                                {
-                                  comp
-                                }
-                              </div>
-                            </ReactCSSTransitionGroup>
-                          </div>
-                        )
-                      } else if (comp.props.path === '/PushOrder') {
+                      console.log(comp.props)
+                      if (comp.props.path === '/PushOrder' && comp.props.animated) {
                         return (
                           <div key={ i }>
                             <ReactCSSTransitionGroup
@@ -160,6 +143,14 @@ class AppMenu extends Component {
                                 }
                               </div>
                             </ReactCSSTransitionGroup>
+                          </div>
+                        )
+                      } else if (comp.props.parent === null && comp.props.animated) {
+                        return (
+                          <div key={ history.location.pathname } >
+                            {
+                              comp
+                            }
                           </div>
                         )
                       } else {

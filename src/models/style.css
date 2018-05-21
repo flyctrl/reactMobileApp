@@ -2,11 +2,11 @@
 * @Author: chengbs
 * @Date:   2018-05-16 18:38:22
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-21 20:07:40
+* @Last Modified time: 2018-05-21 23:44:14
 */
 :global(.animated) {
-  -webkit-animation-duration: 500ms;
-  animation-duration: 500ms;
+  -webkit-animation-duration: 300ms;
+  animation-duration: 300ms;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -18,9 +18,6 @@
 
 @-webkit-keyframes bounceInRight {
   from,
-  60%,
-  75%,
-  90%,
   to {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -28,26 +25,9 @@
 
   from {
     opacity: 0;
-    -webkit-transform: translate3d(3000px, 0, 0);
-    transform: translate3d(3000px, 0, 0);
+    -webkit-transform: translate3d(1000px, 0, 0);
+    transform: translate3d(1000px, 0, 0);
   }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(25px, 0, 0);
-    transform: translate3d(25px, 0, 0);
-  }
-
-  75% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(5px, 0, 0);
-    transform: translate3d(5px, 0, 0);
-  }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -56,9 +36,6 @@
 
 @keyframes bounceInRight {
   from,
-  60%,
-  75%,
-  90%,
   to {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -66,26 +43,9 @@
 
   from {
     opacity: 0;
-    -webkit-transform: translate3d(3000px, 0, 0);
-    transform: translate3d(3000px, 0, 0);
+    -webkit-transform: translate3d(1000px, 0, 0);
+    transform: translate3d(1000px, 0, 0);
   }
-
-  60% {
-    opacity: 1;
-    -webkit-transform: translate3d(25px, 0, 0);
-    transform: translate3d(25px, 0, 0);
-  }
-
-  75% {
-    -webkit-transform: translate3d(10px, 0, 0);
-    transform: translate3d(10px, 0, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(5px, 0, 0);
-    transform: translate3d(5px, 0, 0);
-  }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -95,4 +55,45 @@
 .bounceInRight {
   -webkit-animation-name: bounceInRight;
   animation-name: bounceInRight;
+}
+
+@-webkit-keyframes bounceInLeft {
+  from,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-1000px, 0, 0);
+    transform: translate3d(-1000px, 0, 0);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes bounceInLeft {
+  from,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-1000px, 0, 0);
+    transform: translate3d(-1000px, 0, 0);
+  }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.bounceInLeft {
+  -webkit-animation-name: bounceInLeft;
+  animation-name: bounceInLeft;
 }

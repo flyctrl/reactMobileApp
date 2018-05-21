@@ -29,17 +29,28 @@ Example：
 ```javascript
 const routes = [
   {
+    path: '/',
+    exact: true,
+    component: Home,
+    parent: null,
+    showMenu: true,
+    animated: false,
+    title: '找工作'
+  },
+  {
     path: urls.HOME,
     exact: true,
     component: Home,
     parent: null,
     showMenu: true,
+    animated: false,
     title: '找工作'
   }, {
     path: urls.TOBEDONE,
     exact: true,
     component: TobeDone,
     parent: null,
+    animated: false,
     showMenu: true,
     title: '待办'
   }, {
@@ -48,12 +59,14 @@ const routes = [
     component: PushOrder,
     parent: null,
     showMenu: true,
+    animated: true,
     title: '发布工单'
   }, {
     path: urls.MESSAGE,
     exact: true,
     component: Message,
     parent: null,
+    animated: false,
     showMenu: true,
     title: '消息'
   }, {
@@ -61,16 +74,26 @@ const routes = [
     exact: true,
     component: Mine,
     parent: null,
+    animated: false,
     showMenu: true,
     title: '我的'
   }, {
-    path: urls.LOGIN,
+    path: urls.MYWORKLIST,
     exact: true,
-    component: Login,
-    parent: null,
+    component: MyWorkList,
+    parent: 'Mine',
+    animated: true,
     showMenu: false,
-    title: '登录'
-  }
+    title: '我的工单'
+  }, {
+    path: urls.AUTHENTICATE,
+    exact: true,
+    component: Authenticate,
+    parent: true,
+    animated: true,
+    showMenu: true,
+    title: '资格认证'
+  },
   ...
 ]
 ```
@@ -81,6 +104,7 @@ exact: 路由是否精确匹配
 component: 路由对应的组件
 parent：父组件
 showMenu: 是否显示footer的菜单
+animated: 是否有动画（注意：批量设置主菜单的动画不在这里设置，也就是TabBar组件，需要手动写css动画给antdMobile的 am-tabs-pane-wrap 样式，可以单独设置菜单的动画，如发布工单模块，需要在layout.js和menu里面配置相应的路由路径）
 title: 标题
 ```
 ## Icon使用说明
@@ -230,7 +254,7 @@ async componentWillMount() {
 ## 脚本
 ### 运行
 ```javascript
-cd youmingApp
+cd yaqueApp-wugong
 yarn（或者npm install）
 npm start
 ```
@@ -239,4 +263,5 @@ npm start
 npm run build:test
 npm run build:pre
 npm run build
+npm run upload // 上传服务器
 ```
