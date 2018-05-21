@@ -137,7 +137,7 @@ class AppMenu extends Component {
                               className='transitionWrapperX'
                               transitionEnterTimeout={300}
                               transitionLeaveTimeout={300}>
-                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%', height: '100%' }}>
                                 {
                                   comp
                                 }
@@ -154,7 +154,7 @@ class AppMenu extends Component {
                               className='transitionWrapperY'
                               transitionEnterTimeout={300}
                               transitionLeaveTimeout={300}>
-                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
+                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%', height: '100%' }}>
                                 {
                                   comp
                                 }

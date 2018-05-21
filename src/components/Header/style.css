@@ -6,7 +6,7 @@
 .header {
   font-family: PingFang-SC-Medium;
   background-color: rgba(249, 249, 249, 0.87);
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -61,9 +61,3 @@
     font-size: 12px;
   }
 }
-
-
-
-
-
-
