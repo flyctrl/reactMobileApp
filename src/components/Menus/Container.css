@@ -67,4 +67,7 @@
 :global(.transitionWrapperY) {
   position: relative;
 }
+:global(.am-tab-bar-item) {
+  position: relative;
+}
 

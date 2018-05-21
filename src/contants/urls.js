@@ -14,6 +14,7 @@ export const TOBEDONE = `${BASE_URL}/TobeDone`
 // 我的
 export const MINE = `${BASE_URL}/Mine`
 export const MYWORKLIST = `${BASE_URL}/Mine/MyWorkList` // 我的工单
+export const AUTHENTICATE = `${BASE_URL}/Mine/Authenticate` // 资格认证
 
 export const LOGIN = `${BASE_URL}/Login/login`
 export const REGISTER = `${BASE_URL}/Login/register`

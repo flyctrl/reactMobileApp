@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Tabs } from 'antd-mobile'
 import { Header, Content, NewIcon } from 'Components'
+import * as urls from 'Contants/urls'
 import style from './style.css'
 
 const tabs = [
@@ -77,7 +78,7 @@ class MyWorkList extends Component {
         leftIcon='icon-back'
         leftTitle1='返回'
         leftClick1={() => {
-          this.props.match.history.goBack()
+          this.props.match.history.push(urls.MINE)
         }}
       />
       <Content>

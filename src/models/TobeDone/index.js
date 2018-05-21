@@ -20,7 +20,7 @@ class TobeDone extends Component {
   render() {
     const { date } = this.state
     return <div>
-      <Header leftTitle1={date} rightTitle='查看详情' rightClick={this.detail}/>
+      <Header leftTitle2={date} rightTitle='查看详情' rightClick={this.detail}/>
     </div>
   }
 }

@@ -19,6 +19,7 @@ import TobeDone from '../models/TobeDone'
 // 我的
 import Mine from '../models/Mine'
 import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
+import Authenticate from '../models/Mine/Authenticate' // 资格认证
 
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
@@ -74,8 +75,15 @@ const routes = [
     exact: true,
     component: MyWorkList,
     parent: true,
-    showMenu: true,
+    showMenu: false,
     title: '我的工单'
+  }, {
+    path: urls.AUTHENTICATE,
+    exact: true,
+    component: Authenticate,
+    parent: true,
+    showMenu: false,
+    title: '资格认证'
   }, {
     path: urls.LOGIN,
     exact: true,

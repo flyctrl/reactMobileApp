@@ -26,7 +26,7 @@ class Mine extends Component {
         {
           icon: 'icon-qualification',
           title: '资质认证',
-          link: '/Home'
+          link: urls.AUTHENTICATE
         },
         {
           icon: 'icon-myAccount',
