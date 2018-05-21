@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-17 18:19:16
+* @Last Modified time: 2018-05-21 14:04:08
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -14,7 +14,7 @@ import './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
-import TouchFeedback from './touchFeedback.js'
+// import TouchFeedback from './touchFeedback.js'
 
 const data = [
   {
@@ -74,7 +74,7 @@ class AppMenu extends Component {
     })
   }
   componentDidMount() {
-    new TouchFeedback('.am-tabs-tab-bar-wrap')
+    // new TouchFeedback('.am-tabs-tab-bar-wrap')
   }
   getComponentByUrl(url) {
     const childAry = this.props.children

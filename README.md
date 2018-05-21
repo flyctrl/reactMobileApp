@@ -230,7 +230,6 @@ async componentWillMount() {
 ## 脚本
 ### 运行
 ```javascript
-git clone https://github.com/flyctrl/yaqueApp.git
 cd youmingApp
 yarn（或者npm install）
 npm start
