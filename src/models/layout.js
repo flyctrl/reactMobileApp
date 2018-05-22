@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 15:35:42
+* @Last Modified time: 2018-05-22 15:46:54
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -104,7 +104,7 @@ class MainLayout extends Component {
   }
   render() {
     let animateClass = ''
-    if (!this.state.isMenuPage && this.state.animated) {
+    if (!this.state.isMenuPage && this.state.animated) { // 单页 无菜单
       if (this.state.path === '/PushOrder') {
         animateClass = `animated ${style['bounceInUp']}`
       } else {

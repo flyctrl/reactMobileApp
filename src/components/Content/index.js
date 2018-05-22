@@ -36,10 +36,12 @@ class Content extends Component {
   render() {
     let animateClass = ''
     console.log('content:', this.state)
-    if (this.state.path === '/PushOrder') {
-      animateClass = style['bounceInUp']
-    } else if (this.state.animated) {
-      animateClass = style['bounceInRight']
+    if (this.state.isMenuPage) { // 不是单页 有菜单
+      if (this.state.path === '/PushOrder') {
+        animateClass = style['bounceInUp']
+      } else if (this.state.animated) {
+        animateClass = style['bounceInRight']
+      }
     }
     return (
       <div className={`${isIphoneX ? style.marginTop83 : style.marginTop45} animated ${animateClass}`}>
