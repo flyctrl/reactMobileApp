@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 13:48:29
+* @Last Modified time: 2018-05-22 16:15:16
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -74,21 +74,6 @@ class AppMenu extends Component {
   componentDidMount() {
     new TouchFeedback('.am-tabs-tab-bar-wrap')
   }
-  getComponentByUrl(url) {
-    const childAry = this.props.children
-    let newAry = []
-    childAry.map((value) => {
-      if (value.props.path === '/' && url === '/Home') {
-        newAry.push(value)
-      }
-      if (value.props.path.indexOf(url) !== -1) {
-        newAry.push(value)
-      } else if (value.props.parent === (url.substr(0, 1) === '/' ? url.substr(1) : null)) {
-        newAry.push(value)
-      }
-    })
-    return newAry
-  }
 
   render() {
     return (
@@ -104,8 +89,6 @@ class AppMenu extends Component {
         >
           {
             data.map((item, index) => {
-              // let componentAry = []
-              // componentAry = this.getComponentByUrl(item['path'])
               return (
                 <TabBar.Item
                   title={item['title']}
