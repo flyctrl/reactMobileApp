@@ -35,9 +35,10 @@ class Content extends Component {
   }
   render() {
     let animateClass = ''
+    console.log('content:', this.state)
     if (this.state.path === '/PushOrder') {
       animateClass = style['bounceInUp']
-    } else if (this.state.isMenuPage && this.state.animated) {
+    } else if (this.state.animated) {
       animateClass = style['bounceInRight']
     }
     return (
