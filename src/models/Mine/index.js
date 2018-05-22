@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-08 16:19:55
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 13:14:13
+* @Last Modified time: 2018-05-22 11:00:00
 */
 import React, { Component } from 'react'
 import { Button, Icon, List } from 'antd-mobile'
@@ -65,7 +65,7 @@ class Mine extends Component {
   render() {
     const { userData, linkData } = this.state
     return (
-      <div>
+      <div className='contentBox'>
         <Header title='我的' rightIcon='icon-settings' rightClick={this.settings}/>
         <Content>
           <div className={style.header}>

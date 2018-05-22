@@ -1,0 +1,11 @@
+/*
+* @Author: chengbs
+* @Date:   2018-05-22 10:58:21
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-05-22 11:00:58
+*/
+:global(.contentBox){
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

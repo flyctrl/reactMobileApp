@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-08 16:19:20
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 15:23:48
+* @Last Modified time: 2018-05-22 11:30:57
 */
 import React, { Component } from 'react'
 import Header from 'Components/Header'
@@ -19,7 +19,7 @@ class TobeDone extends Component {
   }
   render() {
     const { date } = this.state
-    return <div>
+    return <div className='contentBox'>
       <Header leftTitle2={date} rightTitle='查看详情' rightClick={this.detail}/>
     </div>
   }

@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-08 16:18:37
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 17:24:06
+* @Last Modified time: 2018-05-22 11:30:43
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -55,7 +55,7 @@ const data = [
 class Workplat extends Component {
   render() {
     return (
-      <div>
+      <div className='contentBox'>
         <div className={style['subTitle']}>功能操作</div>
         <Grid data={data} className={style['grid']} columnNum={5} hasLine={false} activeStyle={false} renderItem={dataItem => (
           <div className={style['padd5']}>

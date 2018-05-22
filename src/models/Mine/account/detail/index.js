@@ -52,7 +52,7 @@ class Detail extends Component {
   }
 
   render() {
-    return <div className={style.detail}>
+    return <div className={`${style.detail} contentBox`}>
       <Header
         title='账户详情'
         leftIcon='icon-back'

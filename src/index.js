@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:36:11
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 14:45:10
+* @Last Modified time: 2018-05-22 10:56:54
 */
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -10,6 +10,7 @@ import MainRouter from './Router'
 import registerServiceWorker from './registerServiceWorker'
 import { AppContainer } from 'react-hot-loader'
 import 'Src/assets/iconfont.js'
+import './global.css'
 
 ReactDOM.render(
   <AppContainer>

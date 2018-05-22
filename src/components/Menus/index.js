@@ -2,15 +2,13 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 00:11:54
+* @Last Modified time: 2018-05-22 12:18:19
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import './Container.css'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
@@ -95,6 +93,20 @@ class AppMenu extends Component {
   render() {
     return (
       <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
+        {
+          data.map((item, index) => {
+            let componentAry = []
+            componentAry = this.getComponentByUrl(item['path'])
+            return (
+              componentAry.map((comp, i) => {
+                console.log(comp.props)
+                return (
+                  comp
+                )
+              })
+            )
+          })
+        }
         <TabBar
           unselectedTintColor='#949494'
           tintColor='#33A3F4'
@@ -103,8 +115,6 @@ class AppMenu extends Component {
         >
           {
             data.map((item, index) => {
-              let componentAry = []
-              componentAry = this.getComponentByUrl(item['path'])
               return (
                 <TabBar.Item
                   title={item['title']}
@@ -125,37 +135,6 @@ class AppMenu extends Component {
                   }}
                   data-touchfeedback={true}
                 >
-                  {
-                    componentAry.map((comp, i) => {
-                      console.log(comp.props)
-                      if (comp.props.path === '/PushOrder' && comp.props.animated) {
-                        return (
-                          <div key={ i }>
-                            <ReactCSSTransitionGroup
-                              component='div'
-                              transitionName='transitionWrapperY'
-                              className='transitionWrapperY'
-                              transitionEnterTimeout={300}
-                              transitionLeaveTimeout={300}>
-                              <div key={ history.location.pathname } style={{ position: 'absolute', width: '100%' }}>
-                                {
-                                  comp
-                                }
-                              </div>
-                            </ReactCSSTransitionGroup>
-                          </div>
-                        )
-                      } else {
-                        return (
-                          <div key={i}>
-                            {
-                              comp
-                            }
-                          </div>
-                        )
-                      }
-                    })
-                  }
                 </TabBar.Item>
               )
             })

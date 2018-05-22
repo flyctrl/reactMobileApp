@@ -57,7 +57,7 @@ class Rechange extends Component {
         }}
       />
       <Content>
-        <div className={style.rechange}>
+        <div className={`${style.rechange} contentBox`}>
           <Item
             arrow='horizontal'
             thumb={img}

@@ -35,7 +35,7 @@ class Authenticate extends Component {
 
   render() {
     const { idUp, idDown, PCLL } = this.state
-    return <div className={style.Authenticate}>
+    return <div className={`${style.Authenticate} contentBox`}>
       <Header
         title='资格认证'
         leftIcon='icon-back'

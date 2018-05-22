@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 00:14:45
+* @Last Modified time: 2018-05-22 12:01:18
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -64,7 +64,7 @@ class MainLayout extends Component {
       )
     } else {
       return (
-        <div>
+        <div style={{ width: '100%', height: '100%' }}>
           {
             routes.map((route, index) => {
               return (
@@ -102,8 +102,16 @@ class MainLayout extends Component {
     return routeObj
   }
   render() {
+    let animateClass = ''
+    if (this.state.animated) {
+      if (this.state.path === '/PushOrder') {
+        animateClass = style['bounceInUp']
+      } else {
+        animateClass = style['bounceInRight']
+      }
+    }
     return (
-      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }} className={this.state.animated && this.state.path !== '/PushOrder' ? `animated ${style['bounceInRight']}` : `animated ${style['bounceInLeft']}` }>
+      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }} className={`animated ${animateClass}`}>
         {this.showMenu()}
       </div>
     )

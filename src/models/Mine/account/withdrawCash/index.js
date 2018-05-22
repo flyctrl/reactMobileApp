@@ -52,7 +52,7 @@ class WithdrawCash extends Component {
         }}
       />
       <Content>
-        <div className={style['withdraw-cash']}>
+        <div className={`${style['withdraw-cash']} contentBox`}>
           <Item
             arrow='horizontal'
             thumb={img}
