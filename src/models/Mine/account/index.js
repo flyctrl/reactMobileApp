@@ -26,7 +26,7 @@ class Account extends Component {
 
   render() {
     const { moneyA, moneyB } = this.state
-    return <div>
+    return <div className='pageBox'>
       <Header
         title='我的账户'
         leftIcon='icon-back'

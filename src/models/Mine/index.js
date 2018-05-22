@@ -36,7 +36,7 @@ class Mine extends Component {
         {
           icon: 'icon-applicationForInvoi',
           title: '申请发票',
-          link: '/Home'
+          link: urls.INVOICE
         },
         {
           icon: 'icon-attendanceManagement',

@@ -1,3 +1,8 @@
+/**
+ * @Author: sunshiqiang
+ * @Date: 2018-05-22 10:46:29
+ * @Title: 提现
+ */
 import React, { Component } from 'react'
 import { List, InputItem, Toast, Button } from 'antd-mobile'
 import * as urls from 'Contants/urls'
@@ -72,7 +77,7 @@ class WithdrawCash extends Component {
             value={this.state.value}
           ><span className={style.money}>¥</span></InputItem>
           <Item extra={<span className={style.extra}>全部提现</span> }><span className={style.maxMoney}>可用余额 {maxMoney}元</span></Item>
-          <Button type='primary' className={!value || hasError ? style['disabled-btn'] : style['primary-btn']} disabled={!value || hasError}>下一步</Button>
+          <Button type='primary' className={!value || hasError ? style['disabled-btn'] : style['primary-btn']} disabled={!value || hasError}>预计次日24点前到账，确认提现</Button>
         </div>
       </Content>
     </div>

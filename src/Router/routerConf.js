@@ -14,9 +14,11 @@ import Mine from '../models/Mine'
 import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
 import Authenticate from '../models/Mine/Authenticate' // 资格认证
 import Account from '../models/Mine/Account' // 我的账户
-import AccountDetail from '../models/Mine/Account/detail' // 账户详情
-import AccountRecharge from '../models/Mine/Account/recharge' // 充值
-import AccountWithdrawCash from '../models/Mine/Account/withdrawCash' // 提现
+import AccountDetail from '../models/Mine/Account/detail' // 我的账户》账户详情
+import AccountRecharge from '../models/Mine/Account/recharge' // 我的账户》充值
+import AccountWithdrawCash from '../models/Mine/Account/withdrawCash' // 我的账户》提现
+import Invoice from '../models/Mine/Invoice' // 申请发票
+import InvoiceDetail from '../models/Mine/Invoice/detail' // 申请发票》详细
 
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
@@ -121,6 +123,22 @@ const routes = [
     animated: true,
     showMenu: false,
     title: '提现'
+  }, {
+    path: urls.INVOICE,
+    exact: true,
+    component: Invoice,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '申请发票'
+  }, {
+    path: urls.INVOICEDETAIL,
+    exact: true,
+    component: InvoiceDetail,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '申请发票详情'
   }, {
     path: urls.LOGIN,
     exact: true,

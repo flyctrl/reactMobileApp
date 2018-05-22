@@ -1,0 +1,21 @@
+/**
+* @Author: sunshiqiang
+* @Date: 2018-05-22 10:50:16
+* @Title: 申请发票
+*/
+.invoice {
+  background-color: #f6f7f8;
+  height: 100%;
+  & .header {
+    position: relative;
+    color: rgba(49, 63, 72, 1);
+    font-size: 14px;
+    padding: 9px 0 10px 24px;
+    font-family: PingFangSC-Regular;
+    & .date {
+      position: absolute;
+      right: 25px;
+      top: 18px;
+    }
+  }
+}

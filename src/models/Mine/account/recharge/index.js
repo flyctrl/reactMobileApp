@@ -47,7 +47,7 @@ class Rechange extends Component {
 
   render() {
     const { title, img, subtitle, maxMoney, hasError, value } = this.state
-    return <div>
+    return <div className='pageBox'>
       <Header
         title='充值'
         leftIcon='icon-back'
@@ -57,7 +57,7 @@ class Rechange extends Component {
         }}
       />
       <Content>
-        <div className={`${style.rechange} contentBox`}>
+        <div className={style.rechange}>
           <Item
             arrow='horizontal'
             thumb={img}

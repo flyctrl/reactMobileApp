@@ -1,6 +1,7 @@
 .header {
   display: flex;
   padding: 16px 0 21px 0;
+  height: 95px;
   & .avatar {
     flex: 1;
     text-align: center;
