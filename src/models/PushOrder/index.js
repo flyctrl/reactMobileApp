@@ -2,12 +2,13 @@
 * @Author: chengbs
 * @Date:   2018-04-08 16:18:37
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 11:30:43
+* @Last Modified time: 2018-05-22 14:53:11
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as urls from 'Contants/urls'
 import { Grid, Flex } from 'antd-mobile'
+import { Header, Content } from 'Components'
 import style from './style.css'
 
 const data = [
@@ -56,25 +57,30 @@ class Workplat extends Component {
   render() {
     return (
       <div className='contentBox'>
-        <div className={style['subTitle']}>功能操作</div>
-        <Grid data={data} className={style['grid']} columnNum={5} hasLine={false} activeStyle={false} renderItem={dataItem => (
-          <div className={style['padd5']}>
-            <img src={dataItem.icon} className={style['dataItemImg']} alt={dataItem.text} />
-            <div className={style['dataItemText']}>
-              <span>{dataItem.text}</span>
-            </div>
-          </div>
-        )}
+        <Header
+          title='发布工单'
         />
-        <div className={style['paddR10']}><Flex justify='between' className={style['subTitle']}>任务日历<Link style={{ color: '#0000ff' }} to={urls.TASKLIST}>切换列表</Link></Flex></div>
-        <div className={style['padd10']}>
-          <dl>
-            <dt><span>北京好望山一期</span><em>开工</em></dt>
-            <dd><span className={style['prolist']}>工期：3月20日-3月31日（共12 天）</span><span className={style['during']}>开工中</span></dd>
-            <dd><span className={style['auto']}>计价模式：日结</span><span>工资：<em>300</em>元/天</span></dd>
-            <dd><span className={style['auto']}>联系人：李晓菲</span><a>聊天</a><a>电话</a></dd>
-          </dl>
-        </div>
+        <Content>
+          <div className={style['subTitle']}>功能操作</div>
+          <Grid data={data} className={style['grid']} columnNum={5} hasLine={false} activeStyle={false} renderItem={dataItem => (
+            <div className={style['padd5']}>
+              <img src={dataItem.icon} className={style['dataItemImg']} alt={dataItem.text} />
+              <div className={style['dataItemText']}>
+                <span>{dataItem.text}</span>
+              </div>
+            </div>
+          )}
+          />
+          <div className={style['paddR10']}><Flex justify='between' className={style['subTitle']}>任务日历<Link style={{ color: '#0000ff' }} to={urls.TASKLIST}>切换列表</Link></Flex></div>
+          <div className={style['padd10']}>
+            <dl>
+              <dt><span>北京好望山一期</span><em>开工</em></dt>
+              <dd><span className={style['prolist']}>工期：3月20日-3月31日（共12 天）</span><span className={style['during']}>开工中</span></dd>
+              <dd><span className={style['auto']}>计价模式：日结</span><span>工资：<em>300</em>元/天</span></dd>
+              <dd><span className={style['auto']}>联系人：李晓菲</span><a>聊天</a><a>电话</a></dd>
+            </dl>
+          </div>
+        </Content>
       </div>
     )
   }

@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 10:58:21
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 13:14:43
+* @Last Modified time: 2018-05-22 14:10:00
 */
 :global(.contentBox){
   position: absolute;
@@ -10,4 +10,11 @@
   left:0;
   right: 0;
   bottom: 50px;
+}
+:global(.pageBox){
+  position: absolute;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom: 0;
 }

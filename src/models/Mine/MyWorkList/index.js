@@ -72,7 +72,7 @@ class MyWorkList extends Component {
   }
 
   render() {
-    return <div className={`${style['my-work-list']} contentBox`}>
+    return <div className={`${style['my-work-list']} pageBox`}>
       <Header
         title='我的工单'
         leftIcon='icon-back'

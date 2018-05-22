@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 13:07:15
+* @Last Modified time: 2018-05-22 13:48:29
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -94,18 +94,6 @@ class AppMenu extends Component {
     return (
       <div className={ isIphoneX ? menuStyle['tabBody-fix-iphoneX'] : menuStyle['tabBody'] }>
         {
-          // data.map((item, index) => {
-          //   let componentAry = []
-          //   componentAry = this.getComponentByUrl(item['path'])
-          //   return (
-          //     componentAry.map((comp, i) => {
-          //       console.log(comp.props)
-          //       return (
-          //         comp
-          //       )
-          //     })
-          //   )
-          // })
           this.props.children
         }
         <TabBar
@@ -116,6 +104,8 @@ class AppMenu extends Component {
         >
           {
             data.map((item, index) => {
+              // let componentAry = []
+              // componentAry = this.getComponentByUrl(item['path'])
               return (
                 <TabBar.Item
                   title={item['title']}

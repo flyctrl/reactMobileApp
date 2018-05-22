@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 12:01:18
+* @Last Modified time: 2018-05-22 14:59:30
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -70,6 +70,7 @@ class MainLayout extends Component {
               return (
                 <Route
                   key={index}
+                  animated={route.animated}
                   path={route.path}
                   exact={route.exact}
                   render={(match) => {
@@ -103,7 +104,7 @@ class MainLayout extends Component {
   }
   render() {
     let animateClass = ''
-    if (this.state.animated) {
+    if (!this.state.isMenuPage && this.state.animated) {
       if (this.state.path === '/PushOrder') {
         animateClass = style['bounceInUp']
       } else {

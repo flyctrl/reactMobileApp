@@ -23,7 +23,7 @@
 ### 路由书写简单规范
 - 主要是以JSON数组格式进行配置，添加模块后只需要添加想要的路由配置即可
 - 基于父组件的路由需要配置父组件的名称（parent）且为字符串类型，没有则设parent为null
-- 路由配置文件入口：Contants/Router/index.js
+- 路由配置文件入口：Contants/Router/routerConf.js
 
 Example：
 ```javascript
@@ -195,6 +195,35 @@ key: 每项菜单必须配的key
 icon: 默认时候的icon
 onIcon: 被选中状态时候的icon
 title: 菜单名称
+```
+## 页面模块配置说明
+1、如果需要Header直接引入import { Header, Content } from 'Components' 里面的Header既可
+
+2、每个页面都必须包括Content组件，子组件的所有布局都需要写在里面
+
+3、页面最外层的div需要设置固定class，分别是：contentBox（有菜单情况下使用） 或 pageBox（单页面无菜单情况使用，比如登录注册页）
+Example：
+```javascript
+class TobeDone extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      date: '2018 5月'
+    }
+  }
+  detail = () => {
+    console.log('详情')
+  }
+  render() {
+    const { date } = this.state
+    return <div className='contentBox'>
+      <Header leftTitle2={date} rightTitle='查看详情' rightClick={this.detail}/>
+      <Content>
+        你的页面代码.....
+      </Content>
+    </div>
+  }
+}
 ```
 
 ## 数据请求
