@@ -4,5 +4,34 @@
 * @Title: 发票详情
 */
 .detail {
-
+  background-color: #f6f7f8;
+  height: 100%;
+  padding-top: 18px;
+  & .info {
+    background-color: #ffffff;
+    padding: 5px 0 5px 24px;
+    border-bottom: 1Px solid #eee;
+    & > div {
+      padding: 5px 0;
+      height: 20px;
+      line-height: 20px;
+      color: rgba(138, 150, 160, 1);
+      font-size: 14px;
+      font-family: PingFangSC-Regular;
+      & > span {
+        display: inline-block;
+        width: 80px;
+        color: rgba(49, 63, 72, 1);
+      }
+    }
+  }
+  & .active {
+    text-align: center;
+    height: 57px;
+    line-height: 57px;
+    color: rgba(4, 103, 224, 1);
+    background-color: #ffffff;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+  }
 }
