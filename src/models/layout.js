@@ -2,13 +2,12 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 15:46:54
+* @Last Modified time: 2018-05-22 16:04:23
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import AppMenu from 'Components/Menus'
 import history from 'Util/history'
-import style from './style.css'
 
 class MainLayout extends Component {
   constructor(props) {
@@ -103,16 +102,8 @@ class MainLayout extends Component {
     return routeObj
   }
   render() {
-    let animateClass = ''
-    if (!this.state.isMenuPage && this.state.animated) { // 单页 无菜单
-      if (this.state.path === '/PushOrder') {
-        animateClass = `animated ${style['bounceInUp']}`
-      } else {
-        animateClass = `animated ${style['bounceInRight']}`
-      }
-    }
     return (
-      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }} className={animateClass}>
+      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }}>
         {this.showMenu()}
       </div>
     )

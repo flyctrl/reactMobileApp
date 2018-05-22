@@ -42,6 +42,8 @@ class Content extends Component {
       } else if (this.state.animated) {
         animateClass = style['bounceInRight']
       }
+    } else {
+      animateClass = style['bounceInRight']
     }
     return (
       <div className={`${isIphoneX ? style.marginTop83 : style.marginTop45} animated ${animateClass}`}>
