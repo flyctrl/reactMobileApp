@@ -20,10 +20,10 @@ import TobeDone from '../models/TobeDone'
 import Mine from '../models/Mine'
 import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
 import Authenticate from '../models/Mine/Authenticate' // 资格认证
-// import Account from '../models/Mine/Account' // 我的账户
-// import AccountDetail from '../models/Mine/Account/detail' // 账户详情
-// import AccountRecharge from '../models/Mine/Account/recharge' // 充值
-// import AccountWithdrawCash from '../models/Mine/Account/withdrawCash' // 提现
+import Account from '../models/Mine/Account' // 我的账户
+import AccountDetail from '../models/Mine/Account/detail' // 账户详情
+import AccountRecharge from '../models/Mine/Account/recharge' // 充值
+import AccountWithdrawCash from '../models/Mine/Account/withdrawCash' // 提现
 
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
@@ -96,39 +96,39 @@ const routes = [
     animated: true,
     showMenu: true,
     title: '资格认证'
-  },
-  // }, {
-  //   path: urls.ACCOUNT,
-  //   exact: true,
-  //   component: Account,
-  //   parent: true,
-  //   showMenu: false,
-  //   title: '我的账户'
-  // },
-  // }, {
-  //   path: urls.ACCOUNTDETAIL,
-  //   exact: true,
-  //   component: AccountDetail,
-  //   parent: true,
-  //   showMenu: false,
-  //   title: '账户详情'
-  // }, {
-  // {
-  //   path: urls.ACCOUNTRECHARGE,
-  //   exact: true,
-  //   component: AccountRecharge,
-  //   parent: true,
-  //   showMenu: false,
-  //   title: '充值'
-  // }, {
-  //   path: urls.ACCOUNTWITHDRAWCASH,
-  //   exact: true,
-  //   component: AccountWithdrawCash,
-  //   parent: true,
-  //   showMenu: false,
-  //   title: '提现'
-  // }, {
-  {
+  }, {
+    path: urls.ACCOUNT,
+    exact: true,
+    component: Account,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '我的账户'
+  }, {
+    path: urls.ACCOUNTDETAIL,
+    exact: true,
+    component: AccountDetail,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '账户详情'
+  }, {
+    path: urls.ACCOUNTRECHARGE,
+    exact: true,
+    component: AccountRecharge,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '充值'
+  }, {
+    path: urls.ACCOUNTWITHDRAWCASH,
+    exact: true,
+    component: AccountWithdrawCash,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '提现'
+  }, {
     path: urls.LOGIN,
     exact: true,
     component: Login,
