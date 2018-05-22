@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-21 23:39:42
+* @Last Modified time: 2018-05-22 00:14:45
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -103,7 +103,7 @@ class MainLayout extends Component {
   }
   render() {
     return (
-      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }} className={this.state.animated && this.state.path !== '/PushOrder' ? `animated ${style['bounceInRight']}` : style['animated'] }>
+      <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative' }} className={this.state.animated && this.state.path !== '/PushOrder' ? `animated ${style['bounceInRight']}` : `animated ${style['bounceInLeft']}` }>
         {this.showMenu()}
       </div>
     )

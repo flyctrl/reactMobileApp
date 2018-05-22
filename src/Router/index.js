@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:29:52
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-21 23:17:46
+* @Last Modified time: 2018-05-22 00:15:56
 */
 import React from 'react'
 import {
@@ -133,7 +133,7 @@ const routes = [
     exact: true,
     component: Login,
     parent: null,
-    animated: true,
+    animated: false,
     showMenu: false,
     title: '登录'
   }, {

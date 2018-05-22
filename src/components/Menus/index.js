@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-21 23:21:08
+* @Last Modified time: 2018-05-22 00:11:54
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -143,14 +143,6 @@ class AppMenu extends Component {
                                 }
                               </div>
                             </ReactCSSTransitionGroup>
-                          </div>
-                        )
-                      } else if (comp.props.parent === null && comp.props.animated) {
-                        return (
-                          <div key={ history.location.pathname } >
-                            {
-                              comp
-                            }
                           </div>
                         )
                       } else {
