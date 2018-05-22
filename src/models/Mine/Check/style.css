@@ -1,0 +1,71 @@
+/**
+* @Author: sunshiqiang
+* @Date: 2018-05-22 18:02:53
+* @Title: 考勤管理
+*/
+.check {
+  & .title {
+    height: 22px;
+    line-height: 22px;
+    color: rgba(49, 63, 72, 1);
+    font-size: 16px;
+    font-family: PingFangSC-Regular;
+  }
+  & .subtitle {
+    height: 21px;
+    line-height: 21px;
+    color: rgba(138, 150, 160, 1);
+    font-size: 15px;
+    font-family: PingFangSC-Regular;
+  }
+  & :global(.am-list-thumb img) {
+    width: 35.74px;
+    height: 35.94px;
+    border-radius: 50%;
+  }
+  & .check-info {
+    padding-left: 12px;
+    & .tip {
+      padding: 20px 0;
+      height: 20px;
+      line-height: 20px;
+      color: rgba(138, 150, 160, 1);
+      font-size: 14px;
+      font-family: PingFangSC-Regular;
+    }
+    & .btn {
+      display: inline-block;
+      width: 130px;
+      height: 130px;
+      line-height: normal;
+      border-radius: 50%;
+      background-color: rgba(4, 103, 224, 1);
+      box-shadow: 0px 2px 4px 0px rgba(4, 103, 224, 0.5);
+      white-space: normal;
+      & .btn-title{
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 40%;
+        height: 28px;
+        line-height: 28px;
+        color: rgba(255, 255, 255, 1);
+        font-size: 20px;
+        font-family: PingFangSC-Regular;
+      }
+      & .time{
+        display: inline-block;
+        position: absolute;
+        top: 63%;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        color: rgba(255, 255, 255, 1);
+        font-size: 14px;
+        font-family: PingFangSC-Regular;
+      }
+    }
+  }
+}

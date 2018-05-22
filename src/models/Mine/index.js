@@ -41,7 +41,7 @@ class Mine extends Component {
         {
           icon: 'icon-attendanceManagement',
           title: '考勤管理',
-          link: '/Home'
+          link: urls.CHECK
         }
       ]
     }

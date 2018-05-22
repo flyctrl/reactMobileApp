@@ -59,7 +59,7 @@ class Invoice extends Component {
       <Header
         title='申请发票'
         leftIcon='icon-back'
-        leftTitle1='返回'
+        leftTitle1='我的'
         leftClick1={() => {
           this.props.match.history.push(urls.MINE)
         }}
