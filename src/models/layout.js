@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 16:04:23
+* @Last Modified time: 2018-05-23 17:05:06
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -92,6 +92,7 @@ class MainLayout extends Component {
     history.goBack()
   }
   getRouteByPath(pathname = history.location.pathname) {
+    console.log(this.props)
     const { routes } = this.props
     let routeObj = null
     routes.map((route, index) => {

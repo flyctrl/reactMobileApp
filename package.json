@@ -58,6 +58,7 @@
     "babel-plugin-import": "^1.6.7",
     "eslint": "^4.10.0",
     "g": "^2.0.1",
+    "img-loader": "^3.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-pxtorem": "^4.0.1",
     "rc-form": "^2.2.0",
