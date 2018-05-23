@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { List, InputItem, Toast, Button } from 'antd-mobile'
 import * as urls from 'Contants/urls'
 import { Header, Content } from 'Components'
+import { addCommas } from 'Contants/tooler'
 import style from './style.css'
 
 const Item = List.Item
@@ -65,7 +66,7 @@ class Rechange extends Component {
           >
             <span className={style.title}>{title}</span><Brief className={style.subtitle}>{subtitle}</Brief>
           </Item>
-          <p className={style['max-money']}>该卡本次最多充值{maxMoney}元</p>
+          <p className={style['max-money']}>该卡本次最多充值{addCommas(maxMoney)}元</p>
           <InputItem
             style={{ backgroundColor: '#EEE' }}
             type='money'

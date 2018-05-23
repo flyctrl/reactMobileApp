@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import {} from 'antd-mobile'
 import * as urls from 'Contants/urls'
 import { Header, Content, NewIcon } from 'Components'
+import { addCommas } from 'Contants/tooler'
 import style from './style.css'
 
 class Invoice extends Component {
@@ -23,11 +24,10 @@ class Invoice extends Component {
         data: [
           {
             date: '2018年5月',
-            id: 1,
             list: [
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
+              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目', id: 1 },
+              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目', id: 2 },
+              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目', id: 3 },
             ]
           },
           {
@@ -69,9 +69,9 @@ class Invoice extends Component {
           <div className={style.header}>我的发票<NewIcon type='icon-calendar' className={style.date}/></div>
           {data.map((item, index) => <div key={index} className={style.item}>
             <div className={style.title}>{item.date}</div>
-            {(item.list || []).map((list, index) => <div key={index} className={style.list} onClick={() => this.props.match.history.push(urls.INVOICEDETAIL + '?id=111')}>
+            {(item.list || []).map((list, index) => <div key={index} className={style.list} onClick={() => this.props.match.history.push(urls.INVOICEDETAIL + `?id=${list.id}`)}>
               <div>发票抬头<span>{list.title}</span></div>
-              <div>开票金额<span>{list.money}</span></div>
+              <div>开票金额<span>{addCommas(list.money)}</span></div>
               <div>发票内容<span>{list.address}</span></div>
             </div>)}
           </div>)}
