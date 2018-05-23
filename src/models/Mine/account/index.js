@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { Button } from 'antd-mobile'
 import * as urls from 'Contants/urls'
 import { Header, Content } from 'Components'
+import { addCommas } from 'Contants/tooler'
 import style from './style.css'
 
 class Account extends Component {
@@ -18,8 +19,8 @@ class Account extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        moneyA: '300,000',
-        moneyB: '200,000'
+        moneyA: 300000,
+        moneyB: 200000
       })
     })
   }
@@ -42,8 +43,8 @@ class Account extends Component {
       <Content>
         <div className={style.account}>
           <div className={style.title}>账户余额（元）</div>
-          <div className={style.money}>{moneyA}</div>
-          <div className={style.tip}>冻结金额 ¥{moneyB}元</div>
+          <div className={style.money}>{addCommas(moneyA)}</div>
+          <div className={style.tip}>冻结金额 ¥{addCommas(moneyB)}元</div>
           <div className={style.btns}><Button className={style['reChange-btn']} type='primary' inline onClick={() => {
             this.props.match.history.push(urls.ACCOUNTRECHARGE)
           }}>立即充值</Button><Button className={style['withdraw-cash-btn']} inline onClick={() => {

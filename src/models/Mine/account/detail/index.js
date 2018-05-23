@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { Tabs, List } from 'antd-mobile'
 import * as urls from 'Contants/urls'
 import { Header, Content } from 'Components'
+import { addCommas } from 'Contants/tooler'
 import style from './style.css'
 
 const tabs = [
@@ -48,11 +49,11 @@ class Detail extends Component {
     const { data } = this.state
     return <List>{data[key] && data[key].map((item, index) => <Item multipleLine extra={<span><span
       className={style.money}>{item.money}</span><Brief><span
-      className={style['all-money']}>{item.allMoney}</span></Brief></span>}><span className={style.status}>{tabs[item.status].title}</span><span className={style.address}>{item.address}</span><Brief><span className={style.date}>{item.date}</span></Brief></Item>)}</List>
+      className={style['all-money']}>{addCommas(item.allMoney)}</span></Brief></span>}><span className={style.status}>{tabs[item.status].title}</span><span className={style.address}>{item.address}</span><Brief><span className={style.date}>{item.date}</span></Brief></Item>)}</List>
   }
 
   render() {
-    return <div className={`${style.detail} contentBox`}>
+    return <div className={`${style.detail} pageBox`}>
       <Header
         title='账户详情'
         leftIcon='icon-back'

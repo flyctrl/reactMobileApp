@@ -21,6 +21,7 @@ export const ACCOUNTWITHDRAWCASH = `${BASE_URL}/Mine/Account/withdrawCash` // �
 export const ACCOUNTDETAIL = `${BASE_URL}/Mine/Account/detail` // 我的账户》账户详细
 export const INVOICE = `${BASE_URL}/Mine/Invoice` // 申请发票
 export const INVOICEDETAIL = `${BASE_URL}/Mine/Invoice/detail` // 申请发票》详细
+export const CHECK = `${BASE_URL}/Mine/Check` // 考勤管理
 
 export const LOGIN = `${BASE_URL}/Login/login`
 export const REGISTER = `${BASE_URL}/Login/register`

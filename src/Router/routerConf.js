@@ -19,6 +19,7 @@ import AccountRecharge from '../models/Mine/Account/recharge' // 我的账户》
 import AccountWithdrawCash from '../models/Mine/Account/withdrawCash' // 我的账户》提现
 import Invoice from '../models/Mine/Invoice' // 申请发票
 import InvoiceDetail from '../models/Mine/Invoice/detail' // 申请发票》详细
+import Check from '../models/Mine/Check' // 考勤管理
 
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
@@ -139,6 +140,14 @@ const routes = [
     animated: true,
     showMenu: false,
     title: '申请发票详情'
+  }, {
+    path: urls.CHECK,
+    exact: true,
+    component: Check,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '考勤管理'
   }, {
     path: urls.LOGIN,
     exact: true,

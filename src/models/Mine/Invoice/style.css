@@ -5,7 +5,6 @@
 */
 .invoice {
   background-color: #f6f7f8;
-  height: 100%;
   & .header {
     position: relative;
     color: rgba(49, 63, 72, 1);
@@ -16,6 +15,33 @@
       position: absolute;
       right: 25px;
       top: 18px;
+    }
+  }
+  & .item {
+    & .title {
+      height: 17px;
+      line-height: 17px;
+      padding: 12px 24px;
+      color: rgba(138, 150, 160, 1);
+      font-size: 12px;
+      font-family: PingFangSC-Regular;
+    }
+    & .list {
+      background-color: #ffffff;
+      padding: 5px 0 5px 24px;
+      margin-bottom: 24px;
+      & >div {
+        padding: 5px 0;
+        height: 20px;
+        line-height: 20px;
+        color: rgba(138, 150, 160, 1);
+        font-size: 14px;
+        font-family: PingFangSC-Regular;
+        & >span {
+          margin-left: 24px;
+          color: rgba(49, 63, 72, 1);
+        }
+      }
     }
   }
 }
