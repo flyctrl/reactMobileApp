@@ -14,6 +14,22 @@
   bottom: 0;
   overflow: auto;
 }
+.marginTop0 {
+  position: absolute;
+  top:  0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+.marginTop38 {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
 :global(.animated) {
   -webkit-animation-duration: 200ms;
   animation-duration: 200ms;

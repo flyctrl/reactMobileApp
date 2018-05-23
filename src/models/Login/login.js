@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-23 17:09:22
+* @Last Modified time: 2018-05-23 20:56:21
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -33,9 +33,9 @@ class Login extends Component {
     const { getFieldProps, getFieldError } = this.props.form
     return (
       <div className='pageBox'>
-        <Content>
+        <Content isHeader={false}>
           <div className={style['logobox']}><img src={logo} /><span>新建筑 新生活</span></div>
-          <div className={style['loginTitle']}>登录</div>
+          <div className={style['loginTitle']}>登 录</div>
           <form className={style['loginForm']}>
             <InputItem
               {...getFieldProps('phone', {
@@ -44,7 +44,6 @@ class Login extends Component {
                 ],
               })}
               clear
-              type='number'
               placeholder='用户名 / 手机号'
               error={!!getFieldError('phone')}
               onErrorClick={() => {

@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-23 17:03:34
+* @Last Modified time: 2018-05-23 17:21:35
 */
 import * as urls from 'Contants/urls'
 import Home from '../models/Home'
@@ -161,7 +161,7 @@ const routes = [
     exact: true,
     component: Register,
     parent: null,
-    animated: true,
+    animated: false,
     showMenu: false,
     title: '注册'
   }, {
@@ -169,7 +169,7 @@ const routes = [
     exact: true,
     component: ForgetPwd,
     parent: null,
-    animated: true,
+    animated: false,
     showMenu: false,
     title: '忘记密码'
   }, {

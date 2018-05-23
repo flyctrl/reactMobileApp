@@ -10,8 +10,11 @@ class Content extends Component {
     this.state = {
       path: '',
       isMenuPage: true,
-      animated: false
+      animated: false,
     }
+  }
+  static defaultProps = {
+    isHeader: true
   }
 
   componentWillMount() {
@@ -24,6 +27,9 @@ class Content extends Component {
       path: rtObj['path']
     })
   }
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+  }
   getRouteByPath(pathname = history.location.pathname) {
     let routeObj = null
     routes.map((route, index) => {
@@ -34,19 +40,34 @@ class Content extends Component {
     return routeObj
   }
   render() {
+    let normalClass = ''
     let animateClass = ''
     console.log('content:', this.state)
-    if (this.state.isMenuPage) { // 不是单页 有菜单
+    if (this.props.isHeader) { // 有头部
+      if (isIphoneX) {
+        normalClass = style['marginTop83']
+      } else {
+        normalClass = style['marginTop45']
+      }
+    } else { // 无头部
+      if (isIphoneX) {
+        normalClass = style['marginTop38']
+      } else {
+        normalClass = style['marginTop0']
+      }
+    }
+
+    if (this.state.isMenuPage && this.state.animated) { // 不是单页 有菜单
       if (this.state.path === '/PushOrder') {
         animateClass = style['bounceInUp']
-      } else if (this.state.animated) {
+      } else {
         animateClass = style['bounceInRight']
       }
-    } else {
+    } else if (!this.state.isMenuPage && this.state.animated) { // 单页
       animateClass = style['bounceInRight']
     }
     return (
-      <div className={`${isIphoneX ? style.marginTop83 : style.marginTop45} animated ${animateClass}`}>
+      <div className={`${normalClass} animated ${animateClass}`}>
         {this.props.children}
       </div>
     )
