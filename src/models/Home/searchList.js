@@ -2,11 +2,14 @@
 * @Author: chengbs
 * @Date:   2018-05-24 15:09:23
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 16:38:34
+* @Last Modified time: 2018-05-24 19:00:23
 */
 import React, { Component } from 'react'
-import { Tag, Toast } from 'antd-mobile'
+// import { Tag } from 'antd-mobile'
 import { Header, Content } from 'Components'
+import history from 'Util/history'
+import * as urls from 'Contants/urls'
+import * as tooler from 'Contants/tooler'
 import style from './style.css'
 
 class SearchList extends Component {
@@ -14,14 +17,21 @@ class SearchList extends Component {
     super(props)
     this.state = {
     }
-    this.onSearch = this.onSearch.bind(this)
+    // this.onClickTag = this.onClickTag.bind(this)
   }
-  onSearch(str) {
-    Toast.fail(str, 1000)
+  onSearchSubmit(str) {
+    let testJson = { name: str }
+    history.push(urls.HOME + '?' + tooler.parseJsonUrl(testJson))
+  }
+  onSearchCancel() {
+    history.push(urls.HOME, { logId: 200 })
+  }
+  onClickTag(val) {
+    console.log(val)
+    let testJson = { name: val }
+    history.push(urls.HOME + '?' + tooler.parseJsonUrl(testJson))
   }
   componentDidMount() {
-    console.log(this.props)
-    console.log(history)
   }
   render() {
     return (
@@ -30,13 +40,16 @@ class SearchList extends Component {
           className={style['search-list-header']}
           autoFocusInst={true}
           searchTitle='搜索工种/公司名称'
-          onSearch={this.onSearch}
+          onSearchSubmit={this.onSearchSubmit}
+          onSearchCancel={this.onSearchCancel}
         />
         <Content>
           <p className={style['search-bd-title']}>热门搜索</p>
-          <div className={style['search-bd-tags']}>
-            <Tag data-seed='logId'>木工</Tag>
-          </div>
+          <ul className={style['search-bd-tags']}>
+            <li onClick={this.onClickTag.bind(this, '木工')}>木工</li>
+            <li onClick={this.onClickTag.bind(this, '木wew问问我若e工')}>木wew问问我若e工</li>
+            <li onClick={this.onClickTag.bind(this, '喂喂喂潍坊人')}>喂喂喂潍坊人</li>
+          </ul>
         </Content>
       </div>
     )

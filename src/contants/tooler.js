@@ -2,53 +2,10 @@
 * @Author: chengbaosheng
 * @Date:   2017-09-05 18:52:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-03-20 14:29:04
+* @Last Modified time: 2018-05-24 18:40:37
 */
-export const getScopeOption = (text, ScopeOptions) => {
-  if (typeof text === 'undefined' || text === null) {
-    return
-  }
-  let textAry = []
-  let result = ''
-  if (text.indexOf(',') > 0) {
-    textAry = text.split(',')
-  } else {
-    textAry.push(text)
-  }
-  ScopeOptions.forEach((value, index, arry) => {
-    for (let i = 0; i < textAry.length; i++) {
-      if (value['value'] === textAry[i]) {
-        result += value['label'] + '，'
-      }
-    }
-  })
-  return result.substring(0, result.length - 1)
-}
 
-export const setDisabledScope = (aryStr, ScopeOptions) => {
-  let ary = []
-  let resultAry = []
-  if (aryStr.indexOf(',') > 0) {
-    ary = aryStr.split(',')
-  } else {
-    ary.push(aryStr)
-  }
-  for (let i = 0; i < ScopeOptions.length; i++) {
-    let bool = false
-    for (let j = 0; j < ary.length; j++) {
-      if (ScopeOptions[i].value === ary[j]) {
-        resultAry.push({ ...ScopeOptions[i], ...{ disabled: false, checked: false }})
-        bool = true
-      }
-    }
-    if (!bool) {
-      resultAry.push({ ...ScopeOptions[i], ...{ disabled: true, checked: false }})
-    }
-  }
-  return resultAry
-}
-
-export const returnFloat = (number) => {
+export const returnFloat = (number) => { // 金额加小数点，保留2位
   if (number === 'undefined' || number === 'null' || number === '' || typeof number === 'undefined') {
     return ''
   }
@@ -66,13 +23,47 @@ export const returnFloat = (number) => {
   }
 }
 
-export const getQueryString = (name) => {
+export const getQueryString = (name) => { // url转json
   let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
   let r = window.location.search.substr(1).match(reg)
   if (r !== null) {
     return r[2]
   }
   return null
+}
+
+export const parseJsonUrl = (ojson) => { // json对象转URL
+  let s = ''
+  let name = null
+  let key = null
+  for (var p in ojson) {
+    if (!ojson[p]) { return null }
+    if (ojson.hasOwnProperty(p)) { name = p }
+    key = ojson[p]
+    s += '&' + name + '=' + encodeURIComponent(key)
+  }
+  return s.substring(1, s.length)
+}
+
+export const parseURLParam = (url) => { // 把url的参数部分转化成json对象
+  try {
+    let targeturl = url || window.location.href
+    const regUrl = /^[^\?]+\?([\w\W]+)$/
+    const regPara = /([^&=]+)=([\w\W]*?)(&|$|#)/g
+    let arrUrl = regUrl.exec(targeturl)
+    let ret = {}
+    if (arrUrl && arrUrl[1]) {
+      let strPara = arrUrl[1]
+      let result
+      while ((result = regPara.exec(strPara)) != null) {
+        ret[result[1]] = result[2]
+      }
+    }
+    return ret
+  } catch (e) {
+    this.printErrorLog(e)
+    return {}
+  }
 }
 
 /*

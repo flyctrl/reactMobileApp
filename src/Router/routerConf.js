@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 15:13:54
+* @Last Modified time: 2018-05-24 19:11:53
 */
 import * as urls from 'Contants/urls'
 import Home from '../models/Home'
@@ -27,6 +27,7 @@ import ForgetPwd from '../models/Login/forgetPwd' // 忘记密码
 import ResetPwd from '../models/Login/resetPwd' // 重置密码
 
 import SearchList from '../models/Home/searchList' // 搜索页
+import Selection from '../models/Home/selection' // 筛选页
 
 import TaskList from '../models/PushOrder/taskList'
 
@@ -200,6 +201,14 @@ const routes = [
     showMenu: false,
     animated: false,
     title: '搜索'
+  }, {
+    path: urls.SELECTION,
+    exact: true,
+    component: Selection,
+    parent: null,
+    showMenu: false,
+    animated: false,
+    title: '筛选'
   }
 ]
 

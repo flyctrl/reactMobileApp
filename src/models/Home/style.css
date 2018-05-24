@@ -2,8 +2,12 @@
 * @Author: chengbs
 * @Date:   2018-05-16 17:57:28
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 15:44:23
+* @Last Modified time: 2018-05-24 19:21:35
 */
+
+.usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
+  font-size: 12px;
+}
 
 .header.home-header {
   background-color: rgba(0, 0, 0);
@@ -17,7 +21,8 @@
     flex: 0;
   }
   & :global(.search) {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
   }
 }
 
@@ -31,13 +36,15 @@
 
 .search-bd-tags {
   padding: 0 10px;
-  & :global(.am-tag-normal) {
+  overflow: hidden;
+  & li {
+    float: left;
+    margin-right: 10px;
+    padding: 6px 18px;
     background: rgba(248, 248, 248, .8);
     color: rgba(4, 103, 224, 1);
     font-size: 12px;
     border-color: rgba(248, 248, 248, .8);
-    &:before {
-      border-color: rgba(248, 248, 248, .8);
-    }
+    border-radius: 5px;
   }
 }

@@ -5,9 +5,11 @@
 * @Last Modified time= 2018-05-16 14=40=01
 */
 import React, { Component } from 'react'
+// import { Toast } from 'antd-mobile'
 import { Header, Content } from 'Components'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
+import * as tooler from 'Contants/tooler'
 import style from './style.css'
 
 class Home extends Component {
@@ -18,7 +20,16 @@ class Home extends Component {
     }
   }
   searchOnFocus() {
-    history.push(urls.SEARCHLIST, { logId: 100 })
+    history.push(urls.SEARCHLIST)
+  }
+
+  rightClick() {
+    history.push(urls.SELECTION)
+  }
+
+  componentDidMount() {
+    console.log(decodeURI(tooler.parseURLParam()['name']))
+    // Toast.info(history.state.state.logId, 100)
   }
 
   render() {
@@ -32,6 +43,7 @@ class Home extends Component {
         leftIcon='icon-location'
         leftTitle1={city}
         rightTitle='筛选'
+        rightClick={this.rightClick}
       />
       <Content>
         找工作

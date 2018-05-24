@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:21:55
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 15:15:38
+* @Last Modified time: 2018-05-24 19:12:40
 */
 const BASE_URL = ``
 
@@ -29,3 +29,4 @@ export const FORGETPWD = `${BASE_URL}/Login/forgetPwd` // 忘记密码
 export const RESETPWD = `${BASE_URL}/Login/resetPwd` // 重置密码
 
 export const SEARCHLIST = `${BASE_URL}/Home/searchList` // 搜索页
+export const SELECTION = `${BASE_URL}/Home/selection` // 筛选页
