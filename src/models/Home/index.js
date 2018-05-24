@@ -20,7 +20,9 @@ class Home extends Component {
     const { city } = this.state
     return <div className={style['usr-home-content']}>
       <Header
+        className={style['home-header']}
         searchTitle='搜索工种/公司名称'
+        cancelText={' '}
         leftIcon='icon-location'
         leftTitle1={city}
         rightTitle='筛选'

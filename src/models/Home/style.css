@@ -2,8 +2,42 @@
 * @Author: chengbs
 * @Date:   2018-05-16 17:57:28
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 18:34:31
+* @Last Modified time: 2018-05-24 15:44:23
 */
-.usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
+
+.header.home-header {
+  background-color: rgba(0, 0, 0);
+}
+
+.search-list-header {
+  & :global(.am-navbar-left) {
+    flex: 0;
+  }
+  & :global(.am-navbar-right) {
+    flex: 0;
+  }
+  & :global(.search) {
+    width: 100%;
+  }
+}
+
+.search-bd-title {
+  height: 32px;
+  line-height: 32px;
+  color: rgba(49, 63, 72, .8);
   font-size: 12px;
+  text-indent: 14px;
+}
+
+.search-bd-tags {
+  padding: 0 10px;
+  & :global(.am-tag-normal) {
+    background: rgba(248, 248, 248, .8);
+    color: rgba(4, 103, 224, 1);
+    font-size: 12px;
+    border-color: rgba(248, 248, 248, .8);
+    &:before {
+      border-color: rgba(248, 248, 248, .8);
+    }
+  }
 }

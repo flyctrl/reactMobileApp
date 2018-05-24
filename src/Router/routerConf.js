@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 14:23:14
+* @Last Modified time: 2018-05-24 15:13:54
 */
 import * as urls from 'Contants/urls'
 import Home from '../models/Home'
@@ -21,10 +21,12 @@ import Invoice from '../models/Mine/Invoice' // 申请发票
 import InvoiceDetail from '../models/Mine/Invoice/detail' // 申请发票》详细
 import Check from '../models/Mine/Check' // 考勤管理
 
-import Login from '../models/Login/login'
-import Register from '../models/Login/register'
-import ForgetPwd from '../models/Login/forgetPwd'
-import ResetPwd from '../models/Login/resetPwd'
+import Login from '../models/Login/login' // 登录
+import Register from '../models/Login/register' // 注册
+import ForgetPwd from '../models/Login/forgetPwd' // 忘记密码
+import ResetPwd from '../models/Login/resetPwd' // 重置密码
+
+import SearchList from '../models/Home/searchList' // 搜索页
 
 import TaskList from '../models/PushOrder/taskList'
 
@@ -190,6 +192,14 @@ const routes = [
     animated: true,
     showMenu: true,
     title: '任务列表'
+  }, {
+    path: urls.SEARCHLIST,
+    exact: true,
+    component: SearchList,
+    parent: null,
+    showMenu: false,
+    animated: false,
+    title: '搜索'
   }
 ]
 
