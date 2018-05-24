@@ -11,7 +11,9 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  height: 45px;
+  & .nav-bar {
+    height: 45px;
+  }
   & :global(.am-navbar.am-navbar-light) {
     background-color: transparent;
   }
