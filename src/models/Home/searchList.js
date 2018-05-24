@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-24 15:09:23
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 15:51:33
+* @Last Modified time: 2018-05-24 16:38:34
 */
 import React, { Component } from 'react'
 import { Tag, Toast } from 'antd-mobile'
@@ -18,6 +18,10 @@ class SearchList extends Component {
   }
   onSearch(str) {
     Toast.fail(str, 1000)
+  }
+  componentDidMount() {
+    console.log(this.props)
+    console.log(history)
   }
   render() {
     return (

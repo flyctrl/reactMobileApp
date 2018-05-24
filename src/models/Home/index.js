@@ -6,6 +6,8 @@
 */
 import React, { Component } from 'react'
 import { Header, Content } from 'Components'
+import history from 'Util/history'
+import * as urls from 'Contants/urls'
 import style from './style.css'
 
 class Home extends Component {
@@ -15,6 +17,9 @@ class Home extends Component {
       city: '杭州'
     }
   }
+  searchOnFocus() {
+    history.push(urls.SEARCHLIST, { logId: 100 })
+  }
 
   render() {
     const { city } = this.state
@@ -23,6 +28,7 @@ class Home extends Component {
         className={style['home-header']}
         searchTitle='搜索工种/公司名称'
         cancelText={' '}
+        onSearchFocus={this.searchOnFocus}
         leftIcon='icon-location'
         leftTitle1={city}
         rightTitle='筛选'
