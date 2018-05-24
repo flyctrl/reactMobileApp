@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-23 17:21:35
+* @Last Modified time: 2018-05-24 14:23:14
 */
 import * as urls from 'Contants/urls'
 import Home from '../models/Home'
@@ -24,6 +24,8 @@ import Check from '../models/Mine/Check' // 考勤管理
 import Login from '../models/Login/login'
 import Register from '../models/Login/register'
 import ForgetPwd from '../models/Login/forgetPwd'
+import ResetPwd from '../models/Login/resetPwd'
+
 import TaskList from '../models/PushOrder/taskList'
 
 const routes = [
@@ -172,6 +174,14 @@ const routes = [
     animated: false,
     showMenu: false,
     title: '忘记密码'
+  }, {
+    path: urls.RESETPWD,
+    exact: true,
+    component: ResetPwd,
+    parent: null,
+    animated: false,
+    showMenu: false,
+    title: '重置密码'
   }, {
     path: urls.TASKLIST,
     exact: true,

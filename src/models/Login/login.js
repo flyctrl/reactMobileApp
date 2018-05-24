@@ -2,11 +2,11 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 10:14:29
+* @Last Modified time: 2018-05-24 14:10:56
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { InputItem, Button, Toast } from 'antd-mobile'
+import { InputItem, Button, Toast, List } from 'antd-mobile'
 import { Content } from 'Components'
 import { createForm } from 'rc-form'
 import style from './style.css'
@@ -22,11 +22,18 @@ class Login extends Component {
     }
   }
   onSubmit = () => { // 表单提交
-    this.props.form.validateFields({ force: true }, (error) => {
+    const { getFieldError } = this.props.form
+    let validateAry = ['phone', 'password']
+    this.props.form.validateFields((error) => {
       if (!error) {
         console.log(this.props.form.getFieldsValue())
       } else {
-        console.log(error)
+        for (let value of validateAry) {
+          if (error[value]) {
+            Toast.fail(getFieldError(value), 1)
+            return
+          }
+        }
       }
     })
   }
@@ -39,35 +46,41 @@ class Login extends Component {
           <div className={style['logobox']}><img src={logo} /><span>新建筑 新生活</span></div>
           <div className={style['loginTitle']}>登 录</div>
           <form className={style['loginForm']}>
-            <InputItem
-              {...getFieldProps('phone', {
-                rules: [
-                  { required: true, message: '请输入您的用户名/手机号码' }
-                ],
-              })}
-              clear
-              placeholder='用户名 / 手机号'
-              error={console.log(getFieldError('phone'))}
-              onErrorClick={() => {
-                Toast.fail(getFieldError('phone'), 1)
-              }}
-              prefixListCls='login'
-            ></InputItem>
-            <InputItem
-              {...getFieldProps('password', {
-                rules: [
-                  { required: true, message: '请输入密码' },
-                ],
-              })}
-              clear
-              type='password'
-              placeholder='密码'
-              prefixListCls='login'
-              error={!!getFieldError('password')}
-              onErrorClick={() => {
-                Toast.fail(getFieldError('password'), 1)
-              }}
-            ></InputItem>
+            <List>
+              <InputItem
+                {...getFieldProps('phone', {
+                  rules: [
+                    { required: true, message: '请输入您的用户名/手机号码' },
+                    { pattern: /^(1[358479]\d{9})$/, message: '请输入正确格式的手机号码' }
+                  ],
+                })}
+                clear
+                placeholder='用户名 / 手机号'
+                prefixListCls='login'
+                error={!!getFieldError('phone')}
+                onErrorClick={() => {
+                  Toast.fail(getFieldError('phone'), 1)
+                }}
+              ></InputItem>
+            </List>
+            <List>
+              <InputItem
+                {...getFieldProps('password', {
+                  rules: [
+                    { required: true, message: '请输入密码' },
+                    { pattern: /^.{6,20}$/, message: '格式错误，密码长度6~20位字符' }
+                  ],
+                })}
+                clear
+                type='password'
+                placeholder='密码'
+                prefixListCls='login'
+                error={!!getFieldError('password')}
+                onErrorClick={() => {
+                  Toast.fail(getFieldError('password'), 1)
+                }}
+              ></InputItem>
+            </List>
             <div className={style['forgetPwd']}>
               <Link to={ urls.FORGETPWD } className={style['forgetPwdBtn']}>忘记密码?</Link>
             </div>

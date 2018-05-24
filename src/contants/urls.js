@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:21:55
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-16 15:30:00
+* @Last Modified time: 2018-05-24 14:23:49
 */
 const BASE_URL = ``
 
@@ -26,3 +26,4 @@ export const CHECK = `${BASE_URL}/Mine/Check` // 考勤管理
 export const LOGIN = `${BASE_URL}/Login/login`
 export const REGISTER = `${BASE_URL}/Login/register`
 export const FORGETPWD = `${BASE_URL}/Login/forgetPwd`
+export const RESETPWD = `${BASE_URL}/Login/resetPwd`
