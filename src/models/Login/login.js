@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-23 20:56:21
+* @Last Modified time: 2018-05-24 10:14:29
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -25,6 +25,8 @@ class Login extends Component {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         console.log(this.props.form.getFieldsValue())
+      } else {
+        console.log(error)
       }
     })
   }
@@ -45,7 +47,7 @@ class Login extends Component {
               })}
               clear
               placeholder='用户名 / 手机号'
-              error={!!getFieldError('phone')}
+              error={console.log(getFieldError('phone'))}
               onErrorClick={() => {
                 Toast.fail(getFieldError('phone'), 1)
               }}
@@ -69,7 +71,7 @@ class Login extends Component {
             <div className={style['forgetPwd']}>
               <Link to={ urls.FORGETPWD } className={style['forgetPwdBtn']}>忘记密码?</Link>
             </div>
-            <Button type='primary' className={style['submitBtn']} onClick={this.onSubmit}>登  录</Button>
+            <Button type='primary' className={style['submitBtn']} activeClassName={style['activeSubmitBtn']} onClick={this.onSubmit}>登  录</Button>
             <div className={style['register']}>
               <Link to={ urls.REGISTER } className={style['registeBtn']}>没有帐号？立即去注册</Link>
             </div>

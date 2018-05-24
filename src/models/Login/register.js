@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:27:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-23 20:56:31
+* @Last Modified time: 2018-05-24 00:21:39
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -63,7 +63,8 @@ class Register extends Component {
             <InputItem
               {...getFieldProps('phone', {
                 rules: [
-                  { required: true, message: '请输入您的手机号/用户名' }
+                  { required: true, message: '请输入您的手机号/用户名' },
+                  { pattern: /^(1[358479]\d{9})$/, message: '请输入正确格式的手机号码' }
                 ],
               })}
               clear
@@ -92,7 +93,7 @@ class Register extends Component {
               </InputItem>
               <Button className={ style['codebtn'] } style={{ position: 'absolute' }} disabled={this.state.codeDisabled} type='ghost' size='small' onClick={this.getCode.bind(this)}>
                 {
-                  this.state.codeDisabled ? <Timer onOver={this.handleOver.bind(this)} /> : this.state.codeText
+                  this.state.codeDisabled ? <Timer className={style['timer']} onOver={this.handleOver.bind(this)} /> : this.state.codeText
                 }
               </Button>
             </div>
@@ -126,7 +127,7 @@ class Register extends Component {
                 Toast.fail(getFieldError('confirmPassword'), 1)
               }}
             ></InputItem>
-            <Button type='primary' className={ style['submitBtn'] } onClick={this.onSubmit}>确 定</Button>
+            <Button type='primary' className={ style['submitBtn'] } activeClassName={style['activeSubmitBtn']} onClick={this.onSubmit}>确 定</Button>
             <div className={style['register']}>
               <Link to={ urls.LOGIN } className={style['loginBtn']}>已有帐号？去登录</Link>
             </div>

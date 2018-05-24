@@ -5,7 +5,6 @@
 [eslint规则](http://git.jc/app-h5/docs/blob/master/frontend/.eslintrc.js)
 [stylelint规则](http://git.jc/app-h5/docs/blob/master/frontend/.stylelintrc)
 - [postcss-pxtorem](https://www.npmjs.com/package/postcss-pxtorem) pxtorem 自定义样式（不包括内联样式）和组件样式的px转化成rem
-- [react-addons-css-transition-group](https://www.npmjs.com/package/react-addons-css-transition-group) 主要是实现APP内的动画效果，动画css需自定义开发
 - [Ant Design Mobile of React](https://mobile.ant.design/) Ant Design Mobile 的 React 实现WebApp开发
 - [Icon 编辑工具](http://www.iconfont.cn/) 阿里的矢量图标管理，将图标上传到Iconfont平台，可以自定义下载多种格式的icon，平台也可将图标转换为字体，便于前端自由调整与调用，而本项目是使用的Symbol模式。
 
@@ -17,6 +16,8 @@
 3、所有的样式不建议写内联样式，尤其是涉及到px的样式属性
 
 4、border的1px可以写成1Px，这样就不会被转化成rem了
+
+5、兼容各个主流机型，已适配iPhoneX
 
 ## 路由
 
@@ -199,7 +200,7 @@ title: 菜单名称
 ## 页面模块配置说明
 1、如果需要Header直接引入import { Header, Content } from 'Components' 里面的Header既可
 
-2、每个页面都必须包括Content组件，子组件的所有布局都需要写在里面
+2、每个页面都必须包括Content组件，子组件的所有布局都需要写在里面，如果没有头部，则需要在Content组件上配置，如: ```<Content isHeader={false}></Content>```,有头部可以不配置
 
 3、页面最外层的div需要设置固定class，分别是：contentBox（有菜单情况下使用） 或 pageBox（单页面无菜单情况使用，比如登录注册页）
 Example：

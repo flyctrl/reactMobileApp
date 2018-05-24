@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-10 13:47:08
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-04-10 14:45:58
+* @Last Modified time: 2018-05-23 23:26:50
 */
 import React, { Component } from 'react'
 
@@ -34,7 +34,7 @@ class Timer extends Component {
   }
   render() {
     return (
-      <div>{
+      <div className={this.props.className}>{
         this.state.total < 1 ? '0秒' : this.state.total + '秒'
       }</div>
     )
