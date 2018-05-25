@@ -19,16 +19,12 @@ class Content extends Component {
 
   componentWillMount() {
     const rtObj = this.getRouteByPath()
-    console.log(rtObj)
     this.setState({
       isMenuPage: rtObj['showMenu'],
       animated: rtObj['animated'],
       title: rtObj['title'],
       path: rtObj['path']
     })
-  }
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
   }
   getRouteByPath(pathname = history.location.pathname) {
     let routeObj = null
@@ -42,7 +38,6 @@ class Content extends Component {
   render() {
     let normalClass = ''
     let animateClass = ''
-    console.log('content:', this.state)
     if (this.props.isHeader) { // 有头部
       if (isIphoneX) {
         normalClass = style['marginTop83']

@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:24:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-23 17:05:06
+* @Last Modified time: 2018-05-24 21:19:08
 */
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
@@ -22,6 +22,7 @@ class MainLayout extends Component {
     this.showMenu = this.showMenu.bind(this)
   }
   componentWillReceiveProps(nextProps) {
+    console.log('layout:', nextProps.location.pathname)
     const propObj = this.getRouteByPath(nextProps.location.pathname)
     this.setState({
       title: propObj['title'],
@@ -92,7 +93,6 @@ class MainLayout extends Component {
     history.goBack()
   }
   getRouteByPath(pathname = history.location.pathname) {
-    console.log(this.props)
     const { routes } = this.props
     let routeObj = null
     routes.map((route, index) => {

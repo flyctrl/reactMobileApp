@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-16 17:57:28
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 19:21:35
+* @Last Modified time: 2018-05-25 16:05:56
 */
 
 .usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
@@ -48,3 +48,23 @@
     border-radius: 5px;
   }
 }
+
+.job-list-box {
+  height: 120px;
+  padding: 15px 18px 15px 24px;
+  /*background: red;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
