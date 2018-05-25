@@ -226,6 +226,16 @@ class TobeDone extends Component {
   }
 }
 ```
+## 1px移动端细线解决方案
+添加对应class
+```javascript
+.my-left-border // 左边细线
+.my-right-border // 右边细线
+.my-top-border // 头部细线
+.my-bottom-border // 底部细线
+.my-full-border // 全部细线
+
+```
 
 ## 数据请求
 ### 说明
