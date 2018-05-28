@@ -7,6 +7,8 @@
 - [postcss-pxtorem](https://www.npmjs.com/package/postcss-pxtorem) pxtorem 自定义样式（不包括内联样式）和组件样式的px转化成rem
 - [Ant Design Mobile of React](https://mobile.ant.design/) Ant Design Mobile 的 React 实现WebApp开发
 - [Icon 编辑工具](http://www.iconfont.cn/) 阿里的矢量图标管理，将图标上传到Iconfont平台，可以自定义下载多种格式的icon，平台也可将图标转换为字体，便于前端自由调整与调用，而本项目是使用的Symbol模式。
+- [rc-upload 上传文件模块](https://github.com/react-component/upload) 将信息（网页、文字、图片、视频等）通过网页或者上传工具发布到远程服务器上的过程。
+当需要上传一个或一些文件时;当需要展现上传的进度时;图片上传可采用antd-Mobile自带的图片上传模块；
 
 ## 布局
 1、设计稿标准尺寸：750*1334
