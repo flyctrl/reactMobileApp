@@ -55,6 +55,7 @@
     "upload": "scp -r build/* root@119.29.199.244:/home/webservice/wwwroot/yaqueApp-wugong/public"
   },
   "devDependencies": {
+    "antd-mobile-demo-data": "^0.2.0",
     "babel-plugin-import": "^1.6.7",
     "eslint": "^4.10.0",
     "g": "^2.0.1",
@@ -62,6 +63,7 @@
     "postcss-loader": "^2.0.8",
     "postcss-pxtorem": "^4.0.1",
     "rc-form": "^2.2.0",
+    "rc-upload": "^2.4.4",
     "react-hot-loader": "next"
   },
   "jest": {

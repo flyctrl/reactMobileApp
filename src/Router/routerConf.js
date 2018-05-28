@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 19:11:53
+* @Last Modified time: 2018-05-28 16:12:22
 */
 import * as urls from 'Contants/urls'
 import Home from '../models/Home'
@@ -62,8 +62,8 @@ const routes = [
     exact: true,
     component: PushOrder,
     parent: null,
-    showMenu: true,
-    animated: true,
+    showMenu: false,
+    animated: false,
     title: '发布工单'
   }, {
     path: urls.MESSAGE,

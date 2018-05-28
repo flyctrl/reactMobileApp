@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import { ListView, PullToRefresh } from 'antd-mobile'
 import { Header, Content } from 'Components'
+import NewIcon from 'Components/NewIcon'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
 import * as tooler from 'Contants/tooler'
@@ -135,8 +136,16 @@ class Home extends Component {
             <span className={`${style['title']} ellipsis`}>我需要我需要我需要我需啊要我需要装修工人（木工）</span>
             <div className={style['job-tag']}><em>木的工</em><em>土方</em><em>墙</em></div>
           </div>
-          <div className={style['job-list-bd']} style={{ overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', webkitLineClamp: '2', webkitBoxOrient: 'vertical' }}>
+          <div className={style['job-list-bd']} style={{ overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', WebkitLineClamp: '2', WebkitBoxOrient: 'vertical' }}>
             上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。不拖欠工资，包住宿，有老师傅不拖欠工资，包住宿，有老师傅
+          </div>
+          <div className={style['job-list-price']}>
+            招标：<em>200元/日</em>（预计收入:15,000元 - 20,000元）
+          </div>
+          <div className={style['job-list-address']}>
+            <NewIcon type='icon-address' className={style['icon-address']} />
+            <span>江西建工建设有限公司</span>
+            <em>03/28 17:54</em>
           </div>
         </div>
       )
@@ -159,12 +168,12 @@ class Home extends Component {
             <ListView
               ref={(el) => { this.lv = el }}
               dataSource={this.state.dataSource}
-              renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+              renderFooter={() => (<div className={style['list-loading']}>
                 {this.state.isLoading ? '加载中...' : '加载完成'}
               </div>)}
               renderRow={row}
               style={{
-                height: this.state.height,
+                height: this.state.height - 50,
                 overflow: 'auto',
               }}
               pageSize={5}
@@ -172,6 +181,7 @@ class Home extends Component {
               pullToRefresh={<PullToRefresh
                 refreshing={this.state.refreshing}
                 onRefresh={this.onRefresh}
+                distanceToRefresh={window.devicePixelRatio * 25}
               />}
               scrollRenderAheadDistance={500}
               onEndReached={this.onEndReached}

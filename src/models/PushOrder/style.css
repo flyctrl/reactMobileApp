@@ -2,75 +2,55 @@
 * @Author: chengbs
 * @Date:   2018-04-10 15:19:22
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-15 17:24:17
+* @Last Modified time: 2018-05-28 23:29:07
 */
-.padd10 {
-  /*padding: 10px;*/
-  width: 375px;
-}
-.padd5 {
-  padding: 5px;
-}
-.paddR10 {
-  padding-right: 10px;
+.pro-radio :global(.am-radio) {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
-dl, dt, dd {
-  padding: 0;
-  margin: 0;
+.pushOrderForm {
+  width: 328px;
+  margin: 0 auto;
+  & :global(.rc-upload) {
+    display: block;
+    width: 60px;
+    height: 60px;
+  }
 }
-.subTitle {
-  color: #666;
-  font-size: 14px;
-  padding: 15px 0 10px 10px;
+
+.push-upload-icon {
+  width: 60px;
+  height: 60px;
 }
-.grid {
-  height: 170px;
-  background: #fff;
-}
-dl {
-  width: 100%;
-  background: #fff;
-}
-dl dd {
-  overflow: hidden;
-}
-dl dt {
-  height: 40px;
-  line-height: 40px;
-  text-indent: 1%;
-}
-dl dd {
-  height: 30px;
-  line-height: 30px;
-  text-indent: 1%;
-}
-em {
-  font-family: normal;
-}
-.prolist {
-  float: left;
-  width: 70%;
-}
-.auto {
-  width: auto;
-  margin-right: 10px;
-  float: left;
-}
-.during {
-  width: 30%;
-  text-align: center;
-  float: right;
-}
-dl dd a {
-  margin-right: 10px;
-}
-.dataItemImg {
-  width: 30px;
-  height: 30px;
-}
-.dataItemText {
-  color: #888;
-  font-size: 12px;
-  margin-top: 5px;
+
+.file-list {
+  width: 300px;
+  margin-top: 10px;
+  & li {
+    height: 26px;
+    margin-bottom: 5px;
+    line-height: 26px;
+    overflow: hidden;
+    & .file-list-icon {
+      float: left;
+      width: 16px;
+      height: 16px;
+      margin-top: 5px;
+    }
+    & a {
+      float: left;
+      line-height: 26px;
+      font-size: 14px;
+      margin-left: 5px;
+      color: #1890ff;
+    }
+    & i {
+      float: right;
+      font-style: normal;
+      color: #ccc;
+    }
+  }
 }
