@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-16 17:57:28
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-25 16:05:56
+* @Last Modified time: 2018-05-28 10:53:19
 */
 
 .usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
@@ -49,10 +49,91 @@
   }
 }
 
+:global(.pushadd-btn) {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background: rgba(4, 103, 224, .8);
+  z-index: 800;
+  bottom: 70px;
+  right: 10px;
+}
+:global(.pushadd-btn.feedback){
+  -webkit-transform: scale(0.86);
+  transform: scale(0.86);
+}
+
+.icon-add-20{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.icon-add-20:before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    left: 50%;
+    top: 50%;
+    margin-left: -10px;
+    margin-top: -1px;
+    background-color: #fff;
+}
+.icon-add-20:after{
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    left: 50%;
+    top: 50%;
+    margin-left: -1px;
+    margin-top: -10px;
+    background-color: #fff;
+}
+
 .job-list-box {
   height: 120px;
   padding: 15px 18px 15px 24px;
-  /*background: red;*/
+  & .job-list-tit {
+    overflow: hidden;
+    height: 22px;
+    line-height: 22px;
+    & .title {
+      float: left;
+      max-width: 186px;
+      font-size: 16px;
+      color: rgba(49, 63, 72, 1);
+    }
+    & .job-tag {
+      float: left;
+      width: 145px;
+      & em {
+        display: inline-block;
+        height: 18px;
+        line-height: 18px;
+        background: rgba(248, 248, 248, 1);
+        color: rgba(4, 103, 224, 1);
+        font-size: 10px;
+        font-style: normal;
+        padding: 0 5px;
+        margin-left: 10px;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  & .job-list-bd {
+    width: 300px;
+    height: 32px;
+    margin-top: 6px;
+    font-size: 10px;
+    color: rgba(138, 150, 160, .8);
+  }
 }
 
 

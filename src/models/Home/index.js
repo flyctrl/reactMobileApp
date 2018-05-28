@@ -6,11 +6,13 @@
 */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
 import { ListView, PullToRefresh } from 'antd-mobile'
 import { Header, Content } from 'Components'
 import history from 'Util/history'
 import * as urls from 'Contants/urls'
 import * as tooler from 'Contants/tooler'
+import TouchFeedback from 'Util/touchFeedback.js'
 import style from './style.css'
 
 const data = [
@@ -68,6 +70,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    new TouchFeedback('.pushadd-btn')
     console.log(decodeURI(tooler.parseURLParam()['name']))
     const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop
     // simulate initial Ajax
@@ -125,14 +128,15 @@ class Home extends Component {
         index = data.length - 1
       }
       const obj = data[index--]
+      console.log(obj)
       return (
-        <div key={rowID} className={style['job-list-box']}>
-          <div style={{ display: 'flex', padding: '15px' }}>
-            <img style={{ height: '63px', width: '63px', marginRight: '15px' }} src={obj.img} alt='' />
-            <div style={{ display: 'inline-block' }}>
-              <div style={{ marginBottom: '8px', color: '#000', fontSize: '16px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '250px' }}>{obj.des}-{rowData}</div>
-              <div style={{ fontSize: '16px' }}><span style={{ fontSize: '30px', color: '#FF6E27' }}>{rowID}</span> 元/任务</div>
-            </div>
+        <div key={rowID} className={`${style['job-list-box']} my-bottom-border`}>
+          <div className={style['job-list-tit']}>
+            <span className={`${style['title']} ellipsis`}>我需要我需要我需要我需啊要我需要装修工人（木工）</span>
+            <div className={style['job-tag']}><em>木的工</em><em>土方</em><em>墙</em></div>
+          </div>
+          <div className={style['job-list-bd']}>
+            上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。
           </div>
         </div>
       )
@@ -173,6 +177,9 @@ class Home extends Component {
               onEndReached={this.onEndReached}
               onEndReachedThreshold={10}
             />
+            <Link to={urls.PUSHORDER} className='pushadd-btn' data-touchfeedback={true}>
+              <span className={style['icon-add-20']}></span>
+            </Link>
           </Content>
         </div>
       </div>

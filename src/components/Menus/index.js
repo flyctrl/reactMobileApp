@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:17:47
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 21:18:11
+* @Last Modified time: 2018-05-28 10:22:02
 */
 import React, { Component } from 'react'
 // import { Route } from 'react-router-dom'
@@ -12,7 +12,7 @@ import * as urls from 'Contants/urls'
 // import './Container.css'
 import menuStyle from './style.css'
 import { isIphoneX } from 'Util/ua'
-import TouchFeedback from './touchFeedback.js'
+import TouchFeedback from 'Util/touchFeedback.js'
 
 const data = [
   {
@@ -27,12 +27,12 @@ const data = [
     icon: '#icon-backLog',
     onIcon: '#icon-backLog_pre',
     title: '待办'
-  }, {
-    path: urls.PUSHORDER,
-    key: 'PushOrder',
-    icon: '#icon-add',
-    onIcon: '#icon-add',
-    title: null
+  // }, {
+  //   path: urls.PUSHORDER,
+  //   key: 'PushOrder',
+  //   icon: '#icon-add',
+  //   onIcon: '#icon-add',
+  //   title: null
   }, {
     path: urls.MESSAGE,
     key: 'Message',
