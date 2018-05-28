@@ -20,11 +20,13 @@
   bottom: 0;
 }
 :global(.my-top-border) {
+  position: relative;
   border-top: 1PX solid #ddd;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   html:not([data-scale]) :global(.my-top-border) {
+    position: relative;
     border-top: none;
   }
   html:not([data-scale]) :global(.my-top-border:before) {
@@ -55,10 +57,12 @@
 
 :global(.my-bottom-border) {
   border-bottom: 1PX solid #ddd;
+  position: relative;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   html:not([data-scale]) :global(.my-bottom-border) {
     border-bottom: none;
+    position: relative;
   }
   html:not([data-scale]) :global(.my-bottom-border:after) {
     content: '';
@@ -87,6 +91,7 @@
 }
 
 :global(.my-full-border) {
+  position: relative;
   border: 1PX solid #ddd;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
@@ -117,10 +122,12 @@
 }
 
 :global(.my-left-border) {
+  position: relative;
   border-left: 1PX solid #ddd;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   html:not([data-scale]) :global(.my-left-border:before)  {
+    position: relative;
     border-left: none;
   }
   html:not([data-scale]) :global(.my-left-border:before) {
@@ -149,10 +156,12 @@
 }
 
 :global(.my-right-border) {
+  position: relative;
   border-left: 1PX solid #ddd;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   html:not([data-scale]) :global(.my-right-border:before)  {
+    position: relative;
     border-left: none;
   }
   html:not([data-scale]) :global(.my-right-border:before) {
