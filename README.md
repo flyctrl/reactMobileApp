@@ -236,6 +236,7 @@ class TobeDone extends Component {
 ```
 ## 1px移动端细线解决方案
 在有1px的元素上直接添加对应class，此class是全局类名（无需独立引用），如果不满足可自行扩展，注意：这个class名不需要经过webpack的编码
+
 Example：
 ```javascript
 <ul className={style['file-list']}>
@@ -248,6 +249,8 @@ Example：
   }
 </ul>
 ```
+
+**配置类名**
 ```javascript
 .my-left-border // 左边细线
 .my-right-border // 右边细线
