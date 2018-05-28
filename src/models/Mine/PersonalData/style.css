@@ -1,0 +1,133 @@
+/**
+* @Author: sunshiqiang
+* @Date: 2018-05-28 13:59:57
+* @Title:  编辑个人资料
+*/
+.personal-data-header {
+  & :global(.usr-hdleft-title-second) {
+    color: rgba(153, 153, 153, 1);
+  }
+}
+
+.personal-data {
+  & .item {
+    font-family: PingFang-SC-Medium;
+    padding: 16px 0 2px 0;
+    & .up-img {
+      display: inline-block;
+      & > div {
+        position: relative;
+        display: inline-block;
+        height: 72px;
+        width: 72px;
+        margin: 0;
+        & .img-picker {
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 0;
+          height: 72px;
+          width: 72px;
+          display: inline-block;
+          box-shadow: 0 0 1Px rgba(138, 150, 160, 0.5);
+          border-radius: 50%;
+          overflow: hidden;
+          & :global(.am-image-picker-list) {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            width: 72px;
+            height: 72px;
+            & :global(.am-flexbox) {
+              margin: 0;
+            }
+            & :global(.am-flexbox-item:not(:first-child)) {
+              display: none;
+            }
+            & :global(.am-flexbox-item:first-child) {
+              margin: 0;
+              & :global(.am-image-picker-item.am-image-picker-upload-btn) {
+                opacity: 0;
+              }
+              & :global(.am-image-picker-item-remove) {
+                left: 50%;
+                top: 50%;
+                right: auto;
+                bottom: auto;
+                margin-top: -7.5px;
+                margin-left: -7.5px;
+              }
+              & :global(.am-image-picker-item .am-image-picker-item-content) {
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+        & .icon {
+          position: absolute;
+          left: 25px;
+          top: 18px;
+          width: 24px;
+          height: 19px;
+          z-index: -1;
+        }
+        & .title {
+          position: absolute;
+          left: 7px;
+          top: 48px;
+          width: 60px;
+          text-align: center;
+          color: rgba(138, 150, 160, 0.5);
+          font-size: 10px;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  & .header {
+    display: flex;
+    & .avatar {
+      flex: 1;
+      text-align: center;
+    }
+    & .describe {
+      flex: 2;
+      padding-top: 20px;
+      & :global(.am-input-control input) {
+        left: 135px;
+        top: 95px;
+        width: 48px;
+        height: 22px;
+        line-height: 22px;
+        color: rgba(49, 63, 72, 1);
+        font-size: 16px;
+        text-align: left;
+        font-family: PingFangSC-Regular;
+      }
+    }
+  }
+  & .content {
+    & :global(.am-input-label) {
+      height: 22px;
+      width: 100px;
+      line-height: 22px;
+      color: rgba(138, 150, 160, 1);
+      font-size: 16px;
+      text-align: left;
+      font-family: PingFangSC-Regular;
+    }
+    & :global(.am-input-control input) {
+      left: 135px;
+      top: 95px;
+      width: 48px;
+      height: 22px;
+      line-height: 22px;
+      color: rgba(49, 63, 72, 1);
+      font-size: 16px;
+      text-align: left;
+      font-family: PingFangSC-Regular;
+    }
+  }
+}

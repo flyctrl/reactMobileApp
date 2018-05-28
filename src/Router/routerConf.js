@@ -11,6 +11,7 @@ import PushOrder from '../models/PushOrder'
 import TobeDone from '../models/TobeDone'
 // 我的
 import Mine from '../models/Mine'
+import PersonalData from '../models/Mine/PersonalData' // 个人资料编辑
 import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
 import Authenticate from '../models/Mine/Authenticate' // 资格认证
 import Account from '../models/Mine/Account' // 我的账户
@@ -81,6 +82,14 @@ const routes = [
     animated: false,
     showMenu: true,
     title: '我的'
+  }, {
+    path: urls.PERSONALDATA,
+    exact: true,
+    component: PersonalData,
+    parent: null,
+    animated: true,
+    showMenu: false,
+    title: '个人资料编辑'
   }, {
     path: urls.MYWORKLIST,
     exact: true,

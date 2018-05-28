@@ -13,6 +13,7 @@ export const TASKLIST = `${BASE_URL}/PushOrder/taskList`
 export const TOBEDONE = `${BASE_URL}/TobeDone`
 // 我的
 export const MINE = `${BASE_URL}/Mine`
+export const PERSONALDATA = `${BASE_URL}/Mine/PersonalData` // 个人资料编辑
 export const MYWORKLIST = `${BASE_URL}/Mine/MyWorkList` // 我的工单
 export const AUTHENTICATE = `${BASE_URL}/Mine/Authenticate` // 资格认证
 export const ACCOUNT = `${BASE_URL}/Mine/Account` // 我的账户

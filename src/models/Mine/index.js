@@ -78,7 +78,7 @@ class Mine extends Component {
                 <NewIcon type='icon-address'/>
                 <span className={style.title}>{userData.address}</span>
               </div>
-              <Button className={style.btn} type='primary' size='small' inline><NewIcon
+              <Button className={style.btn} onClick={() => this.props.match.history.push(urls.PERSONALDATA)} type='primary' size='small' inline><NewIcon
                 type='icon-edit'/> 编辑资料</Button>
             </div>
           </div>
@@ -97,9 +97,8 @@ class Mine extends Component {
             </div>
           </div>
           <List className={style.link}>
-            {linkData.map((item, index) => <Item key={index} onClick={() => {
-              this.props.match.history.push(item.link)
-            }}>
+            {linkData.map((item, index) => <Item key={index} onClick={() =>
+              this.props.match.history.push(item.link)}>
               <NewIcon type={item.icon}/>
               <span className={style.title}>{item.title}</span>
               <Icon className={style.rightIcon} type='right'/>
