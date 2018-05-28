@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-16 17:57:28
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-28 10:53:19
+* @Last Modified time: 2018-05-28 13:44:39
 */
 
 .usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
@@ -130,6 +130,7 @@
   & .job-list-bd {
     width: 300px;
     height: 32px;
+    line-height: 16px;
     margin-top: 6px;
     font-size: 10px;
     color: rgba(138, 150, 160, .8);

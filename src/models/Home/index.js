@@ -135,8 +135,8 @@ class Home extends Component {
             <span className={`${style['title']} ellipsis`}>我需要我需要我需要我需啊要我需要装修工人（木工）</span>
             <div className={style['job-tag']}><em>木的工</em><em>土方</em><em>墙</em></div>
           </div>
-          <div className={style['job-list-bd']}>
-            上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。
+          <div className={style['job-list-bd']} style={{ overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', webkitLineClamp: '2', webkitBoxOrient: 'vertical' }}>
+            上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。不拖欠工资，包住宿，有老师傅不拖欠工资，包住宿，有老师傅
           </div>
         </div>
       )
