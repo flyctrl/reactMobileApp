@@ -14,16 +14,18 @@ export const TOBEDONE = `${BASE_URL}/TobeDone`
 // 我的
 export const MINE = `${BASE_URL}/Mine`
 export const SETUP = `${MINE}/SetUp` // 我的设置
-export const SETUPSECURITY = `${MINE}/SetUp/security` // 我的设置》账户与安全
+export const SETUPSECURITY = `${SETUP}/security` // 我的设置》账户与安全
 export const PERSONALDATA = `${MINE}/PersonalData` // 个人资料编辑
 export const MYWORKLIST = `${MINE}/MyWorkList` // 我的工单
 export const AUTHENTICATE = `${MINE}/Authenticate` // 资格认证
+export const AUTHENTICATEPERSONAL = `${AUTHENTICATE}/personal` // 资格认证》个人
+export const AUTHENTICATECOMPANY = `${AUTHENTICATE}/company` // 资格认证》企业
 export const ACCOUNT = `${MINE}/Account` // 我的账户
-export const ACCOUNTRECHARGE = `${MINE}/Account/recharge` // 我的账户》充值
-export const ACCOUNTWITHDRAWCASH = `${MINE}/Account/withdrawCash` // 我的账户》提现
-export const ACCOUNTDETAIL = `${MINE}/Account/detail` // 我的账户》账户详细
+export const ACCOUNTRECHARGE = `${ACCOUNT}/recharge` // 我的账户》充值
+export const ACCOUNTWITHDRAWCASH = `${ACCOUNT}/withdrawCash` // 我的账户》提现
+export const ACCOUNTDETAIL = `${ACCOUNT}/detail` // 我的账户》账户详细
 export const INVOICE = `${MINE}/Invoice` // 申请发票
-export const INVOICEDETAIL = `${MINE}/Invoice/detail` // 申请发票》详细
+export const INVOICEDETAIL = `${INVOICE}/detail` // 申请发票》详细
 export const CHECK = `${MINE}/Check` // 考勤管理
 
 export const LOGIN = `${BASE_URL}/Login/login` // 登录
