@@ -5,9 +5,10 @@
 */
 .company {
   height: 100%;
+  position: relative;
   & .input {
+    padding-top: 10px;
     & >.title {
-      margin-top: 10px;
       padding-left: 15px;
       height: 20px;
       line-height: 20px;

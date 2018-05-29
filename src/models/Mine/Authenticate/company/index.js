@@ -58,7 +58,7 @@ class Company extends Component {
               rules: [{
                 required: true, message: '请输入企业名称',
               }]
-            })} placeholder='请输入联系电话'/></div>
+            })} placeholder='请输入企业名称'/></div>
           <div className={`${style.input} my-bottom-border`}>
             <div className={style.title}>联系人</div>
             <InputItem {...getFieldProps('person', {
@@ -79,7 +79,7 @@ class Company extends Component {
               rules: [{
                 required: true, message: '请输入执照注册号',
               }]
-            })} placeholder='请输入联系人'/></div>
+            })} placeholder='请输入执照注册号'/></div>
           <div className={`${style.input} my-bottom-border`}>
             <div className={style.title}>营业执照注册号</div>
             <div className={style['up-img']}>
