@@ -11,6 +11,9 @@ import PushOrder from '../models/PushOrder'
 import TobeDone from '../models/TobeDone'
 // 我的
 import Mine from '../models/Mine'
+import SetUp from '../models/Mine/SetUp' // 我的设置
+import SetUpSecurity from '../models/Mine/SetUp/security' // 我的设置》账户与安全
+
 import PersonalData from '../models/Mine/PersonalData' // 个人资料编辑
 import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
 import Authenticate from '../models/Mine/Authenticate' // 资格认证
@@ -82,6 +85,22 @@ const routes = [
     animated: false,
     showMenu: true,
     title: '我的'
+  }, {
+    path: urls.SETUP,
+    exact: true,
+    component: SetUp,
+    parent: null,
+    animated: true,
+    showMenu: false,
+    title: '我的设置'
+  }, {
+    path: urls.SETUPSECURITY,
+    exact: true,
+    component: SetUpSecurity,
+    parent: null,
+    animated: true,
+    showMenu: false,
+    title: '账户与安全'
   }, {
     path: urls.PERSONALDATA,
     exact: true,

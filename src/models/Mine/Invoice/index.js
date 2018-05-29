@@ -6,7 +6,7 @@
 import React, { Component } from 'react'
 import {} from 'antd-mobile'
 import * as urls from 'Contants/urls'
-import { Header, Content, NewIcon } from 'Components'
+import { Header, Content } from 'Components'
 import { addCommas } from 'Contants/tooler'
 import style from './style.css'
 
@@ -25,27 +25,27 @@ class Invoice extends Component {
           {
             date: '2018年5月',
             list: [
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目', id: 1 },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目', id: 2 },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目', id: 3 },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', id: 1, time: '5月1日-5月6日（6天）' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', id: 2, time: '5月1日-5月6日（6天）' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', id: 3, time: '5月1日-5月6日（6天）' },
             ]
           },
           {
             date: '2018年4月',
             id: 2,
             list: [
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', time: '5月1日-5月6日（6天）' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', time: '5月1日-5月6日（6天）' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', time: '5月1日-5月6日（6天）' },
             ]
           },
           {
             date: '2018年3月',
             id: 3,
             list: [
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
-              { title: '个人', money: '100000', address: '杭州市西湖区莫干山项目' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', time: '5月1日-5月6日（6天）' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', time: '5月1日-5月6日（6天）' },
+              { title: '江西景德镇一期', money: '100000', value: '上门给客户做家具安装，前期有培训，不拖欠工资，包住宿，有老师傅带，收入稳定。', time: '5月1日-5月6日（6天）' },
             ]
           }
         ]
@@ -66,13 +66,13 @@ class Invoice extends Component {
       />
       <Content>
         <div className={style.invoice}>
-          <div className={style.header}>我的发票<NewIcon type='icon-calendar' className={style.date}/></div>
+          <div className={style.header}>我的发票</div>
           {data.map((item, index) => <div key={index} className={style.item}>
             <div className={style.title}>{item.date}</div>
             {(item.list || []).map((list, index) => <div key={index} className={style.list} onClick={() => this.props.match.history.push(urls.INVOICEDETAIL + `?id=${list.id}`)}>
-              <div>发票抬头<span>{list.title}</span></div>
-              <div>开票金额<span>{addCommas(list.money)}</span></div>
-              <div>发票内容<span>{list.address}</span></div>
+              <div><div className={style.left}>项目名称</div><div className={style.right}>{list.title}</div></div>
+              <div><div className={style.left}>竣工时间</div><div className={style.right}>{list.time}</div></div>
+              <div><div className={style.left}>工作内容</div><div className={style.right}>{list.value}<div className={style.money}>¥{addCommas(list.money)}</div></div></div>
             </div>)}
           </div>)}
         </div>

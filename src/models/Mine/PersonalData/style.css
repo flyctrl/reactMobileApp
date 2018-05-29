@@ -96,9 +96,6 @@
       flex: 2;
       padding-top: 20px;
       & :global(.am-input-control input) {
-        left: 135px;
-        top: 95px;
-        width: 48px;
         height: 22px;
         line-height: 22px;
         color: rgba(49, 63, 72, 1);
@@ -119,9 +116,6 @@
       font-family: PingFangSC-Regular;
     }
     & :global(.am-input-control input) {
-      left: 135px;
-      top: 95px;
-      width: 48px;
       height: 22px;
       line-height: 22px;
       color: rgba(49, 63, 72, 1);
