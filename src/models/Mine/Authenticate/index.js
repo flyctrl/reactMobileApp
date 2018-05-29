@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { ImagePicker, Button } from 'antd-mobile'
+import { ImagePicker, Button, InputItem, Toast } from 'antd-mobile'
+import { createForm } from 'rc-form'
 import { Header, Content, NewIcon } from 'Components'
 import * as urls from 'Contants/urls'
 import style from './style.css'
@@ -30,11 +31,28 @@ class Authenticate extends Component {
   }
   handleSubmit = () => {
     const { submitParams } = this.state
-    console.log(submitParams)
+    let validateAry = ['person', 'phone']
+    // let imghAry = {'idUp', 'idDown']
+    const { validateFields, getFieldError } = this.props.form
+    validateFields((err, value) => {
+      console.log(err)
+      if (!err) {
+        console.log(submitParams)
+        console.info('success', value)
+      } else {
+        for (let value of validateAry) {
+          if (err[value]) {
+            Toast.fail(getFieldError(value), 1)
+            return
+          }
+        }
+      }
+    })
   }
 
   render() {
     const { idUp, idDown, PCLL } = this.state
+    const { getFieldProps } = this.props.form
     return <div className={`${style.Authenticate} contentBox`}>
       <Header
         title='资格认证'
@@ -45,6 +63,20 @@ class Authenticate extends Component {
         }}
       />
       <Content>
+        <div className={`${style.input} my-bottom-border`}>
+          <div className={style.title}>联系人</div>
+          <InputItem {...getFieldProps('person', {
+            rules: [{
+              required: true, message: '请输入联系人',
+            }]
+          })} placeholder='请输入联系人'/></div>
+        <div className={`${style.input} my-bottom-border`}>
+          <div className={style.title}>联系电话</div>
+          <InputItem {...getFieldProps('phone', {
+            rules: [{
+              required: true, message: '请输入联系电话',
+            }]
+          })} placeholder='请输入联系电话'/></div>
         <div className={style.item}>
           <div className={style.header}>
             <span className={style.title}>实名认证</span>
@@ -102,4 +134,4 @@ class Authenticate extends Component {
   }
 }
 
-export default Authenticate
+export default createForm()(Authenticate)

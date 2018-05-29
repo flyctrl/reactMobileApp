@@ -123,7 +123,7 @@ const routes = [
     component: Authenticate,
     parent: true,
     animated: true,
-    showMenu: true,
+    showMenu: false,
     title: '资格认证'
   }, {
     path: urls.ACCOUNT,
