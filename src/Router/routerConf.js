@@ -11,9 +11,14 @@ import PushOrder from '../models/PushOrder'
 import TobeDone from '../models/TobeDone'
 // 我的
 import Mine from '../models/Mine'
+import SetUp from '../models/Mine/SetUp' // 我的设置
+import SetUpSecurity from '../models/Mine/SetUp/security' // 我的设置》账户与安全
+
 import PersonalData from '../models/Mine/PersonalData' // 个人资料编辑
 import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
 import Authenticate from '../models/Mine/Authenticate' // 资格认证
+import AuthenticatePersonal from '../models/Mine/Authenticate/personal' // 资格认证》个人
+import AuthenticateCompany from '../models/Mine/Authenticate/company' // 资格认证》企业
 import Account from '../models/Mine/Account' // 我的账户
 import AccountDetail from '../models/Mine/Account/detail' // 我的账户》账户详情
 import AccountRecharge from '../models/Mine/Account/recharge' // 我的账户》充值
@@ -81,6 +86,22 @@ const routes = [
     showMenu: true,
     title: '我的'
   }, {
+    path: urls.SETUP,
+    exact: true,
+    component: SetUp,
+    parent: null,
+    animated: true,
+    showMenu: false,
+    title: '我的设置'
+  }, {
+    path: urls.SETUPSECURITY,
+    exact: true,
+    component: SetUpSecurity,
+    parent: null,
+    animated: true,
+    showMenu: false,
+    title: '账户与安全'
+  }, {
     path: urls.PERSONALDATA,
     exact: true,
     component: PersonalData,
@@ -102,8 +123,24 @@ const routes = [
     component: Authenticate,
     parent: true,
     animated: true,
-    showMenu: true,
+    showMenu: false,
     title: '资格认证'
+  }, {
+    path: urls.AUTHENTICATEPERSONAL,
+    exact: true,
+    component: AuthenticatePersonal,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '个人资格认证'
+  }, {
+    path: urls.AUTHENTICATECOMPANY,
+    exact: true,
+    component: AuthenticateCompany,
+    parent: true,
+    animated: true,
+    showMenu: false,
+    title: '企业资格认证'
   }, {
     path: urls.ACCOUNT,
     exact: true,

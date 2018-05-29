@@ -66,7 +66,7 @@ class Mine extends Component {
     const { userData, linkData } = this.state
     return (
       <div className='contentBox'>
-        <Header title='我的' rightIcon='icon-settings' rightClick={this.settings}/>
+        <Header title='我的' rightIcon='icon-settings' rightClick={() => this.props.match.history.push(urls.SETUP)}/>
         <Content>
           <div className={style.header}>
             <div className={style.avatar}><span className={style.loading}>{userData.avatar ? <img src={userData.avatar} alt='头像'/> : <Icon type='loading'/>}</span></div>

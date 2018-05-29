@@ -5,42 +5,38 @@
 * @Last Modified time: 2018-04-02 22:27:06
 */
 import fetch from 'Util/fetch'
-import { message } from 'antd'
-import { showSpin } from 'Models/layout'
+import { Toast } from 'antd-mobile'
 
 // 获取数据类接口
-export const Fetch = (url, params) => {
-  showSpin({ bool: true, content: '正在加载数据....' })
-  return fetch(url, params).then((res) => {
+export const Fetch = (url, params, method = 'post') => {
+  if (method === 'get') {
+    params = { params }
+  }
+  return fetch[method](url, params).then((res) => {
     if (res.code === 0) {
-      showSpin()
       return res.data
     } else {
-      showSpin()
-      message.error(res.message, 2)
+      Toast.fail(res.message, 1)
     }
   }, (err) => {
-    showSpin()
-    message.error(err.message, 2)
+    Toast.fail(err.message, 1)
   })
 }
 
 // 保存类接口
-export const FetchSave = (url, params) => {
-  showSpin({ bool: true, content: '正在加载数据....' })
-  return fetch(url, params).then((res) => {
-    console.log(res)
+export const FetchSave = (url, params, method = 'post') => {
+  if (method === 'get') {
+    params = { params }
+  }
+  return fetch[method](url, params).then((res) => {
     if (res.code === 0) {
-      showSpin()
-      message.success(res.message, 2)
+      Toast.success(res.message, 1)
       return res.data
     } else {
-      showSpin()
-      message.error(res.message, 2)
+      Toast.fail(res.message, 1)
     }
   }, (err) => {
-    showSpin()
-    message.error(err.message, 2)
+    Toast.fail(err.message, 1)
   })
 }
 

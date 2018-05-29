@@ -35,7 +35,7 @@ class PersonalData extends Component {
       }, () => {
         this.labelFocusInst.focus()
       })
-    })
+    }, 500)
   }
 
   handleAvatarChange = (avatar) => {

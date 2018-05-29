@@ -28,18 +28,34 @@
     }
     & .list {
       background-color: #ffffff;
-      padding: 5px 0 5px 24px;
+      padding: 15px 0 12px 24px;
       margin-bottom: 24px;
       & >div {
+        display: flex;
         padding: 5px 0;
-        height: 20px;
+        min-height: 20px;
         line-height: 20px;
         color: rgba(138, 150, 160, 1);
         font-size: 14px;
         font-family: PingFangSC-Regular;
-        & >span {
-          margin-left: 24px;
+        & .left {
+          width: 56px;
+        }
+        & .right {
+          padding: 0 16px 0 24px;
+          flex: 1;
+        }
+        & >div {
           color: rgba(49, 63, 72, 1);
+          & .money {
+            text-align: right;
+            padding-top: 6px;
+            height: 33px;
+            line-height: 33px;
+            color: rgba(4, 103, 224, 1);
+            font-size: 24px;
+            font-family: PingFangSC-Regular;
+          }
         }
       }
     }

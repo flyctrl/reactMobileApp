@@ -9,7 +9,6 @@ import axios from 'axios'
 import { baseUrl } from './index'
 
 let fetcher = axios.create({
-  method: 'post',
   baseURL: baseUrl,
   withCredentials: true,
   transformRequest: [function (data) {
@@ -41,4 +40,4 @@ fetcher.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
-export default fetcher.post
+export default fetcher
