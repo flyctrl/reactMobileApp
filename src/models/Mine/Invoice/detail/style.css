@@ -4,34 +4,55 @@
 * @Title: 发票详情
 */
 .detail {
-  background-color: #f6f7f8;
-  height: 100%;
-  padding-top: 18px;
   & .info {
-    background-color: #ffffff;
     padding: 5px 0 5px 24px;
-    border-bottom: 1Px solid #eee;
     & > div {
-      padding: 5px 0;
+      margin-top: 8px;
+      color: rgba(138, 150, 160, 1);
+      font-size: 14px;
+      font-family: PingFangSC-Regular;
+      & .title {
+        height: 20px;
+        line-height: 20px;
+        color: rgba(49, 63, 72, 1);
+        font-size: 14px;
+        font-family: PingFangSC-Regular;
+      }
+    }
+    & :global(.am-list-item .am-input-control input) {
       height: 20px;
       line-height: 20px;
       color: rgba(138, 150, 160, 1);
       font-size: 14px;
+      text-align: left;
       font-family: PingFangSC-Regular;
-      & > span {
-        display: inline-block;
-        width: 80px;
-        color: rgba(49, 63, 72, 1);
+    }
+    & .my-radio {
+      display: inline-block;
+      margin: 20px;
+      & >span {
+        vertical-align: middle;
+      }
+      & :global(.am-radio.am-radio-checked) {
+        background-color: #108ee9;
+        border: 1PX solid #108ee9;
+      }
+      & :global(.am-radio-inner:after) {
+        border-color: #FFF;
+      }
+      & :global(.am-radio) {
+        padding: 2.5px;
+        border: 1PX solid #ccc;
+        border-radius: 50%;
+        margin-right: 5px;
       }
     }
   }
   & .active {
-    text-align: center;
-    height: 57px;
-    line-height: 57px;
-    color: rgba(4, 103, 224, 1);
-    background-color: #ffffff;
-    font-size: 14px;
+    margin: 16px;
+    height: 47px;
+    line-height: 47px;
+    border-radius: 8px;
     font-family: PingFangSC-Regular;
   }
 }
