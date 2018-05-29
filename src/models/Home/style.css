@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-16 17:57:28
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-28 15:08:04
+* @Last Modified time: 2018-05-29 13:33:33
 */
 
 .usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
@@ -96,9 +96,6 @@
     background-color: #fff;
 }
 
-:global(html:not([data-scale]) .am-list-body:before) {
-  height: 0;
-}
 .list-loading {
   padding: 20px;
   text-align: center;

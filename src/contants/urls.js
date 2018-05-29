@@ -2,14 +2,13 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:21:55
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 19:12:40
+* @Last Modified time: 2018-05-29 17:43:14
 */
 const BASE_URL = ``
 
 export const HOME = `${BASE_URL}/Home`
 export const MESSAGE = `${BASE_URL}/Message`
-export const PUSHORDER = `${BASE_URL}/PushOrder`
-export const TASKLIST = `${BASE_URL}/PushOrder/taskList`
+export const PUSHORDER = `${BASE_URL}/PushOrder` // 发布工单
 export const TOBEDONE = `${BASE_URL}/TobeDone`
 // 我的
 export const MINE = `${BASE_URL}/Mine`
@@ -31,3 +30,4 @@ export const RESETPWD = `${BASE_URL}/Login/resetPwd` // 重置密码
 
 export const SEARCHLIST = `${BASE_URL}/Home/searchList` // 搜索页
 export const SELECTION = `${BASE_URL}/Home/selection` // 筛选页
+

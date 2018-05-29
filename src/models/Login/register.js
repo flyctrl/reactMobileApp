@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:27:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 14:29:53
+* @Last Modified time: 2018-05-29 16:03:29
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -25,9 +25,9 @@ class Register extends Component {
   onSubmit = () => { // 表单提交
     let validateAry = ['phone', 'code', 'password', 'confirmPassword']
     const { getFieldError } = this.props.form
-    this.props.form.validateFields((error) => {
+    this.props.form.validateFields((error, values) => {
       if (!error) {
-        console.log(this.props.form.getFieldsValue())
+        console.log(values)
       } else {
         for (let value of validateAry) {
           if (error[value]) {
