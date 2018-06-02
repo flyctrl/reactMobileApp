@@ -1,0 +1,148 @@
+/*
+* @Author: chengbs
+* @Date:   2018-06-01 17:30:27
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-06-02 13:31:22
+*/
+
+dl, dt, dd, h4, p {
+  margin: 0;
+  padding: 0;
+}
+
+.list-loading {
+  padding: 30px;
+  text-align: center;
+}
+
+.tobe-done {
+  & :global(.usr-hdleft-title-second) {
+    color: rgba(49, 63, 72, 1);
+  }
+  & :global(.am-navbar-title) {
+    flex: 1.1;
+    & :global(.title) {
+      width: 100%;
+    }
+  }
+  & .tobe-titile {
+    & :global(.am-list-item) {
+      padding: 0;
+      background: rgba(249, 249, 249, .87);
+      & :global(.am-list-line) {
+        padding: 0;
+        & :global(.am-list-extra) {
+          flex-basis:70%;
+          color: rgba(49, 63, 72, 1);
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+.tobe-list {
+  padding: 0 15px;
+  background-color: #fff;
+  & .tobe-list-title {
+    height: 36px;
+    line-height: 36px;
+    color: #888;
+    font-size: 14px;
+  }
+  & .tobe-list-body {
+    padding: 0 0 5px 10px;
+    & dl {
+      height: 60px;
+      width: 100%;
+      overflow: hidden;
+      &.checked {
+        & .checkItem {
+          background: url(../../assets/checked.png) no-repeat center center;
+        }
+        & dd {
+          & h4 {
+            color: rgba(138, 150, 160, .7)
+          }
+          & p {
+            color: rgba(138, 150, 160, .7);
+            &:before {
+              background: rgba(138, 150, 160, .7);
+            }
+          }
+        }
+      }
+      & dt {
+        float: left;
+        width: 14px;
+        margin-top: 20px;
+        & .checkicon {
+          width: 14px;
+          height: 14px;
+          display: block;
+          font-size: 24px;
+          line-height: 14px;
+          text-align: center;
+          color: rgba(217, 217, 217, 1);
+        }
+        & .checkItem {
+          display: block;
+          width: 14px;
+          height: 14px;
+          &:global(.my-full-border) {
+            border-radius: 0;
+          }
+        }
+      }
+      & dd {
+        float: left;
+        margin-left: 12px;
+        & h4 {
+          height: 40px;
+          line-height: 40px;
+          font-weight: normal;
+          color: rgba(49, 63, 72, 1);
+          font-size: 14px;
+        }
+        & p {
+          font-size: 10px;
+          color: rgba(138, 150, 160, 1);
+          &:before {
+            display: inline-block;
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(4, 103, 224, 1);
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

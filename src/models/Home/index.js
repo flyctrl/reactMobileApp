@@ -18,22 +18,19 @@ import style from './style.css'
 
 const data = [
   {
-    img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
     title: 'Meet hotel',
     des: '不是所有的兼职汪都需要风吹日晒',
   },
   {
-    img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
     title: 'McDonald\'s invites you',
     des: '不是所有的兼职汪都需要风吹日晒',
   },
   {
-    img: 'https://zos.alipayobjects.com/rmsportal/hfVtzEhPzTUewPm.png',
     title: 'Eat the week',
     des: '不是所有的兼职汪都需要风吹日晒',
   },
 ]
-const NUM_ROWS = 10
+const NUM_ROWS = 20
 let pageIndex = 0
 
 function genData(pIndex = 0) {
@@ -55,8 +52,8 @@ class Home extends Component {
       city: '杭州',
       dataSource,
       isLoading: true,
-      refreshing: false,
-      height: document.documentElement.clientHeight * 3 / 4,
+      refreshing: true,
+      height: document.documentElement.clientHeight,
     }
     this.onEndReached = this.onEndReached.bind(this)
     this.onRefresh = this.onRefresh.bind(this)
@@ -70,10 +67,14 @@ class Home extends Component {
     history.push(urls.SELECTION)
   }
 
+  componentDidUpdate() {
+    document.body.style.overflow = 'hidden'
+  }
+
   componentDidMount() {
     new TouchFeedback('.pushadd-btn')
     console.log(decodeURI(tooler.parseURLParam()['name']))
-    const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop
+    const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop
     // simulate initial Ajax
     setTimeout(() => {
       this.rData = genData()
@@ -101,7 +102,7 @@ class Home extends Component {
       this.rData = [...this.rData, ...genData(++pageIndex)]
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(this.rData),
-        isLoading: false,
+        isLoading: false
       })
     }, 1000)
   }
@@ -173,19 +174,18 @@ class Home extends Component {
               </div>)}
               renderRow={row}
               style={{
-                height: this.state.height - 50,
-                overflow: 'auto',
+                height: this.state.height - 50
               }}
               pageSize={5}
               onScroll={() => { console.log('scroll') }}
               pullToRefresh={<PullToRefresh
                 refreshing={this.state.refreshing}
                 onRefresh={this.onRefresh}
-                distanceToRefresh={window.devicePixelRatio * 25}
+                // distanceToRefresh={window.devicePixelRatio * 25}
               />}
-              scrollRenderAheadDistance={500}
+              // scrollRenderAheadDistance={500}
               onEndReached={this.onEndReached}
-              onEndReachedThreshold={10}
+              // onEndReachedThreshold={10}
             />
             <Link to={urls.PUSHORDER} className='pushadd-btn' data-touchfeedback={true}>
               <span className={style['icon-add-20']}></span>

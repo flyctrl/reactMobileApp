@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-10 15:19:22
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-29 23:23:58
+* @Last Modified time: 2018-06-01 16:52:00
 */
 .pro-radio :global(.am-radio) {
   padding: 3px;
@@ -127,7 +127,7 @@
 }
 
 .file-list {
-  width: 300px;
+  width: 320px;
   margin-top: 10px;
   -webkit-padding-start: 0;
   & li {
@@ -143,13 +143,20 @@
     }
     & a {
       float: left;
+      width: 280px;
       line-height: 26px;
       font-size: 14px;
       margin-left: 5px;
       color: #1890ff;
+      overflow:hidden;
+      white-space:nowrap;
+      -o-text-overflow:ellipsis;
+      text-overflow:ellipsis;
     }
     & i {
       float: right;
+      width: 14px;
+      text-align: center;
       font-style: normal;
       color: #ccc;
     }

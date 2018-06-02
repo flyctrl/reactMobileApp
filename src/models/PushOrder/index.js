@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-08 16:18:37
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-29 23:21:21
+* @Last Modified time: 2018-06-01 16:50:59
 */
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
@@ -161,9 +161,6 @@ class PushOrder extends Component {
     })
   }
   render() {
-    const { getFieldProps } = this.props.form
-    const { fileList, radioVaule, proData, worktypeData, isEdit, postData } = this.state
-    console.log(postData)
     const uploadProps = {
       action: '//jsonplaceholder.typicode.com/posts/',
       onSuccess() {
@@ -173,14 +170,18 @@ class PushOrder extends Component {
         console.log(files)
       },
       beforeUpload: (file) => {
+        console.log(file)
+        console.log(fileList)
         this.setState(({ fileList }) => ({
           fileList: [...fileList, file],
         }), () => {
-          console.log(this.state.fileList)
+          console.log(this.state.fileList[0].name)
         })
         return false
       }
     }
+    const { getFieldProps } = this.props.form
+    const { fileList, radioVaule, proData, worktypeData, isEdit, postData } = this.state
     return (
       <div className='pageBox'>
         <div style={{ display: isEdit ? 'block' : 'none' }}>
@@ -227,7 +228,7 @@ class PushOrder extends Component {
                 <InputItem
                   {...getFieldProps('address', {
                     rules: [
-                      { required: true, message: '请填写施工地址' },
+                      // { required: true, message: '请填写施工地址' },
                     ]
                   })}
                   clear
@@ -240,7 +241,7 @@ class PushOrder extends Component {
                   {...getFieldProps('workDate', {
                     onChange: this.onDateChange,
                     rules: [
-                      { required: true, message: '请选择施工时间' },
+                      // { required: true, message: '请选择施工时间' },
                     ],
                   })}
                   extra='请选择'
@@ -252,19 +253,9 @@ class PushOrder extends Component {
                 <InputItem
                   {...getFieldProps('price', {
                     rules: [
-                      { required: true, message: '请填写价格预算' },
-                    ],
-                    normalize: (v, prev) => {
-                      if (v && !/^(([1-9]\d*)|0)(\.\d{0,2}?)?$/.test(v)) {
-                        if (v === '.') {
-                          return '0.'
-                        }
-                        return prev
-                      }
-                      return v
-                    }
+                      // { required: true, message: '请填写价格预算' },
+                    ]
                   })}
-                  type={'money'}
                   clear
                   placeholder='请输入'
                   extra='¥'
@@ -277,7 +268,7 @@ class PushOrder extends Component {
                   {...getFieldProps('worktype', {
                     onChange: this.onWorkTypeChange,
                     rules: [
-                      { required: true, message: '请选择工种需求' },
+                      // { required: true, message: '请选择工种需求' },
                     ]
                   })}
                 >
@@ -288,7 +279,7 @@ class PushOrder extends Component {
                 <TextareaItem
                   {...getFieldProps('memo', {
                     rules: [
-                      { required: true, message: '请填写需求描述' },
+                      // { required: true, message: '请填写需求描述' },
                     ]
                   })}
                   placeholder='请输入...'
