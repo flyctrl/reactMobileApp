@@ -2,8 +2,17 @@
 * @Author: chengbaosheng
 * @Date:   2017-09-05 18:52:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 18:40:37
+* @Last Modified time: 2018-06-02 17:04:01
 */
+import arrayTreeFilter from 'array-tree-filter'
+
+export const getSel = (value, optionsObj) => { // 根据键值筛选数结果数据中的对象，value:需要筛选树的value数据，optionsObj: 所在的树的数据
+  if (!value) {
+    return ''
+  }
+  const treeChildren = arrayTreeFilter(optionsObj, (c, level) => c.value === value[level])
+  return treeChildren.map(v => v.label).join(',')
+}
 
 export const returnFloat = (number) => { // 金额加小数点，保留2位
   if (number === 'undefined' || number === 'null' || number === '' || typeof number === 'undefined') {

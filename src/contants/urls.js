@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:21:55
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-29 17:43:14
+* @Last Modified time: 2018-06-05 22:47:28
 */
 const BASE_URL = ``
 
@@ -34,4 +34,7 @@ export const RESETPWD = `${BASE_URL}/Login/resetPwd` // 重置密码
 
 export const SEARCHLIST = `${BASE_URL}/Home/searchList` // 搜索页
 export const SELECTION = `${BASE_URL}/Home/selection` // 筛选页
+
+// 工单相关
+export const WORKDETAIL = `${BASE_URL}/Home/workDetail` // 工作详情
 

@@ -295,7 +295,7 @@ array-tree-filter@1.0.x:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/array-tree-filter/-/array-tree-filter-1.0.1.tgz#0a8ad1eefd38ce88858632f9cc0423d7634e4d5d"
 
-array-tree-filter@~2.1.0:
+array-tree-filter@^2.1.0, array-tree-filter@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/array-tree-filter/-/array-tree-filter-2.1.0.tgz#873ac00fec83749f255ac8dd083814b4f6329190"
 
@@ -1506,6 +1506,10 @@ chalk@^2.4.1:
 chardet@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
+
+china-division@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/china-division/-/china-division-2.0.0.tgz#4ca80236d34dbed6d96d92d185220ecca228ebe7"
 
 chokidar@^1.6.0:
   version "1.7.0"

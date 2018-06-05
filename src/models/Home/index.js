@@ -67,6 +67,10 @@ class Home extends Component {
     history.push(urls.SELECTION)
   }
 
+  handleList() {
+    history.push(urls.WORKDETAIL)
+  }
+
   componentDidUpdate() {
     document.body.style.overflow = 'hidden'
   }
@@ -132,7 +136,7 @@ class Home extends Component {
       const obj = data[index--]
       console.log(obj)
       return (
-        <div key={rowID} className={`${style['job-list-box']} my-bottom-border`}>
+        <div key={rowID} onClick={this.handleList} className={`${style['job-list-box']} my-bottom-border`}>
           <div className={style['job-list-tit']}>
             <span className={`${style['title']} ellipsis`}>我需要我需要我需要我需啊要我需要装修工人（木工）</span>
             <div className={style['job-tag']}><em>木的工</em><em>土方</em><em>墙</em></div>

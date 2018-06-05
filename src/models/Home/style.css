@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-16 17:57:28
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-02 13:49:22
+* @Last Modified time: 2018-06-05 18:46:38
 */
 
 .usr-home-content :global(.usr-hdleft-title-first), .usr-home-content :global(.usr-hdright-title) {
@@ -172,6 +172,141 @@
       float: right;
       font-style: normal;
       font-size: 10px;
+    }
+  }
+}
+
+/* selection */
+dl, dt, dd, span{
+  margin: 0;
+  padding: 0;
+}
+.selection-list {
+  width: 348px;
+  margin: 0 auto;
+  margin-top: 30px;
+  & dt {
+    height: 40px;
+    line-height: 40px;
+    color: rgba(49, 63, 72, 1);
+    font-size: 14px;
+  }
+  & dd {
+    overflow: hidden;
+    & a {
+      float: left;
+      width: 104px;
+      height: 24px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      line-height: 24px;
+      text-align: center;
+      background: rgba(138, 150, 160, 0.1);
+      color: rgba(49, 63, 72, 1);
+      font-size: 12px;
+      border-radius: 4px;
+      margin-right: 12px;
+      &.selected {
+        background: rgba(4, 103, 224, 1);
+        color: #fff;
+      }
+    }
+    &.big-tags {
+      & a {
+        height: 42px;
+        line-height: 42px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  &.stream-time {
+    & dd {
+      overflow: hidden;
+      & span {
+        float: left;
+        width: 100px;
+        height: 24px;
+        line-height: 24px;
+      }
+      & em {
+        float: left;
+        height: 24px;
+        line-height: 24px;
+        color: rgba(49, 63, 72, 1);
+        margin: 0 12px;
+      }
+    }
+  }
+
+  &.all-area {
+    & dt {
+      overflow: hidden;
+      & span {
+        float: left;
+      }
+      & .address-picker {
+        float: left;
+        width: 304px;
+        & :global(.am-list-item) {
+          min-height: auto;
+          height: 40px;
+          padding-left: 0;
+          & :global(.am-list-line) {
+            padding-right: 0;
+            & :global(.am-list-extra) {
+              flex-basis: 94%;
+              text-align: left;
+              color: rgba(4, 103, 224, 1);
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    & dd {
+      & a {
+        width: auto;
+        padding: 0 30px;
+      }
+      & .reset-location {
+        float: right;
+        color: rgba(4, 103, 224, 1);
+        margin-right: 10px;
+        font-size: 12px;
+        height: 24px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &.picker-title {
+    & dt {
+      overflow: hidden;
+      & span {
+        float: left;
+      }
+      & .right-picker {
+        float: right;
+      }
+    }
+  }
+}
+
+.selection-submit {
+  width: 348px;
+  margin: 20px auto;
+  &:global(.am-button-primary) {
+    background: rgba(4, 103, 224, 1);
+  }
+}
+
+html:not([data-scale]) {
+  & .selection-submit {
+    &:global(.am-button-primary) {
+      &:before {
+        border-color: rgba(4, 103, 224, 1);
+      }
     }
   }
 }

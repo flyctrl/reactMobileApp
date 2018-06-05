@@ -56,7 +56,9 @@
   },
   "devDependencies": {
     "antd-mobile-demo-data": "^0.2.0",
+    "array-tree-filter": "^2.1.0",
     "babel-plugin-import": "^1.6.7",
+    "china-division": "^2.0.0",
     "eslint": "^4.10.0",
     "g": "^2.0.1",
     "img-loader": "^3.0.0",
