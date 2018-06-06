@@ -205,6 +205,43 @@ icon: 默认时候的icon
 onIcon: 被选中状态时候的icon
 title: 菜单名称
 ```
+## 上拉刷新组件RefreshList
+Example
+```javascript
+// 引入方法
+import { RefreshList } from 'Components'
+....
+async genData(status, value) { // 父页面数据接口
+   const data = await api.getData() || {}
+   return data.data || [] // 返回值必须是Json数组
+}
+render() {
+const separator = (sectionID, rowID) => (
+    <div
+      key={`${sectionID}-${rowID}`}
+      style={{
+        backgroundColor: '#F5F5F9',
+        height: 8,
+        borderTop: '1px solid #ECECED',
+        borderBottom: '1px solid #ECECED',
+      }}
+    />)
+const row = (rowData, sectionID, rowID) => {
+      return (<div key={rowID}>
+        {rowData.title}
+        </div>)
+    }
+<RefreshList row={row} separator={separator} genData={this.genData}/>
+}
+...
+```
+**配置类名**
+```javascript
+row: 内容模块函数
+separator：内容模块间隔模块函数（非必传，默认为Example配置）
+getData：上拉下拉回调函数（第一个参数为'0'为上拉，'1'为下拉，第二个参数为下拉返回上一次数据数组最后一个数据对象）
+```
+
 ## 页面模块配置说明
 1、如果需要Header直接引入import { Header, Content } from 'Components' 里面的Header既可
 

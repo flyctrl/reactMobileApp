@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Tabs } from 'antd-mobile'
-import { Header, Content, NewIcon } from 'Components'
+import { Tabs, SegmentedControl } from 'antd-mobile'
+import { Header, Content, NewIcon, RefreshList } from 'Components'
 import * as urls from 'Contants/urls'
 import style from './style.css'
 
@@ -30,17 +30,9 @@ class MyWorkList extends Component {
   }
 
   handleChange = (tab, index) => {
-    const { data } = this.state
-    data[index] = Array.from(new Array(9)).map(() => ({
-      title: '杭州莫干山工程',
-      date: '4月1日-4月6日',
-      day: '杭州莫干山工程',
-      address: '杭州莫干山工程',
-      status: index
-    }))
-    setTimeout(() => {
-      this.setState({ data })
-    }, 500)
+  }
+  handleSegmentedChange = (value) => {
+    console.log(value)
   }
   handleDetail = () => {
     this.props.match.history.push('/Home')
@@ -52,26 +44,42 @@ class MyWorkList extends Component {
     console.log('微信')
   }
 
-  _getLists(key) {
-    const { data, actives } = this.state
-    return data[key] && data[key].map((item, index) => <div className={style.item} key={index}>
-      <div className={style.title}>{item.title}</div>
-      <div className={style.desc}>
-        <div className={style.date}>工期：{item.date}</div>
-        <div className={style.day}>天数：{item.day}<span className={style.link} onClick={() => {
-        }}>{tabs[item.status].title}</span></div>
-        <div className={style.address}>施工地址：{item.address}<a className={style.link}>去这里</a><NewIcon
-          className={style.icon} type='icon-goHere'/></div>
-      </div>
-      <div className={style.actives}>
-        {actives.map((item, index) => <div onClick={item.callBack} key={index} className={style.active}>
-          {item.icon && <NewIcon className={style.icon} type={item.icon}/>}<span className={style.title}>{item.title}</span>{index !== 2 && <i/>}
-        </div>)}
-      </div>
-    </div>)
+  async genData(status, value) {
+    console.log(status, value)
+    const dataArr = []
+    for (let i = 0; i < 10; i++) {
+      dataArr.push({
+        title: '杭州莫干山工程',
+        date: '4月1日-4月6日',
+        day: '杭州莫干山工程',
+        address: '杭州莫干山工程',
+      })
+    }
+    return dataArr
   }
 
   render() {
+    const { actives } = this.state
+    const row = (rowData, sectionID, rowID) => {
+      return (
+        <div className={style.item} key={rowID}>
+          <div className={style.title}>{rowData.title}-{rowID}</div>
+          <div className={style.desc}>
+            <div className={style.date} onClick={this.handleCall}>工期：{rowData.date}</div>
+            <div className={style.day}>天数：{rowData.day}<span className={style.link} onClick={() => {
+            }}>{rowData.title}</span></div>
+            <div className={style.address}>施工地址：{rowData.address}<a className={style.link}>去这里</a><NewIcon
+              className={style.icon} type='icon-goHere'/></div>
+          </div>
+          <div className={style.actives}>
+            {actives.map((item, index) => <div onClick={rowData.callBack} key={index} className={style.active}>
+              {rowData.icon && <NewIcon className={style.icon} type={rowData.icon}/>}<span className={style.title}>{rowData.title}</span>{index !== 2 && <i/>}
+            </div>)}
+          </div>
+        </div>
+      )
+    }
+    console.log(this.state.height)
     return <div className={`${style['my-work-list']} pageBox`}>
       <Header
         title='我的工单'
@@ -82,21 +90,20 @@ class MyWorkList extends Component {
         }}
       />
       <Content>
+        <SegmentedControl className={style.segmented} onValueChange={this.handleSegmentedChange} values={['我发布的', '我接单的']}/>
         <Tabs tabs={tabs} onChange={this.handleChange} swipeable={false}>
+          <RefreshList row={row} genData={this.genData}/>
           <div>
-            {this._getLists(0)}
+            <RefreshList row={row} genData={this.genData}/>
           </div>
           <div>
-            {this._getLists(1)}
+            <RefreshList row={row} genData={this.genData}/>
           </div>
           <div>
-            {this._getLists(2)}
+            <RefreshList row={row} genData={this.genData}/>
           </div>
           <div>
-            {this._getLists(3)}
-          </div>
-          <div>
-            {this._getLists(4)}
+            <RefreshList row={row} genData={this.genData}/>
           </div>
         </Tabs>
       </Content>
