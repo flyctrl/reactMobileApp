@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:21:55
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-06 14:52:53
+* @Last Modified time: 2018-06-06 18:37:52
 */
 const BASE_URL = ``
 
@@ -38,4 +38,7 @@ export const SELECTION = `${BASE_URL}/Home/selection` // 筛选页
 // 工单相关
 export const WORKDETAIL = `${BASE_URL}/Home/workDetail` // 工作详情
 export const ORDERDETAIL = `${BASE_URL}/Home/orderDetail` // 工单详情
+
+export const SYSNOTICE = `${BASE_URL}/Message/sysNotice` // 系统通知
+export const CHATBOX = `${BASE_URL}/Message/chatBox` // 系统通知
 
