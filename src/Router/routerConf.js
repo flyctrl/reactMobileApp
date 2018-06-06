@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-05 22:55:22
+* @Last Modified time: 2018-06-06 14:53:34
 */
 import * as urls from 'Contants/urls'
 import Home from '../models/Home'
@@ -35,6 +35,7 @@ import ResetPwd from '../models/Login/resetPwd' // 重置密码
 import SearchList from '../models/Home/searchList' // 搜索页
 import Selection from '../models/Home/selection' // 筛选页
 import WorkDetail from '../models/Home/workDetail' // 工作详情
+import OrderDetail from '../models/Home/orderDetail' // 工作详情
 
 const routes = [
   {
@@ -254,6 +255,14 @@ const routes = [
     showMenu: false,
     animated: true,
     title: '工作详情'
+  }, {
+    path: urls.ORDERDETAIL,
+    exact: true,
+    component: OrderDetail,
+    parent: null,
+    showMenu: false,
+    animated: true,
+    title: '工单详情'
   }
 ]
 

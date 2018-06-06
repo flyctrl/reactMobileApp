@@ -1,39 +1,41 @@
 /*
 * @Author: chengbs
-* @Date:   2018-06-05 22:36:36
+* @Date:   2018-06-06 14:50:04
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-06 15:10:22
+* @Last Modified time: 2018-06-06 15:09:42
 */
 import React, { Component } from 'react'
-import { Button } from 'antd-mobile'
 import { Header, Content } from 'Components'
 import * as urls from 'Contants/urls'
 import history from 'Util/history'
 import style from './order.css'
 import NewIcon from 'Components/NewIcon'
+import * as tooler from 'Contants/tooler'
 
-class WorkDetail extends Component {
+class OrderDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {}
-    this.handleSnatch = this.handleSnatch.bind(this)
     this.handleMessage = this.handleMessage.bind(this)
-  }
-  handleSnatch() {
-    console.log('立即抢单')
-    history.push(urls.ORDERDETAIL + '?url=' + urls.WORKDETAIL)
   }
   handleMessage() {
     history.push(urls.MESSAGE)
+  }
+  componentDidMount() {
   }
   render() {
     return (
       <div className='pageBox'>
         <Header
           leftClick1={() => {
-            history.push(urls.HOME)
+            let url = tooler.getQueryString('url')
+            if (url) {
+              history.push(url)
+            } else {
+              history.push(urls.HOME)
+            }
           }}
-          title='工作详情'
+          title='工单详情'
           leftIcon='icon-back'
           leftTitle1='返回'
         />
@@ -83,13 +85,9 @@ class WorkDetail extends Component {
             </div>
           </div>
         </Content>
-        <div className={style['work-detail-footer']}>
+        <div className={`${style['work-detail-footer']} ${style['order-detail-footer']}`}>
           <div className={style['work-detail-footer-l']}>
             <a onClick={this.handleMessage}><NewIcon type='icon-message_pre' className={style['icon-footer']} />聊天</a>
-          </div>
-          <div className={`${style['work-detail-footer-m']} my-right-border`}></div>
-          <div className={style['work-detail-footer-r']}>
-            <Button className={style['snatch-btn']} type='primary' onClick={this.handleSnatch}>立即抢单</Button>
           </div>
         </div>
       </div>
@@ -97,4 +95,4 @@ class WorkDetail extends Component {
   }
 }
 
-export default WorkDetail
+export default OrderDetail

@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-05 22:59:17
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-06 01:10:02
+* @Last Modified time: 2018-06-06 15:07:28
 */
 
 .work-detail-content {
@@ -129,6 +129,14 @@
   height: 50px;
   line-height: 50px;
   background: rgba(249, 249, 249, 0.87);
+  &.order-detail-footer {
+    & .work-detail-footer-l {
+      width: 100%;
+      & a {
+        width: 80%;
+      }
+    }
+  }
   & .work-detail-footer-l {
     float: left;
     width: 49%;
