@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-06 14:50:04
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-06 15:09:42
+* @Last Modified time: 2018-06-06 17:14:00
 */
 import React, { Component } from 'react'
 import { Header, Content } from 'Components'
@@ -30,7 +30,7 @@ class OrderDetail extends Component {
           leftClick1={() => {
             let url = tooler.getQueryString('url')
             if (url) {
-              history.push(url)
+              history.push(urls[url])
             } else {
               history.push(urls.HOME)
             }

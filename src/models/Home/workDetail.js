@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-05 22:36:36
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-06 15:10:22
+* @Last Modified time: 2018-06-06 17:14:12
 */
 import React, { Component } from 'react'
 import { Button } from 'antd-mobile'
@@ -21,7 +21,7 @@ class WorkDetail extends Component {
   }
   handleSnatch() {
     console.log('立即抢单')
-    history.push(urls.ORDERDETAIL + '?url=' + urls.WORKDETAIL)
+    history.push(urls.ORDERDETAIL + '?url=WORKDETAIL')
   }
   handleMessage() {
     history.push(urls.MESSAGE)
