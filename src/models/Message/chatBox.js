@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-06 18:35:54
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-07 00:27:36
+* @Last Modified time: 2018-06-07 10:37:43
 */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -25,13 +25,15 @@ class ChatBox extends Component {
     this.sendMessage = this.sendMessage.bind(this)
   }
   componentDidMount() {
+
   }
   handleData(val) {
     this.setState({
       meg: val
     })
   }
-  sendMessage() {
+  sendMessage(e) {
+    e.preventDefault()
     const that = this
     let message = this.state.meg
     if (message === '') {
@@ -72,21 +74,22 @@ class ChatBox extends Component {
           rightIcon='icon-morentouxiangicon'
         />
         <Content>
-          <div className={style['content']}>
-            <div className={style['msg-list']} ref='msgList'>
-              {megArray.map((elem, index) => (
-                <div className={style['container']} key={index}>
-                  <div className={style['message']}>{elem}</div>
-                  <div className={style['response']}>{respon[index]}</div>
-                </div>)
-              )}
+          <form className={style['chat-form']} onSubmit={ this.sendMessage }>
+            <div className={style['content']}>
+              <div className={style['msg-list']} ref='msgList'>
+                {megArray.map((elem, index) => (
+                  <div className={style['container']} key={index}>
+                    <div className={style['message']}>{elem}</div>
+                    <div className={style['response']}>{respon[index]}</div>
+                  </div>)
+                )}
+              </div>
+              <div className={`${style['fixedBottom']} my-top-border`}>
+                <InputItem placeholder='快来和我聊聊天吧' className={`${style['send-input']}`} value={meg} onChange={this.handleData} />
+                <Button type='primary' className={style['send-button']} onClick={this.sendMessage}>发送</Button>
+              </div>
             </div>
-            <div className={`${style['fixedBottom']} my-top-border`}>
-              <InputItem
-                className={`${style['send-input']}`} value={meg} onChange={this.handleData} />
-              <Button type='primary' className={style['send-button']} onClick={this.sendMessage}>发送</Button>
-            </div>
-          </div>
+          </form>
         </Content>
       </div>
     )

@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-06 15:32:13
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-07 00:06:20
+* @Last Modified time: 2018-06-07 10:38:57
 */
 span {
   padding: 0;
@@ -181,6 +181,7 @@ html:not([data-scale]) .usr-header {
         border-radius: 12px;
         align-self: flex-end;
         max-width: 80%;
+        margin-top: 10px;
       }
       & .response {
         background-color: #fff;
@@ -225,6 +226,10 @@ html:not([data-scale]) .usr-header {
       background: rgba(4, 103, 224, 1);
     }
   }
+}
+
+html:not([data-scale]) .fixedBottom :global(.am-list-item:not(:last-child) .am-list-line::after) {
+  height: 0;
 }
 
 
