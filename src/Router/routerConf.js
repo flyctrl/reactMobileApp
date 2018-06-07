@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-06 18:41:40
+* @Last Modified time: 2018-06-07 11:03:44
 */
 import * as urls from 'Contants/urls'
 import Home from '../models/Home'
@@ -38,7 +38,8 @@ import WorkDetail from '../models/Home/workDetail' // 工作详情
 import OrderDetail from '../models/Home/orderDetail' // 工作详情
 
 import SysNotice from '../models/Message/sysNotice' // 系统通知
-import ChatBox from '../models/Message/chatBox' // 系统通知
+import ChatBox from '../models/Message/chatBox' // 聊天框
+import UserInfo from '../models/Message/userInfo' // 用户信息
 
 const routes = [
   {
@@ -282,6 +283,14 @@ const routes = [
     showMenu: false,
     animated: false,
     title: '聊天框'
+  }, {
+    path: urls.USERINFO,
+    exact: true,
+    component: UserInfo,
+    parent: 'ChatBox',
+    showMenu: false,
+    animated: false,
+    title: '用户信息'
   }
 ]
 

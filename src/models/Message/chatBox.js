@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-06 18:35:54
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-07 10:37:43
+* @Last Modified time: 2018-06-07 11:52:04
 */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -11,6 +11,7 @@ import { Header, Content } from 'Components'
 // import NewIcon from 'Components/NewIcon'
 import * as urls from 'Contants/urls'
 import history from 'Util/history'
+import UserInfo from './userInfo'
 import style from './style.css'
 
 class ChatBox extends Component {
@@ -19,13 +20,15 @@ class ChatBox extends Component {
     this.state = {
       meg: '',
       respon: [],
-      megArray: []
+      megArray: [],
+      infoVisible: false
     }
     this.handleData = this.handleData.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
+    this.handleSeeInfo = this.handleSeeInfo.bind(this)
+    this.handleInfoBack = this.handleInfoBack.bind(this)
   }
   componentDidMount() {
-
   }
   handleData(val) {
     this.setState({
@@ -59,38 +62,57 @@ class ChatBox extends Component {
     }
     return false
   }
+  handleSeeInfo() {
+    console.log('handleSeeInfo')
+    this.setState({
+      infoVisible: true
+    })
+  }
+  handleInfoBack() {
+    this.setState({
+      infoVisible: false
+    })
+    console.log('handleInfoBack')
+  }
   render() {
-    let { meg, megArray, respon } = this.state
+    let { meg, megArray, respon, infoVisible } = this.state
     return (
       <div className={`${style['chatBox']} pageBox`}>
-        <Header
-          className={style['chatbox-header']}
-          leftClick1={() => {
-            history.push(urls.MESSAGE)
-          }}
-          title='小明'
-          leftIcon='icon-back'
-          leftTitle1='返回'
-          rightIcon='icon-morentouxiangicon'
-        />
-        <Content>
-          <form className={style['chat-form']} onSubmit={ this.sendMessage }>
-            <div className={style['content']}>
-              <div className={style['msg-list']} ref='msgList'>
-                {megArray.map((elem, index) => (
-                  <div className={style['container']} key={index}>
-                    <div className={style['message']}>{elem}</div>
-                    <div className={style['response']}>{respon[index]}</div>
-                  </div>)
-                )}
+        <div style={{ display: infoVisible ? 'none' : 'block' }}>
+          <Header
+            className={style['chatbox-header']}
+            leftClick1={() => {
+              history.push(urls.MESSAGE)
+            }}
+            title='小明'
+            leftIcon='icon-back'
+            leftTitle1='返回'
+            rightIcon='icon-morentouxiangicon'
+            rightClick={this.handleSeeInfo}
+          />
+          <Content>
+            <form className={style['chat-form']} onSubmit={ this.sendMessage }>
+              <div className={style['content']}>
+                <div className={style['msg-list']} ref='msgList'>
+                  {megArray.map((elem, index) => (
+                    <div className={style['container']} key={index}>
+                      <div className={style['message']}>{elem}</div>
+                      <div className={style['response']}>{respon[index]}</div>
+                    </div>)
+                  )}
+                </div>
+                <div className={`${style['fixedBottom']} my-top-border`}>
+                  <InputItem placeholder='快来和我聊聊天吧' className={`${style['send-input']}`} value={meg} onChange={this.handleData} />
+                  <Button type='primary' className={style['send-button']} onClick={this.sendMessage}>发送</Button>
+                </div>
               </div>
-              <div className={`${style['fixedBottom']} my-top-border`}>
-                <InputItem placeholder='快来和我聊聊天吧' className={`${style['send-input']}`} value={meg} onChange={this.handleData} />
-                <Button type='primary' className={style['send-button']} onClick={this.sendMessage}>发送</Button>
-              </div>
-            </div>
-          </form>
-        </Content>
+            </form>
+          </Content>
+        </div>
+
+        <div style={{ display: infoVisible ? 'block' : 'none' }}>
+          <UserInfo onBack={this.handleInfoBack} />
+        </div>
       </div>
     )
   }
