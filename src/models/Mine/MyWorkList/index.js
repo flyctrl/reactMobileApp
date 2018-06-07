@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Tabs, SegmentedControl } from 'antd-mobile'
 import { Header, Content, NewIcon, RefreshList } from 'Components'
 import * as urls from 'Contants/urls'
+import { addCommas } from 'Contants/tooler'
 import style from './style.css'
 
 const tabs = [
@@ -51,31 +52,31 @@ class MyWorkList extends Component {
       dataArr.push({
         title: '杭州莫干山工程',
         date: '4月1日-4月6日',
-        day: '杭州莫干山工程',
+        day: '6',
         address: '杭州莫干山工程',
+        code: '123123',
+        money: '500000',
+        status: '待确认'
       })
     }
     return dataArr
   }
 
   render() {
-    const { actives } = this.state
     const row = (rowData, sectionID, rowID) => {
       return (
-        <div className={style.item} key={rowID}>
-          <div className={style.title}>{rowData.title}-{rowID}</div>
+        <div className={style.item} onClick={() => {
+          this.props.match.history.push(urls.ORDERDETAIL + '?url=MYWORKLIST')
+        }} key={rowID}>
+          <div className={style.title}>{rowData.title}<span>{rowData.status}</span></div>
           <div className={style.desc}>
-            <div className={style.date} onClick={this.handleCall}>工期：{rowData.date}</div>
-            <div className={style.day}>天数：{rowData.day}<span className={style.link} onClick={() => {
-            }}>{rowData.title}</span></div>
+            <div onClick={this.handleCall}>工期：{rowData.date}</div>
+            <div>天数：{rowData.day}</div>
             <div className={style.address}>施工地址：{rowData.address}<a className={style.link}>去这里</a><NewIcon
               className={style.icon} type='icon-goHere'/></div>
+            <div>工单号：{rowData.code}</div>
           </div>
-          <div className={style.actives}>
-            {actives.map((item, index) => <div onClick={rowData.callBack} key={index} className={style.active}>
-              {rowData.icon && <NewIcon className={style.icon} type={rowData.icon}/>}<span className={style.title}>{rowData.title}</span>{index !== 2 && <i/>}
-            </div>)}
-          </div>
+          <div className={style.money}>快单：¥{addCommas(rowData.money)}</div>
         </div>
       )
     }

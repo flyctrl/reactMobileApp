@@ -8,6 +8,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Picker, List, PullToRefresh, ListView } from 'antd-mobile'
 import { Header, Content } from 'Components'
+import * as urls from 'Contants/urls'
 import style from './style.css'
 // import NewIcon from 'Components/NewIcon'
 
@@ -178,7 +179,9 @@ class TobeDone extends Component {
     }
     return (
       <div className='contentBox'>
-        <Header className={style['tobe-done']} leftTitle2='考勤打卡' title={<div className={style['tobe-titile']}>
+        <Header className={style['tobe-done']} leftTitle2='考勤打卡' leftClick2={() => {
+          this.props.match.history.push(urls.CHECK + '?url=TOBEDONE')
+        }} title={<div className={style['tobe-titile']}>
           <Picker
             data={seasons}
             title='选择日期'

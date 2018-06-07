@@ -1,5 +1,4 @@
 .my-work-list {
-  font-family: PingFang-SC-Medium;
   & .segmented {
     position: fixed;
     padding: 12px 7.5px;
@@ -9,6 +8,13 @@
     width: 100%;
     height: 55px;
     z-index: 2;
+    & :global(.am-segment-item-selected) {
+      background: #0467E0;
+    }
+    & :global(.am-segment-item) {
+      color: #0467E0;
+      border: 1Px solid #0467E0;
+    }
   }
   & :global(.am-tabs-default-bar-tab) {
     width: 24px;
@@ -40,31 +46,26 @@
       color: rgba(49, 63, 72, 1);
       font-size: 12px;
       background-color: #FFF;
+      & >span {
+        float: right;
+        padding-right: 15px;
+        height: 36px;
+        line-height: 36px;
+        color: rgba(4, 103, 224, 1);
+        font-size: 12px;
+      }
     }
     & .desc {
       padding: 7.5px 0 7.5px 24px;
-      height: 90px;
+      height: 110px;
       color: #313F48;
       font-size: 12px;
       border-left: 2px solid rgba(4, 103, 224, 1);
-      & .date {
+      & >div {
         height: 25px;
         line-height: 25px;
-      }
-      & .day {
-        height: 25px;
-        line-height: 25px;
-        position: relative;
-        & .link {
-          color: #0467E0;
-          position: absolute;
-          top: 0;
-          right: 17px;
-        }
       }
       & .address {
-        height: 25px;
-        line-height: 25px;
         & .link {
           color: #0467E0;
           padding-left: 19px;
@@ -77,34 +78,14 @@
         }
       }
     }
-    & .actives {
-      display: flex;
-      & .active {
-        flex: 1;
-        position: relative;
-        padding: 10px 0;
-        text-align: center;
-        background-color: #fff;
-        & .title {
-          height: 17px;
-          line-height: 17px;
-          padding-left: 0;
-          color: rgba(4, 103, 224, 1);
-          font-size: 12px;
-          font-family: PingFang-SC-Medium;
-        }
-        & .icon {
-          margin-right: 15px;
-        }
-        & i {
-          position: absolute;
-          top: 7px;
-          right: 0;
-          width: 1Px;
-          height: 24px;
-          border: 1Px solid rgba(0, 0, 0, 0.1);
-        }
-      }
+    & .money {
+      text-align: right;
+      height: 43px;
+      line-height: 43px;
+      color: rgba(4, 103, 224, 1);
+      background-color: #ffffff;
+      padding-right: 20px;
+      font-size: 14px;
     }
   }
 }

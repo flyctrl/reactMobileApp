@@ -34,6 +34,7 @@ export const returnFloat = (number) => { // 金额加小数点，保留2位
 
 export const getQueryString = (name) => { // url转json
   let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
+  console.log(window.location.search)
   let r = window.location.search.substr(1).match(reg)
   if (r !== null) {
     return r[2]

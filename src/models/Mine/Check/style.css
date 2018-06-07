@@ -9,14 +9,12 @@
     line-height: 22px;
     color: rgba(49, 63, 72, 1);
     font-size: 16px;
-    font-family: PingFangSC-Regular;
   }
   & .subtitle {
     height: 21px;
     line-height: 21px;
     color: rgba(138, 150, 160, 1);
     font-size: 15px;
-    font-family: PingFangSC-Regular;
   }
   & :global(.am-list-thumb img) {
     width: 35.74px;
@@ -31,7 +29,6 @@
       line-height: 20px;
       color: rgba(138, 150, 160, 1);
       font-size: 14px;
-      font-family: PingFangSC-Regular;
     }
     & .tip {
       color: rgba(4, 103, 224, 1);
@@ -43,7 +40,6 @@
       border-radius: 4px;
       margin-left: 10px;
       border: 1Px solid rgba(4, 103, 224, 1);
-      font-family: PingFang-SC-Medium;
     }
     & .btn {
       display: inline-block;
@@ -64,7 +60,6 @@
         line-height: 28px;
         color: rgba(255, 255, 255, 1);
         font-size: 20px;
-        font-family: PingFangSC-Regular;
       }
       & .time{
         display: inline-block;
@@ -77,7 +72,6 @@
         line-height: 20px;
         color: rgba(255, 255, 255, 1);
         font-size: 14px;
-        font-family: PingFangSC-Regular;
       }
     }
   }

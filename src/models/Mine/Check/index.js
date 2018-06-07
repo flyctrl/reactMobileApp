@@ -4,9 +4,10 @@
  * @Title: 考勤管理
  */
 import React, { Component } from 'react'
-import { List, Steps, Button } from 'antd-mobile'
+import { List, Steps, Button, Picker } from 'antd-mobile'
 import * as urls from 'Contants/urls'
 import { Header, Content } from 'Components'
+import { getQueryString } from 'Contants/tooler'
 import style from './style.css'
 
 const Item = List.Item
@@ -19,7 +20,19 @@ class Check extends Component {
     this.state = {
       data: {},
       status: 0,
-      time: ''
+      time: '',
+      visible: false,
+      pickerValue: [],
+      projects: [
+        {
+          label: '莫干山项目',
+          value: '2013',
+        },
+        {
+          label: '拱墅区项目',
+          value: '2014',
+        },
+      ]
     }
   }
 
@@ -70,17 +83,21 @@ class Check extends Component {
       })
     }
   }
+  handelSelect = (v) => {
+    this.setState({ pickerValue: v, visible: false })
+    console.log(v)
+  }
 
   render() {
-    const { data, status, time } = this.state
+    const { data, status, time, projects } = this.state
     return <div className='pageBox'>
       <Header
         title='考勤打卡'
         leftIcon='icon-back'
-        leftTitle1='我的'
+        leftTitle1='返回'
         rightTitle='统计'
         leftClick1={() => {
-          this.props.match.history.push(urls.MINE)
+          this.props.match.history.push(urls[getQueryString('url')])
         }}
         rightClick={() => {
           this.props.match.history.push(urls.MINE)
@@ -88,21 +105,36 @@ class Check extends Component {
       />
       <Content>
         <div className={style.check}>
-          <Item
-            thumb={data.img}
+          <Picker
+            title='选择地区'
+            extra='请选择(可选)'
+            cols='1'
+            data={projects}
+            value={this.state.pickerValue}
+            onPickerChange={v => this.setState({ pickerValue: v })}
+            onChange={v => this.setState({ pickerValue: v })}
+            onOk={this.handelSelect}
           >
-            <span className={style.title}>{data.title}</span><Brief className={style.subtitle}>项目组:{data.subtitle}</Brief>
-          </Item>
+            <Item
+              thumb={data.img}
+              extra='' arrow='horizontal'
+            >
+              <span className={style.title}>{data.title}</span><Brief><div className={style.subtitle}>项目组:{data.subtitle}</div></Brief>
+            </Item>
+          </Picker>
           <div className={style['check-info']}>
             <div className={style.prompt}>今天继续向梦想出发吧</div>
             <Steps size='small' current={1}>
-              <Step title='上班时间09：00' description={<span>{data.checkInTime ? <span>打卡时间: {data.checkInTime}{(data.checkInTime.split(':')[0] >= 9 && data.checkInTime.split(':')[1] > 0) && < span className={style.tip}>迟到</span>}</span> : '未打卡'}</span> }/>
-              {(status || data.checkInTime) ? <Step title='下班时间18:00' description={<span>{data.checkOutTime ? <span>打卡时间: {data.checkOutTime}{data.checkOutTime.split(':')[0] < 18 && < span className={style.tip}>早退</span>}</span> : '未打卡'}</span>}/> : null}
+              <Step title='上班时间09：00' description={<span>{data.checkInTime ? <span>打卡时间: {data.checkInTime}{(data.checkInTime.split(':')[0] >= 9 && data.checkInTime.split(':')[1] > 0) &&
+                < span className={style.tip}>迟到</span>}</span> : '未打卡'}</span>}/>
+              {(status || data.checkInTime) ? <Step title='下班时间18:00' description={<span>{data.checkOutTime ? <span>打卡时间: {data.checkOutTime}{data.checkOutTime.split(':')[0] < 18 &&
+                < span className={style.tip}>早退</span>}</span> : '未打卡'}</span>}/> : null}
             </Steps>
             <div style={{ textAlign: 'center' }}><Button onClick={this.handleCheckTime} className={style.btn} type='primary'><span
               className={style['btn-title']}>{(status || data.checkInTime) ? '下' : '上'}班打卡</span><span
               className={style.time}>{time}</span></Button></div>
           </div>
+
         </div>
       </Content>
     </div>
