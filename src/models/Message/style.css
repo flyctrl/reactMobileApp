@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-06 15:32:13
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-07 11:26:24
+* @Last Modified time: 2018-06-08 00:25:33
 */
 span {
   padding: 0;
@@ -138,13 +138,13 @@ html:not([data-scale]) .usr-header {
 }
 
 /* chatbox */
-:global(.pageBox) {
+/*:global(.pageBox) {
   &.chatBox {
     & :global(.animated) {
       overflow: hidden;
     }
   }
-}
+}*/
 
 .chat-form {
   width: 100%;
@@ -168,6 +168,8 @@ html:not([data-scale]) .usr-header {
     padding: 5px;
     flex: 1 1 auto;
     overflow: auto;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling:touch;
     & .container {
       display: flex;
       flex-direction: column;

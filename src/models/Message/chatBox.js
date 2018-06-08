@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-06 18:35:54
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-07 11:52:04
+* @Last Modified time: 2018-06-08 17:17:02
 */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -14,6 +14,9 @@ import history from 'Util/history'
 import UserInfo from './userInfo'
 import style from './style.css'
 
+let bfscrolltop = document.body.scrollTop
+// let whight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+let interval = null
 class ChatBox extends Component {
   constructor(props) {
     super(props)
@@ -21,12 +24,14 @@ class ChatBox extends Component {
       meg: '',
       respon: [],
       megArray: [],
-      infoVisible: false
+      infoVisible: false,
     }
     this.handleData = this.handleData.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
     this.handleSeeInfo = this.handleSeeInfo.bind(this)
     this.handleInfoBack = this.handleInfoBack.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
   }
   componentDidMount() {
   }
@@ -37,7 +42,9 @@ class ChatBox extends Component {
   }
   sendMessage(e) {
     e.preventDefault()
+    // this.handleBlur()
     const that = this
+    // console.log(this.msgInput)
     let message = this.state.meg
     if (message === '') {
       Toast.info('不能发送空白消息哦', 1)
@@ -74,10 +81,19 @@ class ChatBox extends Component {
     })
     console.log('handleInfoBack')
   }
+  handleFocus() {
+    interval = setInterval(function() {
+      document.body.scrollTop = document.body.scrollHeight
+    }, 100)
+  }
+  handleBlur() {
+    clearInterval(interval)
+    document.body.scrollTop = bfscrolltop
+  }
   render() {
     let { meg, megArray, respon, infoVisible } = this.state
     return (
-      <div className={`${style['chatBox']} pageBox`}>
+      <div className='pageBox'>
         <div style={{ display: infoVisible ? 'none' : 'block' }}>
           <Header
             className={style['chatbox-header']}
@@ -102,7 +118,7 @@ class ChatBox extends Component {
                   )}
                 </div>
                 <div className={`${style['fixedBottom']} my-top-border`}>
-                  <InputItem placeholder='快来和我聊聊天吧' className={`${style['send-input']}`} value={meg} onChange={this.handleData} />
+                  <InputItem placeholder='快来和我聊聊天吧' className={`${style['send-input']}`} value={meg} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleData} />
                   <Button type='primary' className={style['send-button']} onClick={this.sendMessage}>发送</Button>
                 </div>
               </div>
