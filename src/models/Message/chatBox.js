@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-06-06 18:35:54
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-08 17:17:02
+* @Last Modified time: 2018-06-09 23:15:28
 */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -24,7 +24,7 @@ class ChatBox extends Component {
       meg: '',
       respon: [],
       megArray: [],
-      infoVisible: false,
+      infoVisible: false
     }
     this.handleData = this.handleData.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
@@ -41,10 +41,8 @@ class ChatBox extends Component {
     })
   }
   sendMessage(e) {
-    e.preventDefault()
-    // this.handleBlur()
+    // e.preventDefault()
     const that = this
-    // console.log(this.msgInput)
     let message = this.state.meg
     if (message === '') {
       Toast.info('不能发送空白消息哦', 1)
@@ -67,7 +65,7 @@ class ChatBox extends Component {
       })
       this.state.meg = ''
     }
-    return false
+    // return false
   }
   handleSeeInfo() {
     console.log('handleSeeInfo')
@@ -82,6 +80,7 @@ class ChatBox extends Component {
     console.log('handleInfoBack')
   }
   handleFocus() {
+    // let fhight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
     interval = setInterval(function() {
       document.body.scrollTop = document.body.scrollHeight
     }, 100)
@@ -107,22 +106,20 @@ class ChatBox extends Component {
             rightClick={this.handleSeeInfo}
           />
           <Content>
-            <form className={style['chat-form']} onSubmit={ this.sendMessage }>
-              <div className={style['content']}>
-                <div className={style['msg-list']} ref='msgList'>
-                  {megArray.map((elem, index) => (
-                    <div className={style['container']} key={index}>
-                      <div className={style['message']}>{elem}</div>
-                      <div className={style['response']}>{respon[index]}</div>
-                    </div>)
-                  )}
-                </div>
-                <div className={`${style['fixedBottom']} my-top-border`}>
-                  <InputItem placeholder='快来和我聊聊天吧' className={`${style['send-input']}`} value={meg} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleData} />
-                  <Button type='primary' className={style['send-button']} onClick={this.sendMessage}>发送</Button>
-                </div>
+            <div className={style['content']}>
+              <div className={style['msg-list']} ref='msgList'>
+                {megArray.map((elem, index) => (
+                  <div className={style['container']} key={index}>
+                    <div className={style['message']}>{elem}</div>
+                    <div className={style['response']}>{respon[index]}</div>
+                  </div>)
+                )}
               </div>
-            </form>
+              <div className={`${style['fixedBottom']} my-top-border`}>
+                <InputItem placeholder='快来和我聊聊天吧' className={`${style['send-input']}`} value={meg} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleData} />
+                <Button type='primary' className={style['send-button']} onClick={this.sendMessage}>发送</Button>
+              </div>
+            </div>
           </Content>
         </div>
 
