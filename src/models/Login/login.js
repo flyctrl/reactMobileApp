@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-10 01:08:21
+* @Last Modified time: 2018-06-12 00:17:57
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -13,6 +13,7 @@ import style from './style.css'
 import logo from 'Src/assets/logo.png'
 import * as urls from 'Contants/urls'
 import api from 'Util/api'
+import storage from 'Util/storage'
 import history from 'Util/history'
 
 class Login extends Component {
@@ -30,6 +31,7 @@ class Login extends Component {
       if (!error) {
         const data = await api.login(this.props.form.getFieldsValue()) || false
         if (data) {
+          storage.set('Authorization', 'Bearer ' + data['access_token'])
           history.push(urls.HOME)
         }
         console.log(data)

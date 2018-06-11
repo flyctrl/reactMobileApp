@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:28:51
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-12 00:00:48
+* @Last Modified time: 2018-06-12 00:20:33
 */
 import storage from '../utils/storage'
 import axios from 'axios'
@@ -12,11 +12,6 @@ let fetcher = axios.create({
   baseURL: baseUrl,
   withCredentials: 'include',
   transformRequest: [function (data) {
-    const userInfo = storage.get('user')
-    if (userInfo && data && !data.NOUSERINFO) {
-      data.userName = userInfo.userName
-      data.accessToken = userInfo.accessToken
-    }
     return JSON.stringify(data)
   }],
   headers: {
@@ -26,6 +21,10 @@ let fetcher = axios.create({
 })
 
 fetcher.interceptors.request.use(function (config) {
+  const Authorization = storage.get('Authorization')
+  if (Authorization) {
+    config.headers.Authorization = Authorization
+  }
   return config
 }, function (error) {
   return Promise.reject(error)
