@@ -1,8 +1,8 @@
 /*
 * @Author: baosheng
 * @Date:   2018-04-02 22:28:51
-* @Last Modified by:   baosheng
-* @Last Modified time: 2018-04-02 22:32:51
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-06-12 00:00:48
 */
 import storage from '../utils/storage'
 import axios from 'axios'
@@ -10,7 +10,7 @@ import { baseUrl } from './index'
 
 let fetcher = axios.create({
   baseURL: baseUrl,
-  withCredentials: true,
+  withCredentials: 'include',
   transformRequest: [function (data) {
     const userInfo = storage.get('user')
     if (userInfo && data && !data.NOUSERINFO) {

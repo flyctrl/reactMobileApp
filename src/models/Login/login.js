@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 14:10:56
+* @Last Modified time: 2018-06-10 01:08:21
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -12,6 +12,8 @@ import { createForm } from 'rc-form'
 import style from './style.css'
 import logo from 'Src/assets/logo.png'
 import * as urls from 'Contants/urls'
+import api from 'Util/api'
+import history from 'Util/history'
 
 class Login extends Component {
   constructor(props) {
@@ -23,9 +25,14 @@ class Login extends Component {
   }
   onSubmit = () => { // 表单提交
     const { getFieldError } = this.props.form
-    let validateAry = ['phone', 'password']
-    this.props.form.validateFields((error) => {
+    let validateAry = ['username', 'password']
+    this.props.form.validateFields(async (error) => {
       if (!error) {
+        const data = await api.login(this.props.form.getFieldsValue()) || false
+        if (data) {
+          history.push(urls.HOME)
+        }
+        console.log(data)
         console.log(this.props.form.getFieldsValue())
       } else {
         for (let value of validateAry) {
@@ -48,18 +55,18 @@ class Login extends Component {
           <form className={style['loginForm']}>
             <List>
               <InputItem
-                {...getFieldProps('phone', {
+                {...getFieldProps('username', {
                   rules: [
                     { required: true, message: '请输入您的用户名/手机号码' },
-                    { pattern: /^(1[358479]\d{9})$/, message: '请输入正确格式的手机号码' }
+                    // { pattern: /^(1[358479]\d{9})$/, message: '请输入正确格式的手机号码' }
                   ],
                 })}
                 clear
                 placeholder='用户名 / 手机号'
                 prefixListCls='login'
-                error={!!getFieldError('phone')}
+                error={!!getFieldError('username')}
                 onErrorClick={() => {
-                  Toast.fail(getFieldError('phone'), 1)
+                  Toast.fail(getFieldError('username'), 1)
                 }}
               ></InputItem>
             </List>

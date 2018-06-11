@@ -85,6 +85,9 @@ function getClientEnvironment(publicUrl) {
       env[key] = JSON.stringify(raw[key]);
       return env;
     }, {}),
+    DEV: process.env.BUILD_ENV === 'dev',
+    TEST: process.env.BUILD_ENV === 'test',
+    PRE: process.env.BUILD_ENV === 'pre'
   };
 
   return { raw, stringified };
