@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:27:03
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-10 23:31:38
+* @Last Modified time: 2018-06-12 15:31:02
 */
 import fetch from 'Util/fetch'
 import { Toast } from 'antd-mobile'
@@ -41,11 +41,15 @@ export const FetchSave = (url, params, method = 'post') => {
 }
 
 export default {
-  login(params) { // 登录
-    console.log(params)
-    return FetchSave('/auth/login', params, 'post')
-  },
-  loginout(params) { // 退出
-    return FetchSave('/auth/logout', params, 'post')
+  auth: {
+    login(params) { // 登录
+      return Fetch('/auth/login', params)
+    },
+    register(params) { // 注册
+      return Fetch('/auth/register', params)
+    },
+    loginout(params) { // 退出
+      return Fetch('/auth/logout', params)
+    }
   }
 }

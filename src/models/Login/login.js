@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:26:57
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-12 00:17:57
+* @Last Modified time: 2018-06-12 15:31:27
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -29,7 +29,7 @@ class Login extends Component {
     let validateAry = ['username', 'password']
     this.props.form.validateFields(async (error) => {
       if (!error) {
-        const data = await api.login(this.props.form.getFieldsValue()) || false
+        const data = await api.auth.login(this.props.form.getFieldsValue()) || false
         if (data) {
           storage.set('Authorization', 'Bearer ' + data['access_token'])
           history.push(urls.HOME)

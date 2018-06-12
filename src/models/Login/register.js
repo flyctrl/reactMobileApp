@@ -2,7 +2,7 @@
 * @Author: chengbs
 * @Date:   2018-04-09 13:27:30
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-29 16:03:29
+* @Last Modified time: 2018-06-12 15:31:22
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -12,7 +12,10 @@ import { Content } from 'Components'
 import Timer from './timer'
 import style from './style.css'
 import logo from 'Src/assets/logo.png'
+import storage from 'Util/storage'
+import api from 'Util/api'
 import * as urls from 'Contants/urls'
+import history from 'Util/history'
 
 class Register extends Component {
   constructor(props) {
@@ -23,11 +26,19 @@ class Register extends Component {
     }
   }
   onSubmit = () => { // 表单提交
-    let validateAry = ['phone', 'code', 'password', 'confirmPassword']
+    let validateAry = ['username', 'mobile', 'verify_code', 'password', 'password_confirmation']
     const { getFieldError } = this.props.form
-    this.props.form.validateFields((error, values) => {
+    this.props.form.validateFields(async (error, values) => {
       if (!error) {
-        console.log(values)
+        let newValues = { ...values, ...{ 'user_type': 1 }}
+        console.log(newValues)
+        const data = await api.auth.register(newValues) || false
+        if (data) {
+          storage.set('Authorization', 'Bearer ' + data['access_token'])
+          storage.set('uid', data['uid'])
+          storage.set('username', data['username'])
+          history.push(urls.HOME)
+        }
       } else {
         for (let value of validateAry) {
           if (error[value]) {
@@ -85,25 +96,41 @@ class Register extends Component {
           <form className={style['registerForm']}>
             <List>
               <InputItem
-                {...getFieldProps('phone', {
+                {...getFieldProps('username', {
                   rules: [
-                    { required: true, message: '请输入您的手机号/用户名' },
+                    { required: true, message: '请输入您的用户名' }
+                  ],
+                })}
+                clear
+                placeholder='用户名'
+                prefixListCls='register'
+                error={!!getFieldError('username')}
+                onErrorClick={() => {
+                  Toast.fail(getFieldError('username'), 1)
+                }}
+              ></InputItem>
+            </List>
+            <List>
+              <InputItem
+                {...getFieldProps('mobile', {
+                  rules: [
+                    { required: true, message: '请输入您的手机号' },
                     { pattern: /^(1[358479]\d{9})$/, message: '请输入正确格式的手机号码' }
                   ],
                 })}
                 clear
-                placeholder='手机号/用户名'
+                placeholder='手机号'
                 prefixListCls='register'
-                error={!!getFieldError('phone')}
+                error={!!getFieldError('mobile')}
                 onErrorClick={() => {
-                  Toast.fail(getFieldError('phone'), 1)
+                  Toast.fail(getFieldError('mobile'), 1)
                 }}
               ></InputItem>
             </List>
             <div className={style['codeBox']}>
               <List>
                 <InputItem
-                  {...getFieldProps('code', {
+                  {...getFieldProps('verify_code', {
                     rules: [
                       { required: true, message: '请输入验证码' },
                     ],
@@ -111,9 +138,9 @@ class Register extends Component {
                   clear
                   placeholder='验证码'
                   prefixListCls='register'
-                  error={!!getFieldError('code')}
+                  error={!!getFieldError('verify_code')}
                   onErrorClick={() => {
-                    Toast.fail(getFieldError('code'), 1)
+                    Toast.fail(getFieldError('verify_code'), 1)
                   }}
                 >
                 </InputItem>
@@ -145,7 +172,7 @@ class Register extends Component {
             </List>
             <List>
               <InputItem
-                {...getFieldProps('confirmPassword', {
+                {...getFieldProps('password_confirmation', {
                   rules: [
                     { required: true, message: '请输入您的确认密码' },
                     { pattern: /^.{6,20}$/, message: '格式错误，密码长度6~20位字符' },
@@ -156,9 +183,9 @@ class Register extends Component {
                 placeholder='确认密码'
                 prefixListCls='register'
                 type='password'
-                error={!!getFieldError('confirmPassword')}
+                error={!!getFieldError('password_confirmation')}
                 onErrorClick={() => {
-                  Toast.fail(getFieldError('confirmPassword'), 1)
+                  Toast.fail(getFieldError('password_confirmation'), 1)
                 }}
               ></InputItem>
             </List>

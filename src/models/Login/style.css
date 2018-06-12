@@ -30,6 +30,7 @@
 .regLogobox {
   width: 76px;
   height: 76px;
+  margin-top: 60px;
   & img {
     width: 50px;
     height: 45px;
