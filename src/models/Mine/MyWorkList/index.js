@@ -17,6 +17,7 @@ class MyWorkList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loading: true,
       actives: [
         { title: '查看详情', callBack: this.handleDetail },
         { title: '电话', icon: 'icon-phone', callBack: this.handleCall },
@@ -45,30 +46,44 @@ class MyWorkList extends Component {
     console.log('微信')
   }
 
-  async genData(status, value) {
+  genData = async (status, value) => {
     console.log(status, value)
-    const dataArr = []
-    for (let i = 0; i < 10; i++) {
-      dataArr.push({
-        title: '杭州莫干山工程',
-        date: '4月1日-4月6日',
-        day: '6',
-        address: '杭州莫干山工程',
-        code: '123123',
-        money: '500000',
-        status: '待确认'
+    function timeout(ms) {
+      return new Promise((resolve, reject) => {
+        setTimeout(resolve, ms, 'done')
       })
     }
-    return dataArr
+
+    const data = await timeout(4000).then((value) => {
+      const dataArr = []
+      for (let i = 0; i < 10; i++) {
+        dataArr.push({
+          title: '杭州莫干山工程',
+          date: '4月1日-4月6日',
+          day: '6',
+          address: '杭州莫干山工程',
+          code: '123123',
+          money: '500000',
+          status: '待确认'
+        })
+      }
+      return dataArr
+    })
+    this.setState({
+      loading: false,
+    })
+    return data
   }
 
   render() {
+    const { loading } = this.state
+    console.log(loading)
     const row = (rowData, sectionID, rowID) => {
       return (
-        <div className={style.item} onClick={() => {
+        <div className={`${style.item} ${loading ? style.loading : ''}`} onClick={() => {
           this.props.match.history.push(urls.ORDERDETAIL + '?url=MYWORKLIST')
         }} key={rowID}>
-          <div className={style.title}>{rowData.title}<span>{rowData.status}</span></div>
+          <div className={style.title}><span className={style.left}>{rowData.title}</span><span className={style.right}>{rowData.status}</span></div>
           <div className={style.desc}>
             <div onClick={this.handleCall}>工期：{rowData.date}</div>
             <div>天数：{rowData.day}</div>
@@ -76,7 +91,7 @@ class MyWorkList extends Component {
               className={style.icon} type='icon-goHere'/></div>
             <div>工单号：{rowData.code}</div>
           </div>
-          <div className={style.money}>快单：¥{addCommas(rowData.money)}</div>
+          <div className={style.money}><span>快单：¥{addCommas(rowData.money)}</span></div>
         </div>
       )
     }

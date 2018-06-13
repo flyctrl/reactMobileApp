@@ -45,6 +45,12 @@ class RefreshList extends Component {
   componentDidMount() {
     const hei = this.state.height - ReactDOM.findDOMNode(this.lv).offsetTop
     this.setState({
+      dataSource: this.state.dataSource.cloneWithRows([{}, {}, {}]),
+      height: hei,
+      refreshing: false,
+      isLoading: false,
+    })
+    this.setState({
       height: hei
     })
     this.onRefresh()

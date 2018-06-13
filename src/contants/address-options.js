@@ -3,7 +3,7 @@ import cities from 'china-division/dist/cities.json'
 import areas from 'china-division/dist/areas.json'
 
 areas.forEach((area) => {
-  const matchCity = cities.filter(city => city.code === area.cityCode)[0]
+  const matchCity = cities.find(city => city.code === area.cityCode)
   if (matchCity) {
     matchCity.children = matchCity.children || []
     matchCity.children.push({
@@ -14,7 +14,7 @@ areas.forEach((area) => {
 })
 
 cities.forEach((city) => {
-  const matchProvince = provinces.filter(province => province.code === city.provinceCode)[0]
+  const matchProvince = provinces.find(province => province.code === city.provinceCode)
   if (matchProvince) {
     matchProvince.children = matchProvince.children || []
     matchProvince.children.push({
@@ -30,5 +30,4 @@ const options = provinces.map(province => ({
   value: province.code,
   children: province.children,
 }))
-
 export default options

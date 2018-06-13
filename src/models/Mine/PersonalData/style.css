@@ -106,22 +106,5 @@
     }
   }
   & .content {
-    & :global(.am-input-label) {
-      height: 22px;
-      width: 100px;
-      line-height: 22px;
-      color: rgba(138, 150, 160, 1);
-      font-size: 16px;
-      text-align: left;
-      font-family: PingFangSC-Regular;
-    }
-    & :global(.am-input-control input) {
-      height: 22px;
-      line-height: 22px;
-      color: rgba(49, 63, 72, 1);
-      font-size: 16px;
-      text-align: left;
-      font-family: PingFangSC-Regular;
-    }
   }
 }

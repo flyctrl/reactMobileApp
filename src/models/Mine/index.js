@@ -11,12 +11,12 @@ import * as urls from 'Contants/urls'
 import style from './style.css'
 
 const Item = List.Item
-
 class Mine extends Component {
   constructor(props) {
     super(props)
     this.state = {
       userData: {},
+      loading: true,
       linkData: [
         {
           icon: 'icon-myJob',
@@ -48,8 +48,11 @@ class Mine extends Component {
   }
 
   componentDidMount() {
+    const a = document.querySelector('.' + style.name + '::after')
+    console.log(a)
     setTimeout(() => {
       this.setState({
+        loading: false,
         userData: {
           avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526533438825&di=b42ed5edc4abc41b39a33311e674f0d1&imgtype=0&src=http%3A%2F%2Fmp2.qiyipic.com%2Fimage%2F20180509%2Fb4%2Fc5%2Fppu_266729910102_pp_601_300_300.jpg',
           name: '宋雨琦',
@@ -59,17 +62,17 @@ class Mine extends Component {
           dataC: 200
         }
       })
-    })
+    }, 300)
   }
 
   render() {
-    const { userData, linkData } = this.state
+    const { userData, linkData, loading } = this.state
     return (
       <div className='contentBox'>
         <Header title='我的' rightIcon='icon-settings' rightClick={() => this.props.match.history.push(urls.SETUP)}/>
         <Content>
-          <div className={style.header}>
-            <div className={style.avatar}><span className={style.loading}>{userData.avatar ? <img src={userData.avatar} alt='头像'/> : <Icon type='loading'/>}</span></div>
+          <div className={`${style.header} ${loading ? style.loading : ''}`}>
+            <div className={style.avatar}><span><img src={userData.avatar} alt='头像'/></span></div>
             <div className={style.describe}>
               <div className={style.name}>
                 {userData.name}
@@ -82,7 +85,7 @@ class Mine extends Component {
                 type='icon-edit'/> 编辑资料</Button>
             </div>
           </div>
-          <div className={style.data}>
+          <div className={`${style.data} ${loading ? style.loading : ''}`}>
             <div>
               <div className={style.num}>{userData.dataA}</div>
               <div className={style.desc}>近30天工单数</div>

@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:27:03
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-12 15:31:02
+* @Last Modified time: 2018-06-10 23:31:38
 */
 import fetch from 'Util/fetch'
 import { Toast } from 'antd-mobile'
@@ -50,6 +50,17 @@ export default {
     },
     loginout(params) { // 退出
       return Fetch('/auth/logout', params)
+    }
+  },
+  Mine: { // 我的
+    Personaldara: { // 编辑个人资料
+      avatar(params) { // 上传用户头像
+        console.log(params)
+        return Fetch('/users/avatar', params, 'post')
+      },
+      edit(params) { // 修改用户资料
+        return Fetch('/users/avatar', params, 'post')
+      },
     }
   }
 }

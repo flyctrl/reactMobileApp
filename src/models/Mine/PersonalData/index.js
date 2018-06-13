@@ -4,10 +4,12 @@
  * @Title: 编辑个人资料
  */
 import React, { Component } from 'react'
-import { InputItem, ImagePicker } from 'antd-mobile'
+import { InputItem, ImagePicker, Picker, List, Toast } from 'antd-mobile'
 import { createForm } from 'rc-form'
 import * as urls from 'Contants/urls'
+import api from 'Util/api'
 import { Header, Content, NewIcon } from 'Components'
+import addressOptions from 'Contants/address-options'
 import style from './style.css'
 
 class PersonalData extends Component {
@@ -22,9 +24,6 @@ class PersonalData extends Component {
   componentDidMount() {
     setTimeout(() => {
       const data = {
-        name: '宋雨琦',
-        sex: '女',
-        address: '浙江省杭州市拱墅区',
         avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526533438825&di=b42ed5edc4abc41b39a33311e674f0d1&imgtype=0&src=http%3A%2F%2Fmp2.qiyipic.com%2Fimage%2F20180509%2Fb4%2Fc5%2Fppu_266729910102_pp_601_300_300.jpg',
       }
       let avatar = []
@@ -38,14 +37,36 @@ class PersonalData extends Component {
     }, 500)
   }
 
-  handleAvatarChange = (avatar) => {
-    this.setState({ avatar })
+  handleAvatarChange = async (avatar, a, b) => {
+    console.log(a, b)
+    if (avatar[0]) {
+      console.log(avatar[0].file)
+      const data = await api.Mine.Personaldara.avatar({ avatar: avatar[0].file })
+      this.setState({ avatar })
+      console.log(data)
+    } else {
+      this.setState({ avatar })
+    }
   }
   handelSubmit = () => {
     this.props.form.validateFields((err, value) => {
+      const validateAry = ['name', 'sex', 'ssq', 'street', 'address']
       if (!err) {
         value.avatar = this.state.avatar[0] && this.state.avatar[0].url
+        if (!value.avatar) {
+          Toast.fail('请上传图片', 1)
+          return
+        }
+        value.sex = value.sex[0]
+        Toast.success('success', 3)
         console.info('success', value)
+      } else {
+        for (let value of validateAry) {
+          if (err[value]) {
+            Toast.fail(this.props.form.getFieldError(value), 1)
+            return
+          }
+        }
       }
     })
   }
@@ -77,7 +98,6 @@ class PersonalData extends Component {
                       className={style['img-picker']}
                       files={avatar}
                       onChange={this.handleAvatarChange}
-                      onImageClick={(index, fs) => console.log(index, fs)}
                       selectable={avatar.length < 1}
                     />
                   </div>
@@ -88,6 +108,9 @@ class PersonalData extends Component {
               <InputItem
                 {...getFieldProps('name', {
                   initialValue: data.name,
+                  rules: [{
+                    required: true, message: '请输入姓名',
+                  }]
                 })}
                 clear
                 placeholder='姓名'
@@ -97,22 +120,62 @@ class PersonalData extends Component {
               />
             </div>
           </div>
-          <div className={style.content}>
-            <InputItem
+          <List>
+            <Picker
+              extra='请选择'
+              cols='1'
+              data={[{
+                label: '未知',
+                value: '0',
+              }, {
+                label: '男',
+                value: '1',
+              }, {
+                label: '女',
+                value: '2',
+              }]}
               {...getFieldProps('sex', {
-                initialValue: data.sex,
+                initialValue: data.sex === undefined ? data.sex : [data.sex],
+                rules: [{
+                  required: true, message: '请选择性别'
+                }]
+              })}
+            >
+              <List.Item arrow='down'>性别</List.Item>
+            </Picker>
+            <Picker
+              extra='请选择'
+              data={addressOptions}
+              {...getFieldProps('ssq', {
+                initialValue: data.ssq,
+                rules: [{
+                  required: true, message: '请选择省·市·区／县'
+                }]
+              })}
+            >
+              <List.Item arrow='down'>省·市·区／县</List.Item>
+            </Picker>
+            <InputItem
+              {...getFieldProps('street', {
+                initialValue: data.street,
+                rules: [{
+                  required: true, message: '请输入街道'
+                }]
               })}
               clear
-              placeholder='性别'
-            >性别</InputItem>
+              placeholder='请输入街道'
+            >街道</InputItem>
             <InputItem
               {...getFieldProps('address', {
                 initialValue: data.address,
+                rules: [{
+                  required: true, message: '请输入地址'
+                }]
               })}
               clear
-              placeholder='省·市·区／县'
-            >省·市·区／县</InputItem>
-          </div>
+              placeholder='请输入地址'
+            >地址</InputItem>
+          </List>
         </div>
       </Content>
     </div>

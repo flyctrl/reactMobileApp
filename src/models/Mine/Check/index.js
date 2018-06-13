@@ -4,7 +4,7 @@
  * @Title: 考勤管理
  */
 import React, { Component } from 'react'
-import { List, Steps, Button, Picker } from 'antd-mobile'
+import { List, Steps, Button, Picker, Toast, Icon } from 'antd-mobile'
 import * as urls from 'Contants/urls'
 import { Header, Content } from 'Components'
 import { getQueryString } from 'Contants/tooler'
@@ -32,25 +32,14 @@ class Check extends Component {
           label: '拱墅区项目',
           value: '2014',
         },
-      ]
+      ],
+      position: {}, // 定位信息
+      inPosition: true // 是否在范围内
     }
   }
 
   componentWillMount() {
-    setTimeout(() => {
-      const data = {
-        title: '高姿态',
-        img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526905577349&di=a3da7639f5b20d172a5ceb18756d0ef5&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D2765035733%2C1282524408%26fm%3D214%26gp%3D0.jpg',
-        subtitle: '莫干山项目',
-        checkInTime: '', // 上班时间
-        checkOutTime: '', // 下班时间
-      }
-      const status = data.checkInTime ? 1 : 0
-      this.setState({
-        data,
-        status
-      })
-    }, 1000)
+    this._getPosition()
     setInterval(() => {
       const { data } = this.state
       let status = 0
@@ -64,6 +53,36 @@ class Check extends Component {
         status
       })
     }, 1000)
+  }
+
+  _getPosition () {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => { // 定位数据获取成功响应
+        Toast.success('纬度: ' + position.coords.latitude + '\n' +
+          '经度: ' + position.coords.longitude + '\n' +
+          '海拔: ' + position.coords.altitude + '\n' +
+          '水平精度: ' + position.coords.accuracy + '\n' +
+          '垂直精度: ' + position.coords.altitudeAccura)
+        this.setState({ position })
+      }, (error) => { // 定位数据获取失败响应
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            Toast.fail('您拒绝对获取地理位置的请求')
+            break
+          case error.POSITION_UNAVAILABLE:
+            Toast.fail('位置信息是不可用的')
+            break
+          case error.TIMEOUT:
+            Toast.fail('请求您的地理位置超时')
+            break
+          case error.UNKNOWN_ERROR:
+            Toast.fail('未知错误')
+            break
+        }
+      })
+    } else {
+      Toast('您的浏览器不支持使用HTML 5来获取地理位置服务')
+    }
   }
 
   handleCheckTime = () => {
@@ -89,7 +108,7 @@ class Check extends Component {
   }
 
   render() {
-    const { data, status, time, projects } = this.state
+    const { data, status, time, projects, inPosition } = this.state
     return <div className='pageBox'>
       <Header
         title='考勤打卡'
@@ -117,7 +136,7 @@ class Check extends Component {
           >
             <Item
               thumb={data.img}
-              extra='' arrow='horizontal'
+              arrow='horizontal'
             >
               <span className={style.title}>{data.title}</span><Brief><div className={style.subtitle}>项目组:{data.subtitle}</div></Brief>
             </Item>
@@ -133,6 +152,7 @@ class Check extends Component {
             <div style={{ textAlign: 'center' }}><Button onClick={this.handleCheckTime} className={style.btn} type='primary'><span
               className={style['btn-title']}>{(status || data.checkInTime) ? '下' : '上'}班打卡</span><span
               className={style.time}>{time}</span></Button></div>
+            <div className={style['position-info']} >{inPosition ? <div><Icon type='check-circle' size='md' color='#08934A' /><span>已加入考勤范围：浙江省杭州…</span></div> : <div><Icon type='cross-circle-o' size='md' color='red' /><span>未进入考勤范围</span></div> }</div>
           </div>
 
         </div>
