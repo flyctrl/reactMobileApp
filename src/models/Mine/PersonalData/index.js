@@ -4,6 +4,7 @@
  * @Title: 编辑个人资料
  */
 import React, { Component } from 'react'
+import fetch from 'Util/fetch'
 import { InputItem, ImagePicker, Picker, List, Toast } from 'antd-mobile'
 import { createForm } from 'rc-form'
 import * as urls from 'Contants/urls'
@@ -40,10 +41,13 @@ class PersonalData extends Component {
   handleAvatarChange = async (avatar, a, b) => {
     console.log(a, b)
     if (avatar[0]) {
-      console.log(avatar[0].file)
-      const data = await api.Mine.Personaldara.avatar({ avatar: avatar[0].file })
+      let formData = new FormData()
+      formData.append('avatar', avatar[0].file)
+      fetch.post('/users/avatar', formData)
+      const data = await api.Mine.Personaldara.avatar(formData)
+      avatar[0].url = data.small
+      console.log(avatar)
       this.setState({ avatar })
-      console.log(data)
     } else {
       this.setState({ avatar })
     }

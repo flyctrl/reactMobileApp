@@ -8,11 +8,12 @@ import fetch from 'Util/fetch'
 import { Toast } from 'antd-mobile'
 
 // 获取数据类接口
-export const Fetch = (url, params, method = 'post') => {
+export const Fetch = (url, params, method = 'post', config) => {
   if (method === 'get') {
-    params = { params }
+    params = { params, ...config }
+    config = {}
   }
-  return fetch[method](url, params).then((res) => {
+  return fetch[method](url, params, config).then((res) => {
     if (res.code === 0) {
       return res.data
     } else {
@@ -24,11 +25,12 @@ export const Fetch = (url, params, method = 'post') => {
 }
 
 // 保存类接口
-export const FetchSave = (url, params, method = 'post') => {
+export const FetchSave = (url, params, method = 'post', config) => {
   if (method === 'get') {
-    params = { params }
+    params = { params, ...config }
+    config = {}
   }
-  return fetch[method](url, params).then((res) => {
+  return fetch[method](url, params, config).then((res) => {
     if (res.code === 0) {
       Toast.success(res.message, 1)
       return res.data
@@ -56,7 +58,7 @@ export default {
     Personaldara: { // 编辑个人资料
       avatar(params) { // 上传用户头像
         console.log(params)
-        return Fetch('/users/avatar', params, 'post')
+        return Fetch('/users/avatar', params, 'post', { 'Content-Type': 'multipart/form-data' })
       },
       edit(params) { // 修改用户资料
         return Fetch('/users/avatar', params, 'post')
