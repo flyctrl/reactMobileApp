@@ -15,7 +15,7 @@ export const Fetch = (url, params, method = 'post', config) => {
   }
   return fetch[method](url, params, config).then((res) => {
     if (res.code === 0) {
-      return res.data
+      return res.data || true
     } else {
       Toast.fail(res.message, 1)
     }
@@ -33,7 +33,7 @@ export const FetchSave = (url, params, method = 'post', config) => {
   return fetch[method](url, params, config).then((res) => {
     if (res.code === 0) {
       Toast.success(res.message, 1)
-      return res.data
+      return res.data || true
     } else {
       Toast.fail(res.message, 1)
     }
@@ -61,7 +61,7 @@ export default {
         return Fetch('/users/avatar', params, 'post', { 'Content-Type': 'multipart/form-data' })
       },
       edit(params) { // 修改用户资料
-        return Fetch('/users/avatar', params, 'post')
+        return FetchSave('/users/edit', params)
       },
     }
   }

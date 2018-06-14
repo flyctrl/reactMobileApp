@@ -4,8 +4,7 @@
  * @Title: 编辑个人资料
  */
 import React, { Component } from 'react'
-import fetch from 'Util/fetch'
-import { InputItem, ImagePicker, Picker, List, Toast } from 'antd-mobile'
+import { InputItem, ImagePicker, Picker, List, Toast, DatePicker } from 'antd-mobile'
 import { createForm } from 'rc-form'
 import * as urls from 'Contants/urls'
 import api from 'Util/api'
@@ -25,7 +24,6 @@ class PersonalData extends Component {
   componentDidMount() {
     setTimeout(() => {
       const data = {
-        avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526533438825&di=b42ed5edc4abc41b39a33311e674f0d1&imgtype=0&src=http%3A%2F%2Fmp2.qiyipic.com%2Fimage%2F20180509%2Fb4%2Fc5%2Fppu_266729910102_pp_601_300_300.jpg',
       }
       let avatar = []
       data.avatar && avatar.push({ url: data.avatar })
@@ -43,27 +41,31 @@ class PersonalData extends Component {
     if (avatar[0]) {
       let formData = new FormData()
       formData.append('avatar', avatar[0].file)
-      fetch.post('/users/avatar', formData)
-      const data = await api.Mine.Personaldara.avatar(formData)
-      avatar[0].url = data.small
-      console.log(avatar)
+      const data = await api.Mine.Personaldara.avatar(formData) || {}
+      if (data.small) {
+        avatar[0].url = data.small
+      } else {
+        avatar = []
+      }
       this.setState({ avatar })
     } else {
       this.setState({ avatar })
     }
   }
   handelSubmit = () => {
-    this.props.form.validateFields((err, value) => {
-      const validateAry = ['name', 'sex', 'ssq', 'street', 'address']
+    this.props.form.validateFields(async (err, value) => {
+      const validateAry = ['name', 'gender', 'birthday', 'ssq', 'street', 'address']
       if (!err) {
-        value.avatar = this.state.avatar[0] && this.state.avatar[0].url
-        if (!value.avatar) {
+        if (!this.state.avatar[0]) {
           Toast.fail('请上传图片', 1)
           return
         }
-        value.sex = value.sex[0]
-        Toast.success('success', 3)
-        console.info('success', value)
+        value.avatar = this.state.avatar[0] && this.state.avatar[0].url
+        value.province = value.ssq[0]
+        value.city = value.ssq[1]
+        value.area = value.ssq[2]
+        value.sex = value.gender[0]
+        await api.Mine.Personaldara.edit(value)
       } else {
         for (let value of validateAry) {
           if (err[value]) {
@@ -138,8 +140,8 @@ class PersonalData extends Component {
                 label: '女',
                 value: '2',
               }]}
-              {...getFieldProps('sex', {
-                initialValue: data.sex === undefined ? data.sex : [data.sex],
+              {...getFieldProps('gender', {
+                initialValue: data.gender === undefined ? data.gender : [data.gender],
                 rules: [{
                   required: true, message: '请选择性别'
                 }]
@@ -147,6 +149,19 @@ class PersonalData extends Component {
             >
               <List.Item arrow='down'>性别</List.Item>
             </Picker>
+            <DatePicker
+              {...getFieldProps('birthday', {
+                initialValue: data.birthday,
+                rules: [
+                  { required: true, message: '请选择出生日期' },
+                ],
+              })}
+              minDate={new Date('1900-1-1')}
+              maxDate={new Date()}
+              mode='date'
+            >
+              <List.Item arrow='down'>出生日期</List.Item>
+            </DatePicker>
             <Picker
               extra='请选择'
               data={addressOptions}
