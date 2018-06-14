@@ -17,10 +17,10 @@ export const Fetch = (url, params, method = 'post', config) => {
     if (res.code === 0) {
       return res.data || true
     } else {
-      Toast.fail(res.message, 1)
+      Toast.fail(res.msg, 1)
     }
   }, (err) => {
-    Toast.fail(err.message, 1)
+    Toast.fail(err.msg, 1)
   })
 }
 
@@ -32,13 +32,13 @@ export const FetchSave = (url, params, method = 'post', config) => {
   }
   return fetch[method](url, params, config).then((res) => {
     if (res.code === 0) {
-      Toast.success(res.message, 1)
+      Toast.success(res.msg, 1)
       return res.data || true
     } else {
-      Toast.fail(res.message, 1)
+      Toast.fail(res.msg, 1)
     }
   }, (err) => {
-    Toast.fail(err.message, 1)
+    Toast.fail(err.msg, 1)
   })
 }
 
@@ -62,6 +62,9 @@ export default {
       },
       edit(params) { // 修改用户资料
         return FetchSave('/users/edit', params)
+      },
+      info(params) { // 修改用户资料
+        return FetchSave('/users', params, 'get')
       },
     }
   }

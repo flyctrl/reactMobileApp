@@ -8,6 +8,7 @@ import React, { Component } from 'react'
 import { Button, Icon, List } from 'antd-mobile'
 import { Header, Content, NewIcon } from 'Components'
 import * as urls from 'Contants/urls'
+import api from 'Util/api'
 import style from './style.css'
 
 const Item = List.Item
@@ -15,7 +16,8 @@ class Mine extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userData: {},
+      userData: {
+      },
       loading: true,
       linkData: [
         {
@@ -48,38 +50,28 @@ class Mine extends Component {
   }
 
   componentDidMount() {
-    const a = document.querySelector('.' + style.name + '::after')
-    console.log(a)
-    setTimeout(() => {
-      this.setState({
-        loading: false,
-        userData: {
-          avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526533438825&di=b42ed5edc4abc41b39a33311e674f0d1&imgtype=0&src=http%3A%2F%2Fmp2.qiyipic.com%2Fimage%2F20180509%2Fb4%2Fc5%2Fppu_266729910102_pp_601_300_300.jpg',
-          name: '宋雨琦',
-          address: '浙江杭州',
-          dataA: 100,
-          dataB: 3000,
-          dataC: 200
-        }
-      })
-    }, 300)
+    (async () => {
+      const userData = await api.Mine.Personaldara.info({ hasInfo: 1 }) || {}
+      this.setState({ loading: false, userData })
+    })()
   }
 
   render() {
     const { userData, linkData, loading } = this.state
+    userData.info = userData.info || {}
     return (
       <div className='contentBox'>
         <Header title='我的' rightIcon='icon-settings' rightClick={() => this.props.match.history.push(urls.SETUP)}/>
         <Content>
           <div className={`${style.header} ${loading ? style.loading : ''}`}>
-            <div className={style.avatar}><span><img src={userData.avatar} alt='头像'/></span></div>
+            <div className={style.avatar}><span>{userData['small_avatar'] ? <img src={userData['small_avatar']} alt='头像'/> : <NewIcon className={style.icon} type='icon-morentouxiangicon'/>}</span></div>
             <div className={style.describe}>
               <div className={style.name}>
-                {userData.name}
+                {userData.realname}
               </div>
               <div className={style.address}>
                 <NewIcon type='icon-address'/>
-                <span className={style.title}>{userData.address}</span>
+                <span className={style.title}>{userData.info.address}</span>
               </div>
               <Button className={style.btn} onClick={() => this.props.match.history.push(urls.PERSONALDATA)} type='primary' size='small' inline><NewIcon
                 type='icon-edit'/> 编辑资料</Button>

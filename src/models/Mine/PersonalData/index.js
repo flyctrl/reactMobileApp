@@ -22,22 +22,20 @@ class PersonalData extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      const data = {
-      }
+    (async () => {
+      const data = await api.Mine.Personaldara.info({ hasInfo: 1 }) || {}
       let avatar = []
-      data.avatar && avatar.push({ url: data.avatar })
+      data['small_avatar'] && avatar.push({ url: data['small_avatar'] })
       this.setState({
         data,
         avatar
       }, () => {
         this.labelFocusInst.focus()
       })
-    }, 500)
+    })()
   }
 
-  handleAvatarChange = async (avatar, a, b) => {
-    console.log(a, b)
+  handleAvatarChange = async (avatar) => {
     if (avatar[0]) {
       let formData = new FormData()
       formData.append('avatar', avatar[0].file)
@@ -54,7 +52,7 @@ class PersonalData extends Component {
   }
   handelSubmit = () => {
     this.props.form.validateFields(async (err, value) => {
-      const validateAry = ['name', 'gender', 'birthday', 'ssq', 'street', 'address']
+      const validateAry = ['gender', 'birthday', 'ssq', 'street', 'address']
       if (!err) {
         if (!this.state.avatar[0]) {
           Toast.fail('请上传图片', 1)
@@ -80,6 +78,7 @@ class PersonalData extends Component {
   render() {
     const { getFieldProps } = this.props.form
     const { data, avatar } = this.state
+    data.info = data.info || {}
     return <div className='pageBox'>
       <Header
         className={style['personal-data-header']}
@@ -111,19 +110,7 @@ class PersonalData extends Component {
               </div>
             </div>
             <div className={style.describe}>
-              <InputItem
-                {...getFieldProps('name', {
-                  initialValue: data.name,
-                  rules: [{
-                    required: true, message: '请输入姓名',
-                  }]
-                })}
-                clear
-                placeholder='姓名'
-                ref={el => {
-                  this.labelFocusInst = el
-                }}
-              />
+              {data.realName}
             </div>
           </div>
           <List>
@@ -131,17 +118,17 @@ class PersonalData extends Component {
               extra='请选择'
               cols='1'
               data={[{
-                label: '未知',
-                value: '0',
-              }, {
                 label: '男',
                 value: '1',
               }, {
                 label: '女',
                 value: '2',
+              }, {
+                label: '未知',
+                value: '0',
               }]}
               {...getFieldProps('gender', {
-                initialValue: data.gender === undefined ? data.gender : [data.gender],
+                initialValue: data.info.gender === undefined ? data.info.gender : [data.info.gender],
                 rules: [{
                   required: true, message: '请选择性别'
                 }]
@@ -151,7 +138,7 @@ class PersonalData extends Component {
             </Picker>
             <DatePicker
               {...getFieldProps('birthday', {
-                initialValue: data.birthday,
+                initialValue: data.info.birthday,
                 rules: [
                   { required: true, message: '请选择出生日期' },
                 ],
@@ -166,7 +153,7 @@ class PersonalData extends Component {
               extra='请选择'
               data={addressOptions}
               {...getFieldProps('ssq', {
-                initialValue: data.ssq,
+                initialValue: data.info.ssq,
                 rules: [{
                   required: true, message: '请选择省·市·区／县'
                 }]
@@ -176,17 +163,20 @@ class PersonalData extends Component {
             </Picker>
             <InputItem
               {...getFieldProps('street', {
-                initialValue: data.street,
+                initialValue: data.info.street,
                 rules: [{
                   required: true, message: '请输入街道'
                 }]
               })}
               clear
               placeholder='请输入街道'
+              ref={el => {
+                this.labelFocusInst = el
+              }}
             >街道</InputItem>
             <InputItem
               {...getFieldProps('address', {
-                initialValue: data.address,
+                initialValue: data.info.address,
                 rules: [{
                   required: true, message: '请输入地址'
                 }]
