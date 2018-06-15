@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:28:51
 * @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-12 00:20:33
+* @Last Modified time: 2018-06-15 16:58:28
 */
 import storage from '../utils/storage'
 import axios from 'axios'
@@ -31,8 +31,8 @@ fetcher.interceptors.request.use(function (config) {
 })
 
 fetcher.interceptors.response.use(function (response) {
-  if (response.data.code === 89001 || response.data.code === 81001) {
-    location.href = '/login'
+  if (response.data.code === 10013) {
+    window.location.href = '/Login/login'
   }
   return response.data
 }, function (error) {
