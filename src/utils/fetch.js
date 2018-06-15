@@ -12,7 +12,10 @@ let fetcher = axios.create({
   baseURL: baseUrl,
   withCredentials: 'include',
   transformRequest: [function (data) {
-    return data
+    if (data && data.constructor && data.constructor.name === 'FormData') {
+      return data
+    }
+    return JSON.stringify(data)
   }],
   headers: {
     'Access-Control-Allow-Origin': '*',
