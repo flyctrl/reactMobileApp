@@ -54,16 +54,14 @@ class PersonalData extends Component {
     this.props.form.validateFields(async (err, value) => {
       const validateAry = ['gender', 'birthday', 'ssq', 'street', 'address']
       if (!err) {
-        if (!this.state.avatar[0]) {
-          Toast.fail('请上传图片', 1)
-          return
-        }
-        value.avatar = this.state.avatar[0] && this.state.avatar[0].url
         value.province = value.ssq[0]
         value.city = value.ssq[1]
         value.area = value.ssq[2]
-        value.sex = value.gender[0]
-        await api.Mine.Personaldara.edit(value)
+        value.gender = value.gender[0]
+        value.birthday = value.birthday.Format('yyyy-MM-dd')
+        delete value.ssq
+        const data = await api.Mine.Personaldara.edit(value)
+        data && this.props.match.history.push(urls.MINE)
       } else {
         for (let value of validateAry) {
           if (err[value]) {
@@ -119,13 +117,13 @@ class PersonalData extends Component {
               cols='1'
               data={[{
                 label: '男',
-                value: '1',
+                value: 1,
               }, {
                 label: '女',
-                value: '2',
+                value: 2,
               }, {
                 label: '未知',
-                value: '0',
+                value: 0,
               }]}
               {...getFieldProps('gender', {
                 initialValue: data.info.gender === undefined ? data.info.gender : [data.info.gender],
@@ -138,7 +136,7 @@ class PersonalData extends Component {
             </Picker>
             <DatePicker
               {...getFieldProps('birthday', {
-                initialValue: data.info.birthday,
+                initialValue: new Date(data.info.birthday),
                 rules: [
                   { required: true, message: '请选择出生日期' },
                 ],
@@ -153,7 +151,7 @@ class PersonalData extends Component {
               extra='请选择'
               data={addressOptions}
               {...getFieldProps('ssq', {
-                initialValue: data.info.ssq,
+                initialValue: [data.info.province, data.info.city, data.info.area],
                 rules: [{
                   required: true, message: '请选择省·市·区／县'
                 }]

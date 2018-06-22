@@ -26,7 +26,6 @@ class SetUp extends Component {
         title='设置'
         leftIcon='icon-back'
         leftTitle1='我的'
-        noLine={true}
         leftClick1={() => {
           this.props.match.history.push(urls.MINE)
         }}

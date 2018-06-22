@@ -61,10 +61,10 @@ export default {
         return Fetch('/users/avatar', params, 'post', { 'Content-Type': 'multipart/form-data' })
       },
       edit(params) { // 修改用户资料
-        return FetchSave('/users/edit', params)
+        return Fetch('/users/edit', params)
       },
-      info(params) { // 修改用户资料
-        return FetchSave('/users', params, 'get')
+      info(params) { // 获取用户资料
+        return Fetch('/users', params, 'get')
       },
     }
   }
