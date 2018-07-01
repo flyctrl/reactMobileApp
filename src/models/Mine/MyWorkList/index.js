@@ -54,7 +54,7 @@ class MyWorkList extends Component {
       })
     }
 
-    const data = await timeout(4000).then((value) => {
+    const data = await timeout(1000).then((value) => {
       const dataArr = []
       for (let i = 0; i < 10; i++) {
         dataArr.push({

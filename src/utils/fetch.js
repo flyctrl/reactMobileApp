@@ -1,8 +1,13 @@
 /*
 * @Author: baosheng
 * @Date:   2018-04-02 22:28:51
+<<<<<<< HEAD
 * @Last Modified by:   baosheng
 * @Last Modified time: 2018-07-01 17:20:44
+=======
+* @Last Modified by:   chengbs
+* @Last Modified time: 2018-06-19 22:49:33
+>>>>>>> origin/develop
 */
 import storage from '../utils/storage'
 import axios from 'axios'

@@ -38,7 +38,6 @@ class Security extends Component {
         title='账户与安全'
         leftIcon='icon-back'
         leftTitle1='设置'
-        noLine={true}
         leftClick1={() => {
           this.props.match.history.push(urls.SETUP)
         }}

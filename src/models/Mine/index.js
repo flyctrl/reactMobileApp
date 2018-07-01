@@ -18,6 +18,11 @@ class Mine extends Component {
     this.state = {
       userData: {
       },
+      income: {
+        dataA: 200,
+        dataB: 3000,
+        dataC: 100,
+      },
       loading: true,
       linkData: [
         {
@@ -57,7 +62,7 @@ class Mine extends Component {
   }
 
   render() {
-    const { userData, linkData, loading } = this.state
+    const { userData, income, linkData, loading } = this.state
     userData.info = userData.info || {}
     return (
       <div className='contentBox'>
@@ -67,7 +72,7 @@ class Mine extends Component {
             <div className={style.avatar}><span>{userData['small_avatar'] ? <img src={userData['small_avatar']} alt='头像'/> : <NewIcon className={style.icon} type='icon-morentouxiangicon'/>}</span></div>
             <div className={style.describe}>
               <div className={style.name}>
-                {userData.realname}
+                {userData.username}
               </div>
               <div className={style.address}>
                 <NewIcon type='icon-address'/>
@@ -79,15 +84,15 @@ class Mine extends Component {
           </div>
           <div className={`${style.data} ${loading ? style.loading : ''}`}>
             <div>
-              <div className={style.num}>{userData.dataA}</div>
+              <div className={style.num}>{income.dataA}</div>
               <div className={style.desc}>近30天工单数</div>
             </div>
             <div>
-              <div className={style.num}>{userData.dataB}</div>
+              <div className={style.num}>{income.dataB}</div>
               <div className={style.desc}>近30天收入</div>
             </div>
             <div>
-              <div className={style.num}>{userData.dataC}</div>
+              <div className={style.num}>{income.dataC}</div>
               <div className={style.desc}>我关注的</div>
             </div>
           </div>

@@ -2,7 +2,7 @@
 * @Author: baosheng
 * @Date:   2018-04-02 22:27:03
 * @Last Modified by:   baosheng
-* @Last Modified time: 2018-07-01 18:46:57
+* @Last Modified time: 2018-07-01 20:13:26
 */
 import fetch from 'Util/fetch'
 import { Toast } from 'antd-mobile'
@@ -64,7 +64,7 @@ export default {
         return Fetch('/users/avatar', params, 'post', { 'Content-Type': 'multipart/form-data' })
       },
       edit(params) { // 修改用户资料
-        return FetchSave('/users/edit', params)
+        return Fetch('/users/edit', params)
       },
       info(params) { // 修改用户资料
         return Fetch('/users', params, 'get')
