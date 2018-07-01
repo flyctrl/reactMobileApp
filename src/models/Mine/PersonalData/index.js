@@ -143,8 +143,8 @@ class PersonalData extends Component {
                   { required: true, message: '请选择出生日期' },
                 ],
               })}
-              minDate={new Date('1900-1-1')}
-              maxDate={new Date()}
+              minDate={new Date('1900-01-01')}
+              maxDate={new Date('2018-05-28')}
               mode='date'
             >
               <List.Item arrow='down'>出生日期</List.Item>

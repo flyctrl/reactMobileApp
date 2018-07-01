@@ -1,8 +1,8 @@
 /*
 * @Author: chengbs
 * @Date:   2018-04-08 16:19:55
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-22 14:37:30
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-01 14:31:03
 */
 import React, { Component } from 'react'
 import { Button, Icon, List } from 'antd-mobile'
@@ -51,7 +51,7 @@ class Mine extends Component {
 
   componentDidMount() {
     (async () => {
-      const userData = await api.Mine.Personaldara.info({ hasInfo: 1 }) || {}
+      const userData = await api.Mine.Personaldara.info({ hasInfo: 1, time: Date.now() }) || {}
       this.setState({ loading: false, userData })
     })()
   }

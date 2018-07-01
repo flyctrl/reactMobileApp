@@ -1,13 +1,14 @@
 /*
 * @Author: chengbs
 * @Date:   2018-05-24 14:18:18
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-05-24 14:37:26
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-01 18:40:42
 */
 import React, { Component } from 'react'
 import { InputItem, Button, Toast, List } from 'antd-mobile'
 import { createForm } from 'rc-form'
-import { Content } from 'Components'
+import { Content, Header } from 'Components'
+import * as urls from 'Contants/urls'
 import style from './style.css'
 import logo from 'Src/assets/logo.png'
 
@@ -53,6 +54,15 @@ class RestPwd extends Component {
     const { getFieldProps, getFieldError } = this.props.form
     return (
       <div className='pageBox'>
+        <Header
+          title='账户与安全'
+          leftIcon='icon-back'
+          leftTitle1='设置'
+          noLine={true}
+          leftClick1={() => {
+            this.props.match.history.push(urls.SETUP)
+          }}
+        />
         <Content isHeader={false}>
           <div className={`${style['logobox']} ${style['regLogobox']}`}><img src={logo} /><span>新建筑 新生活</span></div>
           <div className={style['loginTitle']}>重置密码</div>

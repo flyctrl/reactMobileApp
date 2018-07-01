@@ -128,7 +128,7 @@
       "target": "http://api-test.yaque365.com",
       "changeOrigin": true,
       "pathRewrite": {
-         "^/api": "/"
+        "^/api": "/"
       }
     }
   }

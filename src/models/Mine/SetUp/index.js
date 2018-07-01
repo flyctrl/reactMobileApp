@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 import { List, Button } from 'antd-mobile'
 import * as urls from 'Contants/urls'
 import { Header, Content } from 'Components'
+import api from 'Util/api'
 import style from './style.css'
 
 const Item = List.Item
@@ -15,9 +16,17 @@ class SetUp extends Component {
   constructor(props) {
     super(props)
     this.state = {}
+    this.handleSignOut = this.handleSignOut.bind(this)
   }
 
   componentDidMount() {
+  }
+
+  async handleSignOut() {
+    const data = await api.auth.loginout({}) || false
+    if (data) {
+      this.props.match.history.push(urls.LOGIN)
+    }
   }
 
   render() {
@@ -39,9 +48,7 @@ class SetUp extends Component {
             <Item onClick={() => {}} arrow='horizontal'>隐私</Item>
             <Item onClick={() => {}} arrow='horizontal'>关于我们</Item>
           </List>
-          <Button className={style.btn} onClick={() => {
-            this.props.match.history.push(urls.LOGIN)
-          }}>退出登录</Button>
+          <Button className={style.btn} onClick={this.handleSignOut}>退出登录</Button>
         </div>
       </Content>
     </div>

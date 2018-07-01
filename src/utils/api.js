@@ -1,8 +1,8 @@
 /*
 * @Author: baosheng
 * @Date:   2018-04-02 22:27:03
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-10 23:31:38
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-01 18:46:57
 */
 import fetch from 'Util/fetch'
 import { Toast } from 'antd-mobile'
@@ -51,7 +51,10 @@ export default {
       return Fetch('/auth/register', params)
     },
     loginout(params) { // 退出
-      return Fetch('/auth/logout', params)
+      return FetchSave('/auth/logout', params, 'get')
+    },
+    refresh(params) { // 刷新token
+      return Fetch('/auth/refresh', params)
     }
   },
   Mine: { // 我的
@@ -64,7 +67,7 @@ export default {
         return FetchSave('/users/edit', params)
       },
       info(params) { // 修改用户资料
-        return FetchSave('/users', params, 'get')
+        return Fetch('/users', params, 'get')
       },
     }
   }

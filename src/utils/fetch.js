@@ -1,8 +1,8 @@
 /*
 * @Author: baosheng
 * @Date:   2018-04-02 22:28:51
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-15 16:58:28
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-01 17:20:44
 */
 import storage from '../utils/storage'
 import axios from 'axios'
@@ -34,8 +34,30 @@ fetcher.interceptors.request.use(function (config) {
 })
 
 fetcher.interceptors.response.use(function (response) {
-  if (response.data.code === 10013) {
+  if (response.data.code === 10013) { // 未登录
     window.location.href = '/Login/login'
+  } else if (response.data.code === 10011) { // token过期
+    let refreshToken = storage.get('refreshToken')
+    // axios({
+    //   method: 'POST',
+    //   url: baseUrl + '/auth/refresh',
+    //   withCredentials: 'include',
+    //   headers: {
+    //     'Access-Control-Allow-Origin': '*',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   data: {
+    //     refresh_token: refreshToken
+    //   }
+    // })
+    axios.post(baseUrl + '/auth/refresh', { refresh_token: refreshToken }).then(function(res) {
+      console.log(res.data.data.access_token)
+      storage.set('Authorization', 'Bearer ' + res.data.data.access_token)
+      storage.set('refreshToken', res.data.data.refresh_token)
+      window.location.reload()
+    }).catch(function(err) {
+      console.log(err)
+    })
   }
   return response.data
 }, function (error) {

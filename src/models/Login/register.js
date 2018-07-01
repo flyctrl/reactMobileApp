@@ -1,8 +1,8 @@
 /*
 * @Author: chengbs
 * @Date:   2018-04-09 13:27:30
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-12 15:31:22
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-01 17:51:53
 */
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
@@ -26,7 +26,7 @@ class Register extends Component {
     }
   }
   onSubmit = () => { // 表单提交
-    let validateAry = ['username', 'mobile', 'verify_code', 'password', 'password_confirmation']
+    let validateAry = ['username', 'mobile', 'verify_code', 'password', 'confirm_password']
     const { getFieldError } = this.props.form
     this.props.form.validateFields(async (error, values) => {
       if (!error) {
@@ -98,7 +98,8 @@ class Register extends Component {
               <InputItem
                 {...getFieldProps('username', {
                   rules: [
-                    { required: true, message: '请输入您的用户名' }
+                    { required: true, message: '请输入您的用户名' },
+                    { pattern: /^.{6,30}$/, message: '用户名至少6位字符' },
                   ],
                 })}
                 clear
@@ -133,6 +134,7 @@ class Register extends Component {
                   {...getFieldProps('verify_code', {
                     rules: [
                       { required: true, message: '请输入验证码' },
+                      { pattern: /^.{6}$/, message: '验证码至少6位字符' },
                     ],
                   })}
                   clear
@@ -172,7 +174,7 @@ class Register extends Component {
             </List>
             <List>
               <InputItem
-                {...getFieldProps('password_confirmation', {
+                {...getFieldProps('confirm_password', {
                   rules: [
                     { required: true, message: '请输入您的确认密码' },
                     { pattern: /^.{6,20}$/, message: '格式错误，密码长度6~20位字符' },
@@ -183,9 +185,9 @@ class Register extends Component {
                 placeholder='确认密码'
                 prefixListCls='register'
                 type='password'
-                error={!!getFieldError('password_confirmation')}
+                error={!!getFieldError('confirm_password')}
                 onErrorClick={() => {
-                  Toast.fail(getFieldError('password_confirmation'), 1)
+                  Toast.fail(getFieldError('confirm_password'), 1)
                 }}
               ></InputItem>
             </List>
