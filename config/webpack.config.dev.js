@@ -63,7 +63,7 @@ module.exports = Merge(CommonConfig,{
     // containing code from all our entry points, and the Webpack runtime.
     filename: 'static/js/bundle.js',
     // There are also additional JS chunk files if you use code splitting.
-    chunkFilename: 'static/js/[name].chunk.js',
+    chunkFilename: 'static/js/[name].chunk.js?rand=[chunkhash:8]',
     // This is the URL that app is served from. We use "/" in development.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
@@ -211,6 +211,7 @@ module.exports = Merge(CommonConfig,{
               {
                 loader: require.resolve('css-loader'),
                 options: {
+                  minimize: true,
                   importLoaders: 1,
                   modules: true,
                   localIdentName: '[name]__[local]___[hash:base64:5]'
@@ -225,15 +226,15 @@ module.exports = Merge(CommonConfig,{
                   plugins: () => [
                     require('postcss-cssnext'),
                     require('postcss-flexbugs-fixes'),
-                    // autoprefixer({
-                    //   browsers: [
-                    //     '>1%',
-                    //     'last 4 versions',
-                    //     'Firefox ESR',
-                    //     'not ie < 9', // React doesn't support IE8 anyway
-                    //   ],
-                    //   flexbox: 'no-2009',
-                    // }),
+                    autoprefixer({
+                      browsers: [
+                        '>1%',
+                        'last 4 versions',
+                        'Firefox ESR',
+                        'not ie < 9', // React doesn't support IE8 anyway
+                      ],
+                      flexbox: 'no-2009',
+                    }),
                     pxtorem({
                       rootValue: 100,
                       propWhiteList: []
@@ -275,6 +276,14 @@ module.exports = Merge(CommonConfig,{
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: true,
+      },
+      compress: {
+        warnings: false
+      }
     }),
     // Add module names to factory functions so they appear in browser profiler.
     new webpack.NamedModulesPlugin(),

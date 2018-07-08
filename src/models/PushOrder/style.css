@@ -1,8 +1,8 @@
 /*
 * @Author: chengbs
 * @Date:   2018-04-10 15:19:22
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-01 16:52:00
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-07 20:46:01
 */
 .pro-radio :global(.am-radio) {
   padding: 3px;
@@ -121,9 +121,9 @@
   }
 }
 
+
 .push-upload-icon {
-  width: 60px;
-  height: 60px;
+  font-size: 60px;
 }
 
 .file-list {

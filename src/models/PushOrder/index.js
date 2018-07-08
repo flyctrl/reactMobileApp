@@ -1,17 +1,17 @@
 /*
 * @Author: chengbs
 * @Date:   2018-04-08 16:18:37
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-01 16:50:59
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-07 20:23:56
 */
 import React, { Component } from 'react'
+import style from './style.css'
 // import { Link } from 'react-router-dom'
 import * as urls from 'Contants/urls'
 import { List, Radio, Picker, InputItem, DatePicker, TextareaItem, Toast } from 'antd-mobile'
 import { Header, Content } from 'Components'
 import { createForm } from 'rc-form'
 import history from 'Util/history'
-import style from './style.css'
 import Upload from 'rc-upload'
 import NewIcon from 'Components/NewIcon'
 import ConfirmOrder from './confirmOrder'

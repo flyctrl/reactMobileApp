@@ -4,6 +4,7 @@ const path = require('path');
 const paths = require('./paths');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -41,6 +42,15 @@ module.exports = {
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
       new ModuleScopePlugin(paths.appSrc),
+      new CompressionPlugin({
+        asset: '[path].gz[query]', // 目标资源名称。[file] 会被替换成原资源。[path] 会被替换成原资源路径，[query] 替换成原查询字符串
+        algorithm: 'gzip', // 算法
+        test: new RegExp(
+          '\\.(js|css)$' // 压缩 js 与 css
+        ),
+        threshold: 10240, // 只处理比这个值大的资源。按字节计算
+        minRatio: 0.8 // 只有压缩率比这个值小的资源才会被处理
+      }),
     ],
   },
   module: {
@@ -85,12 +95,11 @@ module.exports = {
         include: paths.appSrc,
         loader: require.resolve('babel-loader'),
         options: {
-          // This is a feature of `babel-loader` for webpack (not Babel itself).
-          // It enables caching results in ./node_modules/.cache/babel-loader/
-          // directory for faster rebuilds.
+          comments: true,
           cacheDirectory: true,
           plugins: [
             ['import', [{ libraryName: 'antd', style: 'css' }]],
+            'syntax-dynamic-import'
           ],
         },
       },

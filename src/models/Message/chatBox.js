@@ -1,8 +1,8 @@
 /*
 * @Author: chengbs
 * @Date:   2018-06-06 18:35:54
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-09 23:15:28
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-03 00:45:51
 */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -41,7 +41,7 @@ class ChatBox extends Component {
     })
   }
   sendMessage(e) {
-    // e.preventDefault()
+    e.preventDefault()
     const that = this
     let message = this.state.meg
     if (message === '') {

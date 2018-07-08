@@ -1,45 +1,141 @@
 /*
 * @Author: chengbs
 * @Date:   2018-05-22 14:13:58
-* @Last Modified by:   chengbs
-* @Last Modified time: 2018-06-07 11:03:44
+* @Last Modified by:   baosheng
+* @Last Modified time: 2018-07-07 23:29:00
 */
+import React from 'react'
 import * as urls from 'Contants/urls'
-import Home from '../models/Home'
-import Message from '../models/Message'
-import PushOrder from '../models/PushOrder'
-import TobeDone from '../models/TobeDone'
-// 我的
-import Mine from '../models/Mine'
-import SetUp from '../models/Mine/SetUp' // 我的设置
-import SetUpSecurity from '../models/Mine/SetUp/security' // 我的设置》账户与安全
+import Loadable from 'react-loadable'
 
-import PersonalData from '../models/Mine/PersonalData' // 个人资料编辑
-import MyWorkList from '../models/Mine/MyWorkList' // 我的工单
-import Authenticate from '../models/Mine/Authenticate' // 资格认证
-import AuthenticatePersonal from '../models/Mine/Authenticate/personal' // 资格认证》个人
-import AuthenticateCompany from '../models/Mine/Authenticate/company' // 资格认证》企业
-import Account from '../models/Mine/Account' // 我的账户
-import AccountDetail from '../models/Mine/Account/detail' // 我的账户》账户详情
-import AccountRecharge from '../models/Mine/Account/recharge' // 我的账户》充值
-import AccountWithdrawCash from '../models/Mine/Account/withdrawCash' // 我的账户》提现
-import Invoice from '../models/Mine/Invoice' // 申请发票
-import InvoiceDetail from '../models/Mine/Invoice/detail' // 申请发票》详细
-import Check from '../models/Mine/Check' // 考勤管理
+function MyLoadingComponent() {
+  return <div></div>
+}
+const Home = Loadable({
+  loader: () => import(/* webpackChunkName: "home" */ '../models/Home'),
+  loading: MyLoadingComponent
+})
+const Message = Loadable({
+  loader: () => import(/* webpackChunkName: "message" */ '../models/Message'),
+  loading: MyLoadingComponent
+})
+const PushOrder = Loadable({
+  loader: () => import(/* webpackChunkName: "pushorder" */ '../models/PushOrder'),
+  loading: MyLoadingComponent
+})
+const TobeDone = Loadable({
+  loader: () => import(/* webpackChunkName: "tobedone" */ '../models/TobeDone'),
+  loading: MyLoadingComponent
+})
 
-import Login from '../models/Login/login' // 登录
-import Register from '../models/Login/register' // 注册
-import ForgetPwd from '../models/Login/forgetPwd' // 忘记密码
-import ResetPwd from '../models/Login/resetPwd' // 重置密码
+const Mine = Loadable({ // 我的
+  loader: () => import(/* webpackChunkName: "mine" */ '../models/Mine'),
+  loading: MyLoadingComponent
+})
+const SetUp = Loadable({ // 我的设置
+  loader: () => import(/* webpackChunkName: "setup" */ '../models/Mine/SetUp'),
+  loading: MyLoadingComponent
+})
+const SetUpSecurity = Loadable({ // 我的设置》账户与安全
+  loader: () => import(/* webpackChunkName: "setupsecurity" */ '../models/Mine/SetUp/security'),
+  loading: MyLoadingComponent
+})
 
-import SearchList from '../models/Home/searchList' // 搜索页
-import Selection from '../models/Home/selection' // 筛选页
-import WorkDetail from '../models/Home/workDetail' // 工作详情
-import OrderDetail from '../models/Home/orderDetail' // 工作详情
+const PersonalData = Loadable({ // 个人资料编辑
+  loader: () => import(/* webpackChunkName: "personaldata" */ '../models/Mine/PersonalData'),
+  loading: MyLoadingComponent
+})
+const MyWorkList = Loadable({ // 我的工单
+  loader: () => import(/* webpackChunkName: "myworklist" */ '../models/Mine/MyWorkList'),
+  loading: MyLoadingComponent
+})
+const Authenticate = Loadable({ // 资格认证
+  loader: () => import(/* webpackChunkName: "authenticate" */ '../models/Mine/Authenticate'),
+  loading: MyLoadingComponent
+})
+const AuthenticatePersonal = Loadable({ // 资格认证》个人
+  loader: () => import(/* webpackChunkName: "authenticatepersonal" */ '../models/Mine/Authenticate/personal'),
+  loading: MyLoadingComponent
+})
+const AuthenticateCompany = Loadable({ // 资格认证》企业
+  loader: () => import(/* webpackChunkName: "authenticatecompany" */ '../models/Mine/Authenticate/company'),
+  loading: MyLoadingComponent
+})
+const Account = Loadable({ // 我的账户
+  loader: () => import(/* webpackChunkName: "account" */ '../models/Mine/Account'),
+  loading: MyLoadingComponent
+})
+const AccountDetail = Loadable({ // 我的账户》账户详情
+  loader: () => import(/* webpackChunkName: "accountdetail" */ '../models/Mine/Account/detail'),
+  loading: MyLoadingComponent
+})
+const AccountRecharge = Loadable({ // 我的账户》充值
+  loader: () => import(/* webpackChunkName: "accountrecharge" */ '../models/Mine/Account/recharge'),
+  loading: MyLoadingComponent
+})
+const AccountWithdrawCash = Loadable({ // 我的账户》提现
+  loader: () => import(/* webpackChunkName: "accountwithdrawcash" */ '../models/Mine/Account/withdrawCash'),
+  loading: MyLoadingComponent
+})
+const Invoice = Loadable({ // 申请发票
+  loader: () => import(/* webpackChunkName: "invoice" */ '../models/Mine/Invoice'),
+  loading: MyLoadingComponent
+})
+const InvoiceDetail = Loadable({ // 申请发票》详细
+  loader: () => import(/* webpackChunkName: "invoicedetail" */ '../models/Mine/Invoice/detail'),
+  loading: MyLoadingComponent
+})
+const Check = Loadable({ // 考勤管理
+  loader: () => import(/* webpackChunkName: "check" */ '../models/Mine/Check'),
+  loading: MyLoadingComponent
+})
 
-import SysNotice from '../models/Message/sysNotice' // 系统通知
-import ChatBox from '../models/Message/chatBox' // 聊天框
-import UserInfo from '../models/Message/userInfo' // 用户信息
+const Login = Loadable({ // 登录
+  loader: () => import(/* webpackChunkName: "login" */ '../models/Login/login'),
+  loading: MyLoadingComponent
+})
+const Register = Loadable({ // 注册
+  loader: () => import(/* webpackChunkName: "register" */ '../models/Login/register'),
+  loading: MyLoadingComponent
+})
+const ForgetPwd = Loadable({ // 忘记密码
+  loader: () => import(/* webpackChunkName: "forgetpwd" */ '../models/Login/forgetPwd'),
+  loading: MyLoadingComponent
+})
+const ResetPwd = Loadable({ // 重置密码
+  loader: () => import(/* webpackChunkName: "resetpwd" */ '../models/Login/resetPwd'),
+  loading: MyLoadingComponent
+})
+
+const SearchList = Loadable({ // 搜索页
+  loader: () => import(/* webpackChunkName: "searchlist" */ '../models/Home/searchList'),
+  loading: MyLoadingComponent
+})
+const Selection = Loadable({ // 筛选页
+  loader: () => import(/* webpackChunkName: "selection" */ '../models/Home/selection'),
+  loading: MyLoadingComponent
+})
+const WorkDetail = Loadable({ // 工作详情
+  loader: () => import(/* webpackChunkName: "workdetail" */ '../models/Home/workDetail'),
+  loading: MyLoadingComponent
+})
+const OrderDetail = Loadable({ // 订单详情
+  loader: () => import(/* webpackChunkName: "orderdetail" */ '../models/Home/orderDetail'),
+  loading: MyLoadingComponent
+})
+
+const SysNotice = Loadable({ // 系统通知
+  loader: () => import(/* webpackChunkName: "sysnotice" */ '../models/Message/sysNotice'),
+  loading: MyLoadingComponent
+})
+const ChatBox = Loadable({ // 聊天框
+  loader: () => import(/* webpackChunkName: "chatbox" */ '../models/Message/chatBox'),
+  loading: MyLoadingComponent
+})
+const UserInfo = Loadable({ // 用户信息
+  loader: () => import(/* webpackChunkName: "userinfo" */ '../models/Message/userInfo'),
+  loading: MyLoadingComponent
+})
 
 const routes = [
   {

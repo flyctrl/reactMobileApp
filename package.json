@@ -55,14 +55,17 @@
     "build:test": "BUILD_ENV=test node scripts/build.js",
     "build:pre": "BUILD_ENV=pre node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "upload": "scp -r build/* root@119.29.199.244:/home/webservice/wwwroot/yaqueApp-wugong/public"
+    "upload": "scp -r build/* root@47.96.236.216:/home/wwwroot/yaqueApp-wugong/public"
   },
   "devDependencies": {
     "antd-mobile-demo-data": "^0.2.0",
     "array-tree-filter": "^2.1.0",
     "axios": "^0.18.0",
+    "babel-plugin-dynamic-import-webpack": "^1.0.2",
     "babel-plugin-import": "^1.6.7",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "china-division": "^2.0.0",
+    "compression-webpack-plugin": "^1.1.11",
     "eslint": "^4.10.0",
     "g": "^2.0.1",
     "img-loader": "^3.0.0",
@@ -70,7 +73,8 @@
     "postcss-pxtorem": "^4.0.1",
     "rc-form": "^2.2.0",
     "rc-upload": "^2.4.4",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "react-loadable": "^5.4.0"
   },
   "jest": {
     "collectCoverageFrom": [
