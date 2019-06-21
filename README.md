@@ -354,7 +354,7 @@ async componentWillMount() {
 ## 脚本
 ### 运行
 ```javascript
-cd yaqueApp-wugong
+cd reactMobileApp
 yarn（或者npm install）
 npm start
 ```
